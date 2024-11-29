@@ -1,0 +1,8 @@
+{
+    "name": "product",
+    "private": true,
+    "scripts": {
+        "build": "./gradlew build -x test",
+        "dev": "./gradlew bootRun"
+    }
+}
