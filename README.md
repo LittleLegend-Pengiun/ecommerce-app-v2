@@ -1,4 +1,4 @@
-# Ecommerce kubernetes application
+# Ecommerce microservice application
 
 ## How to setup
 
