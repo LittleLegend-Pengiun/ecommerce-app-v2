@@ -1,0 +1,114 @@
+openapi: 3.0.3
+info:
+  title: User Microservice API
+  description: API data for User microservice.
+  version: 1.0.0
+servers:
+  - url: http://localhost:8001
+    description: Dev server
+paths:
+  /signup:
+    post:
+      summary: Sign up new user
+      operationId: signup
+      tags:
+        - User
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/User'
+      responses:
+        '201':
+          description: User created
+          
+  /login:
+    post:
+      summary: A user login
+      operationId: login
+      tags:
+        - User
+      description: 'Login'
+      requestBody:
+        content:
+          application/json:
+            schema: 
+              type: object
+              properties:
+                username:
+                  type: string
+                password:
+                  type: string
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Unauthorise
+  /notification:
+    get:
+      summary: Get notification for user
+      operationId: getNotificationByUserId
+      tags:
+        - Notification
+      responses:
+        '200':
+          description: A list notification
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Notification'
+    put:
+      summary: Mark a notification to be read
+      operationId: updateNotification
+      tags:
+        - Notification
+      responses:
+        '201':
+          description: A list notification
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  notificationId:
+                    type: number
+components:
+  schemas:
+    User:
+      type: object
+      properties:
+        id:
+          type: number
+        username:
+          type: string
+        password:
+          type: string
+        email:
+          type: string
+        fullname:
+          type: string
+        address:
+          type: string
+        phoneNumber:
+          type: string
+        dateOfBirth:
+          type: string
+        gender:
+          type: string
+      required:
+        - username
+        - password
+        - email
+    Notification:
+      type: object
+      properties:
+        id:
+          type: number
+        name:
+          type: string
+        notificationTime:
+          type: string
+        isRead:
+          type: boolean

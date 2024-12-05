@@ -1,0 +1,197 @@
+openapi: 3.0.3
+info:
+  title: Product Microservice API
+  description: API data for Product microservice.
+  version: 1.0.0
+servers:
+  - url: http://localhost:8000
+    description: Dev server
+paths:
+  /products:
+    get:
+      summary: Get all products
+      operationId: getProducts
+      tags:
+        - Products
+      responses:
+        '200':
+          description: A list products
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Product'
+  /orders:
+    get:
+      summary: Get all order by user id
+      operationId: getOrderByUserId
+      tags:
+        - Order
+      description: 'Get orders of user id'
+      parameters:
+        - name: user_id
+          in: path
+          required: true
+          description: The ID of user
+          schema:
+            type: number
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Order'
+  /order:
+    get:
+      summary: Get order by id
+      operationId: getOrderById
+      tags:
+        - Order
+      description: 'Get order by id'
+      parameters:
+        - name: user_id
+          in: path
+          required: true
+          description: The ID of order
+          schema:
+            type: number
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Order'
+        '404':
+          description: Order not found
+    post:
+      summary: Add new order
+      operationId: addOrder
+      description: 'Add new order'
+      tags:
+        - Order
+      requestBody:
+        required: true
+        description: Order to add
+        content:
+          application/json:
+              schema:
+                $ref: '#/components/schemas/Order'
+      responses:
+        '201':
+          description: Order added successfully
+
+    put:
+      summary: Update order status by id
+      operationId: updateOrderStatusById
+      description: 'Update existing order status by id'
+      tags:
+        - Order
+      requestBody:
+        required: true
+        description: Order to update
+        content:
+          application/json:
+              schema:
+                type: object
+                properties:
+                  orderId:
+                    type: number
+                  newStatus:
+                    type: string
+      responses:
+        '201':
+          description: Order updated successfully
+        '404':
+          description: Order not found
+  
+  /category:
+    get:
+      summary: Get category list
+      operationId: getCategoryList
+      description: 'Get category list'
+      tags:
+        - Category
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Category'
+
+components:
+  schemas:
+    Product:
+      type: object
+      properties:
+        id:
+          type: number
+        productName:
+          type: string
+        description:
+          type: string
+        price:
+          type: number
+        imageUrl:
+          type: string
+        quantity:
+          type: number
+        manufacturer:
+          type: string
+        releaseDate:
+          type: string
+        soldQuantity:
+          type: number
+        categoryList:
+          type: array
+          items:
+            $ref: '#/components/schemas/Category'
+      required:
+        - productName
+        - price
+        - category
+    Category:
+      type: object
+      properties:
+        id:
+          type: number
+        name:
+          type: string
+    Order:
+      type: object
+      properties:
+        id:
+          type: number
+        userId:
+          type: string
+        orderDate:
+          type: string
+        total:
+          type: number
+        orderStatus:
+          type: string
+        address:
+          type: string
+        payment:
+          type: string
+        productList:
+          type: array
+          items:
+            $ref: '#/components/schemas/OrderedProductDetail'
+    
+    OrderedProductDetail:
+      type: object
+      properties:
+        id:
+          type: number
+        productId:
+          type: number
+        quantity:
+          type: number
