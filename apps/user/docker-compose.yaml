@@ -1,0 +1,9 @@
+services:
+  user-ms:
+    image: postgres:17-alpine
+    environment:
+      POSTGRES_DB: user_db
+      POSTGRES_USER: user_dev
+      POSTGRES_PASSWORD: user-microservice
+    ports:
+      - "5435:5432"
