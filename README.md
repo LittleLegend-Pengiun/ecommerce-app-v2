@@ -18,7 +18,7 @@ yarn dev
 
 ## Solution Design
 
-[Solution Design](./docs/solution-design/SD.md)
+[Solution Design](./docs/solution-design/README.md)
 
 ## Contribution
 
