@@ -1,5 +1,5 @@
 services:
-  user-ms:
+  user-ms-db:
     image: postgres:17-alpine
     environment:
       POSTGRES_DB: user_db
