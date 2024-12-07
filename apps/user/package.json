@@ -3,6 +3,7 @@
     "private": true,
     "version": "0.0.1",
     "scripts": {
+        "start-db": "docker-compose up -d",
         "build": "./gradlew build -x test",
         "dev": "./gradlew bootRun"
     }
