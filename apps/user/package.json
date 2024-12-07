@@ -1,6 +1,7 @@
 {
     "name": "user",
     "private": true,
+    "version": "0.0.1",
     "scripts": {
         "build": "./gradlew build -x test",
         "dev": "./gradlew bootRun"

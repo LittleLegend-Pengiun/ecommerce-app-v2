@@ -1,6 +1,7 @@
 {
   "name": "ecommerce-app-v2",
   "private": true,
+  "version": "0.0.1",
   "scripts": {
     "build": "turbo build",
     "dev": "turbo dev"
