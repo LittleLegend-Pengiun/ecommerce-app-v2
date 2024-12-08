@@ -1,0 +1,279 @@
+{
+	"info": {
+		"_postman_id": "07625a30-ffe8-449d-b23a-421d97fc075d",
+		"name": "Ecommerce-app-v2",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "33798215",
+		"_collection_link": "https://ecommerce-app-v2.postman.co/workspace/Ecommerce-app-v2-workspace~336b84dd-6267-45e6-bf16-8b1db6dc8677/collection/33798215-07625a30-ffe8-449d-b23a-421d97fc075d?action=share&source=collection_link&creator=33798215"
+	},
+	"item": [
+		{
+			"name": "product",
+			"item": [
+				{
+					"name": "Create Category",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"console.log('prescript');\r",
+									"var categories = pm.environment.get(\"categories\");\r",
+									"\r",
+									"console.log('categories', categories);\r",
+									"console.log('!categories', !categories);\r",
+									"\r",
+									"if (!categories) {\r",
+									"    categories = [\"laptop\",\"ssd\",\"sodimm\",\"dimm\",\"ddr5\",\"ddr4\",\"sata\",\"nvme\",\"amd\",\"intel\",\"qualcomm\",\"apple\"]\r",
+									"}\r",
+									"\r",
+									"var currentCategory = categories.shift();\r",
+									"pm.environment.set(\"category\", currentCategory);\r",
+									"pm.environment.set(\"categories\", categories);"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"console.log('postscript');\r",
+									"var categories = pm.environment.get(\"categories\");\r",
+									"\r",
+									"if (categories && categories.length > 0) {\r",
+									"    console.log('postscript next request')\r",
+									"    pm.execution.setNextRequest('Create Category')\r",
+									"} else {\r",
+									"    console.log('postscript stop');\r",
+									"    pm.execution.setNextRequest(null);\r",
+									"}\r",
+									"\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\":\"{{category}}\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{apiUrl}}/category",
+							"host": [
+								"{{apiUrl}}"
+							],
+							"path": [
+								"category"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Product",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"console.log('prescript');\r",
+									"var products = pm.environment.get(\"products\");\r",
+									"\r",
+									"console.log('products', products);\r",
+									"console.log('!products', !products);\r",
+									"\r",
+									"if (!products) {\r",
+									"    products = [\r",
+									"        {\r",
+									"            \"productName\":\"Macbook Pro 14 M4Pro, 24GB of RAM, 512GB of SSD\",\r",
+									"            \"description\":\"Macbook Pro 14 M4Pro, 24GB of RAM, 512GB of SSD\",\r",
+									"            \"price\":1999.99,\r",
+									"            \"imageUrl\":\"https://store.storeimages.cdn-apple.com/8756/as-images.apple.com/is/mbp14-spaceblack-select-202410?wid=904&hei=840&fmt=jpeg&qlt=90&.v=1728916305295\",\r",
+									"            \"quantity\":25,\r",
+									"            \"manufacturer\":\"Apple\",\r",
+									"            \"releaseDate\":\"31/10/2024\",\r",
+									"            \"soldQuantity\":0,\r",
+									"            \"categoryList\":[\r",
+									"                {\r",
+									"                    id:1,\r",
+									"                    name:\"laptop\"\r",
+									"                },\r",
+									"                {\r",
+									"                    id:14,\r",
+									"                    name:\"apple\"\r",
+									"                }\r",
+									"            ]\r",
+									"        },\r",
+									"        {\r",
+									"            \"productName\":\"Crucial DDR5 SODIMM 1x32GB\",\r",
+									"            \"description\":\"Crucial DDR5 SODIMM 1x32GB\",\r",
+									"            \"price\":119.99,\r",
+									"            \"imageUrl\":\"https://content.crucial.com/content/dam/crucial/dram-products/laptop/images/product/crucial-ddr5-16gb-sodimm-kit2-image.psd.transform/medium-png/image.png\",\r",
+									"            \"quantity\":100,\r",
+									"            \"manufacturer\":\"Crucial\",\r",
+									"            \"releaseDate\":\"12/1/2021\",\r",
+									"            \"soldQuantity\":0,\r",
+									"            \"categoryList\":[\r",
+									"                {\r",
+									"                    id:5,\r",
+									"                    name:\"sodimm\"\r",
+									"                },\r",
+									"                {\r",
+									"                    id:7,\r",
+									"                    name:\"ddr5\"\r",
+									"                }\r",
+									"            ]\r",
+									"        },\r",
+									"        {\r",
+									"            \"productName\":\"Crucial DDR5 SODIMM 2x16GB\",\r",
+									"            \"description\":\"Crucial DDR5 SODIMM 2x16GB\",\r",
+									"            \"price\":129.99,\r",
+									"            \"imageUrl\":\"https://content.crucial.com/content/dam/crucial/dram-products/laptop/images/product/crucial-ddr5-16gb-sodimm-kit2-image.psd.transform/medium-png/image.png\",\r",
+									"            \"quantity\":100,\r",
+									"            \"manufacturer\":\"Crucial\",\r",
+									"            \"releaseDate\":\"12/1/2021\",\r",
+									"            \"soldQuantity\":0,\r",
+									"            \"categoryList\":[\r",
+									"                {\r",
+									"                    id:2,\r",
+									"                    name:\"ram\"\r",
+									"                },\r",
+									"                {\r",
+									"                    id:5,\r",
+									"                    name:\"sodimm\"\r",
+									"                },\r",
+									"                {\r",
+									"                    id:7,\r",
+									"                    name:\"ddr5\"\r",
+									"                }\r",
+									"            ]\r",
+									"        }\r",
+									"    ]\r",
+									"}\r",
+									"\r",
+									"var currentProduct = products.shift();\r",
+									"pm.environment.set(\"product\", JSON.stringify(currentProduct));\r",
+									"console.log('pm.environment.get(\"product\")',pm.environment.get(\"product\"));\r",
+									"pm.environment.set(\"products\", products);"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"console.log('postscript');\r",
+									"var products = pm.environment.get(\"products\");\r",
+									"\r",
+									"if (products && products.length > 0) {\r",
+									"    console.log('postscript next request')\r",
+									"    pm.execution.setNextRequest('Create Product')\r",
+									"} else {\r",
+									"    console.log('postscript stop');\r",
+									"    pm.execution.setNextRequest(null);\r",
+									"}\r",
+									"\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{{product}}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{apiUrl}}/product",
+							"host": [
+								"{{apiUrl}}"
+							],
+							"path": [
+								"product"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Category",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Product",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{apiUrl}}/product/all",
+							"host": [
+								"{{apiUrl}}"
+							],
+							"path": [
+								"product",
+								"all"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"description": "Testing product m/s api",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"packages": {},
+						"exec": [
+							"const baseUrl = 'http://127.0.0.1:8000';\r",
+							"const apiUrl = `${baseUrl}`;\r",
+							"\r",
+							"pm.environment.set(\"baseUrl\", baseUrl);\r",
+							"pm.environment.set(\"apiUrl\", apiUrl);"
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"packages": {},
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		}
+	]
+}
