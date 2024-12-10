@@ -9,10 +9,11 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 public class GlobalExceptionHandler {
     @ExceptionHandler({RuntimeException.class})
     public ResponseEntity<Object> handleRuntimeException(RuntimeException exception) {
-        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(exception.getMessage());
+        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Internal Server Error");
     }
-    @ExceptionHandler({ItemNotExistsForUpdateException.class})
-    public ResponseEntity<Object> handleItemNotExistsForUpdateException(ItemNotExistsForUpdateException exception) {
-        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("ItemNotExistsForUpdateException ERROR: " + exception.getMessage());
+
+    @ExceptionHandler({NotFoundByIdException.class})
+    public ResponseEntity<Object> handleNotFoundExceptionException(NotFoundByIdException exception) {
+        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("NotFoundException ERROR: " + exception.getMessage());
     }
 }

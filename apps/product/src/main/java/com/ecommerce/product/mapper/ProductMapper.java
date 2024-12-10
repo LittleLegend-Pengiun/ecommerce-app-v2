@@ -1,50 +1,46 @@
 package com.ecommerce.product.mapper;
 
-import com.ecommerce.product.dto.CategoryDTO;
-import com.ecommerce.product.dto.ProductDTO;
+import com.ecommerce.product.dto.CategoryDto;
+import com.ecommerce.product.dto.ProductDto;
 import com.ecommerce.product.model.Category;
 import com.ecommerce.product.model.Product;
 
 import java.util.List;
 
 public class ProductMapper {
-    public static ProductDTO toDTO(Product product) {
+    public static ProductDto toDto(Product product) {
         if (product == null) {
             return null;
         }
 
-        ProductDTO dto = new ProductDTO();
-        dto.setId(product.getId());
-        dto.setProductName(product.getProductName());
-        dto.setPrice(product.getPrice());
-        dto.setImageUrl(product.getImageUrl());
-        dto.setQuantity(product.getQuantity());
-        dto.setManufacturer(product.getManufacturer());
-        dto.setReleaseDate(product.getReleaseDate());
-        dto.setSoldQuantity(product.getSoldQuantity());
-
-        List<CategoryDTO> categoryDTOs = product.getCategoryList().stream().map(CategoryMapper::toDTO).toList();
-        dto.setCategoryList(categoryDTOs);
-        return dto;
+        return ProductDto.builder()
+                .id(product.getId())
+                .productName(product.getProductName())
+                .price(product.getPrice())
+                .imageUrl(product.getImageUrl())
+                .quantity(product.getQuantity())
+                .manufacturer(product.getManufacturer())
+                .releaseDate(product.getReleaseDate())
+                .soldQuantity(product.getSoldQuantity())
+                .categoryList(product.getCategoryList().stream().map(CategoryMapper::toDto).toList())
+                .build();
     }
 
-    public static Product toEntity(ProductDTO dto) {
+    public static Product toEntity(ProductDto dto) {
         if (dto == null) {
             return null;
         }
 
-        Product product = new Product();
-        product.setId(dto.getId());
-        product.setProductName(dto.getProductName());
-        product.setPrice(dto.getPrice());
-        product.setImageUrl(dto.getImageUrl());
-        product.setQuantity(dto.getQuantity());
-        product.setManufacturer(dto.getManufacturer());
-        product.setReleaseDate(dto.getReleaseDate());
-        product.setSoldQuantity(dto.getSoldQuantity());
-
-        List<Category> categories = dto.getCategoryList().stream().map(CategoryMapper::toEntity).toList();
-        product.setCategoryList(categories);
-        return product;
+        return Product.builder()
+                .id(dto.getId())
+                .productName(dto.getProductName())
+                .price(dto.getPrice())
+                .imageUrl(dto.getImageUrl())
+                .quantity(dto.getQuantity())
+                .manufacturer(dto.getManufacturer())
+                .releaseDate(dto.getReleaseDate())
+                .soldQuantity(dto.getSoldQuantity())
+                .categoryList(dto.getCategoryList().stream().map(CategoryMapper::toEntity).toList())
+                .build();
     }
 }

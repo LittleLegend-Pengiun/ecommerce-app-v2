@@ -1,6 +1,5 @@
 package com.ecommerce.product.controller;
-import com.ecommerce.product.dto.ProductDTO;
-import com.ecommerce.product.model.Product;
+import com.ecommerce.product.dto.ProductDto;
 import com.ecommerce.product.service.ProductService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -17,17 +16,17 @@ public class ProductController {
     private final ProductService productService;
 
     @GetMapping("/all")
-    public ResponseEntity<List<ProductDTO>> getAllProducts() {
+    public ResponseEntity<List<ProductDto>> getAllProducts() {
         return ResponseEntity.ok().body(productService.getAllProducts());
     }
 
     @PostMapping("")
-    public ResponseEntity<ProductDTO> saveProduct(@RequestBody ProductDTO dto){
+    public ResponseEntity<ProductDto> saveProduct(@RequestBody ProductDto dto){
         return ResponseEntity.ok().body(productService.saveProduct(dto));
     }
 
     @PutMapping("")
-    public ResponseEntity<ProductDTO> updateProduct(@RequestBody ProductDTO dto){
+    public ResponseEntity<ProductDto> updateProduct(@RequestBody ProductDto dto){
         return ResponseEntity.ok().body(productService.updateProduct(dto));
     }
 

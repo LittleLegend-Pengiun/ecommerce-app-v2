@@ -1,6 +1,6 @@
 package com.ecommerce.product.service;
-import com.ecommerce.product.dto.ProductDTO;
-import com.ecommerce.product.exception.ItemNotExistsForUpdateException;
+import com.ecommerce.product.dto.ProductDto;
+import com.ecommerce.product.exception.NotFoundByIdException;
 import com.ecommerce.product.mapper.ProductMapper;
 import com.ecommerce.product.model.Product;
 import com.ecommerce.product.repository.ProductRepo;
@@ -17,32 +17,25 @@ import java.util.Optional;
 public class ProductService {
     private final ProductRepo productRepo;
 
-    public List<ProductDTO> getAllProducts(){
-        return productRepo.findAll().stream().map(ProductMapper::toDTO).toList();
+    public List<ProductDto> getAllProducts(){
+        return productRepo.findAll().stream().map(ProductMapper::toDto).toList();
     }
 
-    public ProductDTO saveProduct(ProductDTO dto) {
+    public ProductDto saveProduct(ProductDto dto) {
         Product newProduct = productRepo.save(ProductMapper.toEntity(dto));
-        return ProductMapper.toDTO(newProduct);
+        return ProductMapper.toDto(newProduct);
     }
 
-    public ProductDTO updateProduct(ProductDTO dto) {
+    public ProductDto updateProduct(ProductDto dto) {
         Product product = ProductMapper.toEntity(dto);
         Optional<Product> existingProduct = productRepo.findById(product.getId());
         if (existingProduct.isEmpty()) {
             log.info("Product with id: {} doesn't exist for updating!", product.getId());
-            String exceptionMessage = String.format(
-                    "Exception occurred in %s.%s: %s. Id: %s",
-                    this.getClass().getSimpleName(),  // Class name
-                    "updateProduct",                    // Method name
-                    "Product doesn't exist for updating!",          // Custom error description
-                    product.getId()
-            );
-            throw new ItemNotExistsForUpdateException(exceptionMessage);
+            throw new NotFoundByIdException(this.getClass().getSimpleName(), "updateProduct", "Product doesn't exist for updating!", product.getId());
         }
         Product updatedProduct = productRepo.save(product);
         log.info("Product with id: {} updated successfully", product.getId());
-        return ProductMapper.toDTO(updatedProduct);
+        return ProductMapper.toDto(updatedProduct);
     }
 
     public void deleteProductById(Integer id) {

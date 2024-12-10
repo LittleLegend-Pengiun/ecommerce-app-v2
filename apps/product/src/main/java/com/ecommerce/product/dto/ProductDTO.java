@@ -3,13 +3,15 @@ package com.ecommerce.product.dto;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.experimental.SuperBuilder;
 
 import java.util.List;
 
+@SuperBuilder
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
-public class ProductDTO {
+public class ProductDto {
     private Integer id;
     private String productName;
     private Float price;
@@ -18,5 +20,5 @@ public class ProductDTO {
     private String manufacturer;
     private String releaseDate;
     private Integer soldQuantity;
-    private List<CategoryDTO> categoryList;
+    private List<CategoryDto> categoryList;
 }

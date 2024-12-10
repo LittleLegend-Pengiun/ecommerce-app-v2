@@ -1,6 +1,5 @@
 package com.ecommerce.product.controller;
-import com.ecommerce.product.dto.CategoryDTO;
-import com.ecommerce.product.model.Category;
+import com.ecommerce.product.dto.CategoryDto;
 import com.ecommerce.product.service.CategoryService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -18,17 +17,17 @@ public class CategoryController {
     private final CategoryService categoryService;
 
     @GetMapping("/all")
-    public ResponseEntity<List<CategoryDTO>> getAllCategories() {
+    public ResponseEntity<List<CategoryDto>> getAllCategories() {
         return ResponseEntity.status(HttpStatus.OK).body(categoryService.getAllCategories());
     }
 
     @PostMapping("")
-    public ResponseEntity<CategoryDTO> saveCategory(@RequestBody CategoryDTO dto){
+    public ResponseEntity<CategoryDto> saveCategory(@RequestBody CategoryDto dto){
         return ResponseEntity.status(HttpStatus.OK).body(categoryService.saveCategory(dto));
     }
 
     @PutMapping("")
-    public ResponseEntity<CategoryDTO> updateCategory(@RequestBody CategoryDTO dto){
+    public ResponseEntity<CategoryDto> updateCategory(@RequestBody CategoryDto dto){
         return ResponseEntity.status(HttpStatus.OK).body(categoryService.updateCategory(dto));
     }
 
