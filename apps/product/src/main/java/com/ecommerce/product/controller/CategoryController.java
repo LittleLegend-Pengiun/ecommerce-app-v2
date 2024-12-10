@@ -1,4 +1,5 @@
 package com.ecommerce.product.controller;
+import com.ecommerce.product.dto.CategoryDTO;
 import com.ecommerce.product.model.Category;
 import com.ecommerce.product.service.CategoryService;
 import lombok.RequiredArgsConstructor;
@@ -16,18 +17,18 @@ public class CategoryController {
     private final CategoryService categoryService;
 
     @GetMapping("/all")
-    public ResponseEntity<List<Category>> getAllCategories() {
+    public ResponseEntity<List<CategoryDTO>> getAllCategories() {
         return ResponseEntity.ok().body(categoryService.getAllCategories());
     }
 
     @PostMapping("")
-    public ResponseEntity<Category> saveCategory(@RequestBody Category category){
-        return ResponseEntity.ok().body(categoryService.saveCategory(category));
+    public ResponseEntity<CategoryDTO> saveCategory(@RequestBody CategoryDTO dto){
+        return ResponseEntity.ok().body(categoryService.saveCategory(dto));
     }
 
     @PutMapping("")
-    public ResponseEntity<Category> updateCategory(@RequestBody Category category){
-        return ResponseEntity.ok().body(categoryService.updateCategory(category));
+    public ResponseEntity<CategoryDTO> updateCategory(@RequestBody CategoryDTO dto){
+        return ResponseEntity.ok().body(categoryService.updateCategory(dto));
     }
 
     @DeleteMapping("/{id}")

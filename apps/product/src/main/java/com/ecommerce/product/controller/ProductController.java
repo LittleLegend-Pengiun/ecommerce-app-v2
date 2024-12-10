@@ -1,4 +1,5 @@
 package com.ecommerce.product.controller;
+import com.ecommerce.product.dto.ProductDTO;
 import com.ecommerce.product.model.Product;
 import com.ecommerce.product.service.ProductService;
 import lombok.RequiredArgsConstructor;
@@ -16,18 +17,18 @@ public class ProductController {
     private final ProductService productService;
 
     @GetMapping("/all")
-    public ResponseEntity<List<Product>> getAllProducts() {
+    public ResponseEntity<List<ProductDTO>> getAllProducts() {
         return ResponseEntity.ok().body(productService.getAllProducts());
     }
 
     @PostMapping("")
-    public ResponseEntity<Product> saveProduct(@RequestBody Product product){
-        return ResponseEntity.ok().body(productService.saveProduct(product));
+    public ResponseEntity<ProductDTO> saveProduct(@RequestBody ProductDTO dto){
+        return ResponseEntity.ok().body(productService.saveProduct(dto));
     }
 
     @PutMapping("")
-    public ResponseEntity<Product> updateProduct(@RequestBody Product product){
-        return ResponseEntity.ok().body(productService.updateProduct(product));
+    public ResponseEntity<ProductDTO> updateProduct(@RequestBody ProductDTO dto){
+        return ResponseEntity.ok().body(productService.updateProduct(dto));
     }
 
     @DeleteMapping("/{id}")
