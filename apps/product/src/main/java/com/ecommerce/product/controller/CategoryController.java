@@ -3,6 +3,7 @@ import com.ecommerce.product.dto.CategoryDTO;
 import com.ecommerce.product.model.Category;
 import com.ecommerce.product.service.CategoryService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
@@ -18,22 +19,22 @@ public class CategoryController {
 
     @GetMapping("/all")
     public ResponseEntity<List<CategoryDTO>> getAllCategories() {
-        return ResponseEntity.ok().body(categoryService.getAllCategories());
+        return ResponseEntity.status(HttpStatus.OK).body(categoryService.getAllCategories());
     }
 
     @PostMapping("")
     public ResponseEntity<CategoryDTO> saveCategory(@RequestBody CategoryDTO dto){
-        return ResponseEntity.ok().body(categoryService.saveCategory(dto));
+        return ResponseEntity.status(HttpStatus.OK).body(categoryService.saveCategory(dto));
     }
 
     @PutMapping("")
     public ResponseEntity<CategoryDTO> updateCategory(@RequestBody CategoryDTO dto){
-        return ResponseEntity.ok().body(categoryService.updateCategory(dto));
+        return ResponseEntity.status(HttpStatus.OK).body(categoryService.updateCategory(dto));
     }
 
     @DeleteMapping("/{id}")
     public ResponseEntity<String> deleteCategoryById(@PathVariable Integer id) {
         categoryService.deleteCategoryById(id);
-        return ResponseEntity.ok().body("Delete category successfully!");
+        return ResponseEntity.status(HttpStatus.OK).body("Delete category successfully!");
     }
 }
