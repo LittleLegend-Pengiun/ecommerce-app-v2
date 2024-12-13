@@ -1,6 +1,7 @@
 package com.ecommerce.product.model;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotEmpty;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -19,6 +20,7 @@ public class Product {
     @GeneratedValue( strategy= GenerationType.AUTO )
     private Integer id;
     private String productName;
+    private String description;
     private Float price;
     private String imageUrl;
     private Integer quantity;
