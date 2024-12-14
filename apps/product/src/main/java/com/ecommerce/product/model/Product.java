@@ -7,6 +7,10 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.experimental.SuperBuilder;
 
+import java.time.Instant;
+import java.time.LocalDateTime;
+import java.time.OffsetDateTime;
+import java.time.ZonedDateTime;
 import java.util.List;
 
 @SuperBuilder
@@ -25,7 +29,8 @@ public class Product {
     private String imageUrl;
     private Integer quantity;
     private String manufacturer;
-    private String releaseDate;
+    @Temporal(TemporalType.TIMESTAMP)
+    private ZonedDateTime releaseDate;
     private Integer soldQuantity;
     @ManyToMany
     @JoinTable(

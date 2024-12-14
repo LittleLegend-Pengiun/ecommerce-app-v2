@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 
 import java.io.IOException;
+import java.time.format.DateTimeParseException;
 import java.util.Arrays;
 import java.util.List;
 
@@ -28,7 +29,7 @@ public class GlobalExceptionHandler {
 
     @ExceptionHandler({RuntimeException.class})
     public ResponseEntity<Object> handleRuntimeException(RuntimeException exception) {
-        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(this.profiles.contains("dev") ? "Internal Server Error: " + exception.getMessage() : "Internal Server Error");
+        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(this.profiles.contains("dev") ? "Internal Server Error: " + exception.getMessage() + buildStackTrace(exception) : "Internal Server Error");
     }
 
     @ExceptionHandler({HttpMessageNotReadableException.class})
@@ -78,5 +79,21 @@ public class GlobalExceptionHandler {
         return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(
                 this.profiles.contains("dev") ? "IOException Error: " + exception.getMessage() : "Internal Server Error"
         );
+    }
+
+    @ExceptionHandler({DateTimeParseException.class})
+    public ResponseEntity<Object> handleDateTimeParseException(DateTimeParseException exception) {
+        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(
+                this.profiles.contains("dev") ? "DateTimeParseException Error: " + exception.getMessage() + " " + buildStackTrace(exception) : "DateTimeParseException Error"
+        );
+    }
+
+    static StringBuilder buildStackTrace(Exception exception) {
+        StringBuilder stackTraceSb = new StringBuilder();
+        stackTraceSb.append("\n\n");
+        for (StackTraceElement e : exception.getStackTrace()) {
+            stackTraceSb.append(e.toString()).append('\n');
+        }
+        return stackTraceSb;
     }
 }

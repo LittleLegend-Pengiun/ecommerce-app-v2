@@ -2,7 +2,6 @@ package com.ecommerce.product;
 
 import com.ecommerce.product.service.DataInitializer;
 import jakarta.annotation.PostConstruct;
-import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
@@ -28,7 +27,7 @@ public class ProductApplication {
 
 	@PostConstruct
 	public void init() throws IOException {
-		dataInitializer.cleanProductMSDB();
+		dataInitializer.cleanProductMsDb();
 		dataInitializer.initCategoryFromJson("category.json");
 		dataInitializer.initProductFromJson("product.json");
 	}

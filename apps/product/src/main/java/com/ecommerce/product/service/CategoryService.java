@@ -21,6 +21,11 @@ public class CategoryService {
         return categoryRepo.findAll().stream().map(CategoryMapper::toDto).toList();
     }
 
+    public List<CategoryDto> saveAll(List<CategoryDto> categoryDtos) {
+        List<Category> categories = categoryRepo.saveAll(categoryDtos.stream().map(CategoryMapper::toEntity).toList());
+        return categories.stream().map(CategoryMapper::toDto).toList();
+    }
+
     public CategoryDto saveCategory(CategoryDto dto) {
         Category newCategory = categoryRepo.save(CategoryMapper.toEntity(dto));
         return CategoryMapper.toDto(newCategory);
@@ -36,6 +41,10 @@ public class CategoryService {
         Category updatedCategory = categoryRepo.save(category);
         log.info("Category with id: {} updated successfully", category.getId());
         return CategoryMapper.toDto(updatedCategory);
+    }
+
+    public void deleteAll() {
+        categoryRepo.deleteAll();
     }
 
     public void deleteCategoryById(Integer id) {

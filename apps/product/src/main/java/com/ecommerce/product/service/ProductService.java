@@ -1,7 +1,10 @@
 package com.ecommerce.product.service;
+import com.ecommerce.product.dto.CategoryDto;
 import com.ecommerce.product.dto.ProductDto;
 import com.ecommerce.product.exception.NotFoundByIdException;
+import com.ecommerce.product.mapper.CategoryMapper;
 import com.ecommerce.product.mapper.ProductMapper;
+import com.ecommerce.product.model.Category;
 import com.ecommerce.product.model.Product;
 import com.ecommerce.product.repository.ProductRepo;
 import lombok.RequiredArgsConstructor;
@@ -19,6 +22,11 @@ public class ProductService {
 
     public List<ProductDto> getAllProducts(){
         return productRepo.findAll().stream().map(ProductMapper::toDto).toList();
+    }
+
+    public List<ProductDto> saveAll(List<ProductDto> productDtos) {
+        List<Product> saveProducts = productRepo.saveAll(productDtos.stream().map(ProductMapper::toEntity).toList());
+        return saveProducts.stream().map(ProductMapper::toDto).toList();
     }
 
     public ProductDto saveProduct(ProductDto dto) {
@@ -40,5 +48,9 @@ public class ProductService {
 
     public void deleteProductById(Integer id) {
         productRepo.deleteById(id);
+    }
+
+    public void deleteAll() {
+        productRepo.deleteAll();
     }
 }

@@ -31,3 +31,6 @@ Run collection (POST create category then POST create product)
 ![alt text](./README-pics/image-3.png)
 
 If error happen, nuke postgres product db and retry!
+
+# Documentation
+[Good-ass article about time in Java from ELCA](https://careers.elca.vn/news/how-get-time-zones-right-java)
