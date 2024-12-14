@@ -2,7 +2,8 @@ package com.ecommerce.user.service;
 
 import com.ecommerce.user.application.request.SignUpRequest;
 import com.ecommerce.user.application.response.GenericResponse;
-import org.springframework.http.ResponseEntity;
+import com.ecommerce.user.repository.RoleRepository;
+import com.ecommerce.user.repository.model.user.UserRole;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -15,6 +16,8 @@ import com.ecommerce.user.repository.model.user.User;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 
@@ -24,14 +27,14 @@ import java.util.stream.Collectors;
 @Slf4j
 public class UserAccountService implements UserDetailsService {
     private final UserRepository userRepository;
-    
+
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         User user = userRepository.findByUsername(username)
                 .orElseThrow(() -> new UsernameNotFoundException("Username not found"));
 
         Set<GrantedAuthority> authorities = user
-                .getRoles()
+                .getUserRoles()
                 .stream()
                 .map((role) -> new SimpleGrantedAuthority(role.getRoleName())).collect(Collectors.toSet());
 
@@ -44,4 +47,5 @@ public class UserAccountService implements UserDetailsService {
 
         return GenericResponse.builder().message("Account created").build();
     }
+
 }

@@ -34,3 +34,7 @@ dependencies {
 	annotationProcessor 'org.projectlombok:lombok'
 }
 
+tasks.register('startDb', Exec) {
+	commandLine("docker-compose", "up", "-d")
+}
+

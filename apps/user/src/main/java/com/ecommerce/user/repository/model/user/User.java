@@ -2,7 +2,6 @@ package com.ecommerce.user.repository.model.user;
 
 import java.time.LocalDate;
 import java.time.ZonedDateTime;
-import java.util.Arrays;
 import java.util.Set;
 
 import jakarta.persistence.*;
@@ -53,7 +52,7 @@ public class User {
 
     @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinTable(name = "user_roles",
-            joinColumns = @JoinColumn(name = "user_id", referencedColumnName = "id"),
-            inverseJoinColumns = @JoinColumn(name = "role_id", referencedColumnName = "id"))
-    private Set<Role> roles;
+            joinColumns = @JoinColumn(name = "user_id"),
+            inverseJoinColumns = @JoinColumn(name = "roles_id"))
+    private Set<UserRole> userRoles;
 }
