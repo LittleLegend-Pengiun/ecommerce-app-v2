@@ -12,18 +12,20 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 @SpringBootApplication
-@EntityScan(basePackages="com.ecommerce.user")
-@EnableJpaRepositories(basePackages = "com.ecommerce.user")
+//@EntityScan(basePackages="com.ecommerce.user")
+//@EnableJpaRepositories(basePackages = "com.ecommerce.user")
 public class UserApplication {
-//	private InitService initService;
+	@Autowired
+	public InitService initService;
 
 	public static void main(String[] args) {
 
 		SpringApplication.run(UserApplication.class, args);
 	}
 
-//	@PostConstruct
-//	public void init() {
-//		initService.setupRoles();
-//	}
+	@PostConstruct
+	public void init() {
+		initService.cleanUpDb();
+		initService.setupRoles();
+	}
 }

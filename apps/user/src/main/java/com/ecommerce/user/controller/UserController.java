@@ -1,4 +1,4 @@
-package com.ecommerce.user.application.controller;
+package com.ecommerce.user.controller;
 
 import com.ecommerce.user.application.request.SignUpRequest;
 import com.ecommerce.user.application.response.GenericResponse;

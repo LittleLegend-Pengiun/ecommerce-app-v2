@@ -11,9 +11,12 @@ import java.util.List;
 
 @Service
 @RequiredArgsConstructor
-@Slf4j
 public class InitService {
     private final RoleRepository roleRepository;
+
+    public void cleanUpDb() {
+        roleRepository.deleteAll();
+    }
 
     public void setupRoles() {
         var roles = new ArrayList<>(List.of(new String[]{"admin", "normal"}));
