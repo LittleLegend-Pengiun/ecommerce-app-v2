@@ -4,6 +4,7 @@ import com.ecommerce.user.application.exeption.BadRequestException;
 import com.ecommerce.user.application.exeption.NotFoundException;
 import com.ecommerce.user.application.request.SignUpRequest;
 import com.ecommerce.user.application.response.GenericResponse;
+import com.ecommerce.user.repository.model.user.Gender;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -17,7 +18,9 @@ import com.ecommerce.user.repository.model.user.Users;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
+import java.time.LocalDate;
 import java.time.ZonedDateTime;
+import java.time.format.DateTimeParseException;
 import java.util.Set;
 import java.util.stream.Collectors;
 
@@ -50,15 +53,26 @@ public class UserAccountService implements UserDetailsService {
             throw new BadRequestException("Username already exists");
         }
 
+        LocalDate dateOfBirth;
+        try {
+            dateOfBirth = LocalDate.parse(request.getDateOfBirth());
+        } catch (DateTimeParseException exception) {
+            log.error("Cannot parse date of birth");
+            throw new BadRequestException("Invalid input field(s)");
+        }
+
         Users newUser = Users.builder()
                 .username(request.getUsername())
                 .password(passwordEncoder.encode(request.getPassword()))
                 .address(request.getAddress())
                 .phoneNumber(request.getPhoneNumber())
-                .dateOfBirth(ZonedDateTime.now())
+                .dateOfBirth(dateOfBirth)
+                .gender(Gender.valueOf(request.getGender()))
                 .createdAt(ZonedDateTime.now())
                 .updatedAt(ZonedDateTime.now())
                 .build();
+
+        userRepository.save(newUser);
 
         return GenericResponse.builder().message("Account created").build();
     }

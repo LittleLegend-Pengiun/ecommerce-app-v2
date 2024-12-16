@@ -32,14 +32,14 @@ public class SecurityConfiguration {
     }
 
     @Bean
-    SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
+   SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
 
         http.csrf().disable()
-                .authorizeHttpRequests((authorize) ->
+               .authorizeHttpRequests((authorize) ->
                         //authorize.anyRequest().authenticated()
-                        authorize.requestMatchers(HttpMethod.GET, "/notification/**").permitAll()
+                        authorize.requestMatchers("/signup").permitAll()
                                 .anyRequest().authenticated()
-                );
+               );
 
         return http.build();
     }
