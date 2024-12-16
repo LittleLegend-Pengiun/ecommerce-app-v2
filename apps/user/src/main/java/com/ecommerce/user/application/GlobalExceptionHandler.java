@@ -20,6 +20,9 @@ public class GlobalExceptionHandler {
             MethodArgumentNotValidException.class})
     public ResponseEntity<String> handleBadRequest(Exception exception) {
         log.error(exception.getMessage());
+        if (exception.getClass().getSimpleName().equals("BadRequestException")) {
+            return new ResponseEntity<>("Error: " + exception.getMessage(), HttpStatus.BAD_REQUEST);
+        }
         return new ResponseEntity<>("Error: Bad request", HttpStatus.BAD_REQUEST);
     }
 

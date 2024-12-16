@@ -5,6 +5,7 @@ import java.time.ZonedDateTime;
 import java.util.Set;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
 import lombok.*;
 import lombok.experimental.SuperBuilder;
@@ -25,10 +26,12 @@ public class Users {
     private Long id;
 
     @NotNull
+    @NotEmpty
     @Column(unique = true)
     private String username;
 
     @NotNull
+    @NotEmpty
     private String password;
 
     private String fullname;

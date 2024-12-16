@@ -4,6 +4,7 @@ import com.ecommerce.user.application.exeption.BadRequestException;
 import com.ecommerce.user.application.exeption.NotFoundException;
 import com.ecommerce.user.application.request.SignUpRequest;
 import com.ecommerce.user.application.response.GenericResponse;
+import com.ecommerce.user.application.utils.DateTimeUtils;
 import com.ecommerce.user.repository.model.user.Gender;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.GrantedAuthority;
@@ -53,13 +54,9 @@ public class UserAccountService implements UserDetailsService {
             throw new BadRequestException("Username already exists");
         }
 
-        LocalDate dateOfBirth;
-        try {
-            dateOfBirth = LocalDate.parse(request.getDateOfBirth());
-        } catch (DateTimeParseException exception) {
-            log.error("Cannot parse date of birth");
-            throw new BadRequestException("Invalid input field(s)");
-        }
+        LocalDate dateOfBirth = DateTimeUtils.fromStringToLocalDate(request.getDateOfBirth());
+        Gender gender = Gender.valueOf(request.getGender());
+
 
         Users newUser = Users.builder()
                 .username(request.getUsername())
@@ -67,7 +64,7 @@ public class UserAccountService implements UserDetailsService {
                 .address(request.getAddress())
                 .phoneNumber(request.getPhoneNumber())
                 .dateOfBirth(dateOfBirth)
-                .gender(Gender.valueOf(request.getGender()))
+                .gender(gender)
                 .createdAt(ZonedDateTime.now())
                 .updatedAt(ZonedDateTime.now())
                 .build();
