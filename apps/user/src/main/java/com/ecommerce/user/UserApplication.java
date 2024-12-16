@@ -12,8 +12,6 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 @SpringBootApplication
-//@EntityScan(basePackages="com.ecommerce.user")
-//@EnableJpaRepositories(basePackages = "com.ecommerce.user")
 public class UserApplication {
 	@Autowired
 	public InitService initService;
