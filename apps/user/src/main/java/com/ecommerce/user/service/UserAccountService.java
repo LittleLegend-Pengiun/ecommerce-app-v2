@@ -5,7 +5,9 @@ import com.ecommerce.user.application.exeption.NotFoundException;
 import com.ecommerce.user.application.request.SignUpRequest;
 import com.ecommerce.user.application.response.GenericResponse;
 import com.ecommerce.user.application.utils.DateTimeUtils;
+import com.ecommerce.user.repository.RoleRepository;
 import com.ecommerce.user.repository.model.user.Gender;
+import com.ecommerce.user.repository.model.user.UserRole;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -22,6 +24,7 @@ import lombok.extern.slf4j.Slf4j;
 import java.time.LocalDate;
 import java.time.ZonedDateTime;
 import java.time.format.DateTimeParseException;
+import java.util.Collections;
 import java.util.Set;
 import java.util.stream.Collectors;
 
@@ -31,6 +34,7 @@ import java.util.stream.Collectors;
 @Slf4j
 public class UserAccountService implements UserDetailsService {
     private final UserRepository userRepository;
+    private final RoleRepository roleRepository;
     private final PasswordEncoder passwordEncoder;
 
     @Override
@@ -57,16 +61,20 @@ public class UserAccountService implements UserDetailsService {
         LocalDate dateOfBirth = DateTimeUtils.fromStringToLocalDate(request.getDateOfBirth());
         Gender gender = Gender.valueOf(request.getGender());
 
+        UserRole roles = roleRepository.findByRoleName("normal").orElse(null);
+
 
         Users newUser = Users.builder()
                 .username(request.getUsername())
                 .password(passwordEncoder.encode(request.getPassword()))
+                .email(request.getEmail())
                 .address(request.getAddress())
                 .phoneNumber(request.getPhoneNumber())
                 .dateOfBirth(dateOfBirth)
                 .gender(gender)
                 .createdAt(ZonedDateTime.now())
                 .updatedAt(ZonedDateTime.now())
+                .userRoles(Collections.singleton(roles))
                 .build();
 
         userRepository.save(newUser);

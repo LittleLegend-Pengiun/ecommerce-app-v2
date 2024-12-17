@@ -34,6 +34,8 @@ public class Users {
     @NotEmpty
     private String password;
 
+    private String email;
+
     private String fullname;
 
     private String address;
@@ -54,8 +56,8 @@ public class Users {
     private ZonedDateTime createdAt;
 
     @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    @JoinTable(name = "users_roles",
+    @JoinTable(name = "user_roles",
             joinColumns = @JoinColumn(name = "user_id", referencedColumnName = "id"),
-            inverseJoinColumns = @JoinColumn(name = "roles_id", referencedColumnName = "id"))
+            inverseJoinColumns = @JoinColumn(name = "role_id", referencedColumnName = "id"))
     private Set<UserRole> userRoles;
 }
