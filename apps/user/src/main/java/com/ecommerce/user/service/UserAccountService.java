@@ -58,8 +58,16 @@ public class UserAccountService implements UserDetailsService {
             throw new BadRequestException("Username already exists");
         }
 
-        LocalDate dateOfBirth = DateTimeUtils.fromStringToLocalDate(request.getDateOfBirth());
-        Gender gender = Gender.valueOf(request.getGender());
+        LocalDate dateOfBirth;
+        Gender gender;
+
+        try {
+            dateOfBirth = DateTimeUtils.fromStringToLocalDate(request.getDateOfBirth());
+            gender = Gender.valueOf(request.getGender());
+        } catch (RuntimeException exception) {
+            log.error("Error when parsing birthday and gender", exception);
+            throw new BadRequestException("Invalid dateOfBirth or gender");
+        }
 
         UserRole roles = roleRepository.findByRoleName("normal").orElse(null);
 
