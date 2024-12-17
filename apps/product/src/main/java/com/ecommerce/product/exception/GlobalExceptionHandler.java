@@ -4,10 +4,10 @@ import lombok.extern.slf4j.Slf4j;
 import org.hibernate.TransientObjectException;
 import org.springframework.core.env.Environment;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataAccessException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.http.converter.HttpMessageNotReadableException;
-import org.springframework.orm.jpa.JpaObjectRetrievalFailureException;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
@@ -60,10 +60,10 @@ public class GlobalExceptionHandler {
         }
     }
 
-    @ExceptionHandler({JpaObjectRetrievalFailureException.class})
-    public ResponseEntity<Object> handleJpaObjectRetrievalFailureException(JpaObjectRetrievalFailureException exception) {
+    @ExceptionHandler({DataAccessException.class})
+    public ResponseEntity<Object> handleDataAccessException(DataAccessException exception) {
         return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(
-                this.profiles.contains("dev") ? "JpaObjectRetrievalFailureException Error: " + exception.getMessage() : "Internal Server Error"
+                this.profiles.contains("dev") ? "DataAccessException Error:\n" + exception.getMessage() + "DataAccessException Root Cause:\n" + exception.getRootCause() + "\n\n" : "Internal Server Error"
         );
     }
 
