@@ -20,8 +20,8 @@ public class ProductDto {
     private String productName;
     @NotEmpty
     private String description;
-    @DecimalMin(value = "1.0")
-    @DecimalMax(value = "1000000.0")
+    @DecimalMin(value = "1000.0")
+    @DecimalMax(value = "10000000000.0")
     private Float price;
     @NotEmpty
     private String imageUrl;
@@ -29,7 +29,7 @@ public class ProductDto {
     private Integer quantity;
     @NotEmpty
     private String manufacturer;
-    @Pattern(regexp = "^[0-9]{2}-[0-9]{2}-[0-9]{4}$")
+    @Pattern(regexp = "^[0-9]{2}[/-][0-9]{2}[/-][0-9]{4}$")
     private String releaseDate;
     @Digits(integer = 10, fraction = 0)
     private Integer soldQuantity;

@@ -7,28 +7,48 @@ servers:
   - url: http://localhost:8000
     description: Dev server
 paths:
-  /products:
+  /product/all:
     get:
       summary: Get all products
       operationId: getProducts
       tags:
         - Products
       responses:
-        '200':
+        "200":
           description: A list products
           content:
             application/json:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/Product'
+                  $ref: "#/components/schemas/Product"
+  /product:
+    post:
+      summary: Create product
+      operationId: createProduct
+      tags:
+        - Products
+      requestBody:
+        required: true
+        description: Product to create
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Product"
+      responses:
+        "200":
+          description: Create product
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Product"
   /orders:
     get:
       summary: Get all order by user id
       operationId: getOrderByUserId
       tags:
         - Order
-      description: 'Get orders of user id'
+      description: "Get orders of user id"
       parameters:
         - name: user_id
           in: path
@@ -37,21 +57,21 @@ paths:
           schema:
             type: number
       responses:
-        '200':
+        "200":
           description: OK
           content:
             application/json:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/Order'
+                  $ref: "#/components/schemas/Order"
   /order:
     get:
       summary: Get order by id
       operationId: getOrderById
       tags:
         - Order
-      description: 'Get order by id'
+      description: "Get order by id"
       parameters:
         - name: user_id
           in: path
@@ -60,18 +80,18 @@ paths:
           schema:
             type: number
       responses:
-        '200':
+        "200":
           description: OK
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Order'
-        '404':
+                $ref: "#/components/schemas/Order"
+        "404":
           description: Order not found
     post:
       summary: Add new order
       operationId: addOrder
-      description: 'Add new order'
+      description: "Add new order"
       tags:
         - Order
       requestBody:
@@ -79,16 +99,16 @@ paths:
         description: Order to add
         content:
           application/json:
-              schema:
-                $ref: '#/components/schemas/Order'
+            schema:
+              $ref: "#/components/schemas/Order"
       responses:
-        '201':
+        "201":
           description: Order added successfully
 
     put:
       summary: Update order status by id
       operationId: updateOrderStatusById
-      description: 'Update existing order status by id'
+      description: "Update existing order status by id"
       tags:
         - Order
       requestBody:
@@ -96,35 +116,85 @@ paths:
         description: Order to update
         content:
           application/json:
-              schema:
-                type: object
-                properties:
-                  orderId:
-                    type: number
-                  newStatus:
-                    type: string
+            schema:
+              type: object
+              properties:
+                orderId:
+                  type: number
+                newStatus:
+                  type: string
       responses:
-        '201':
+        "201":
           description: Order updated successfully
-        '404':
+        "404":
           description: Order not found
-  
-  /category:
+
+  /category/all:
     get:
       summary: Get category list
       operationId: getCategoryList
-      description: 'Get category list'
+      description: "Get category list"
       tags:
         - Category
       responses:
-        '200':
+        "200":
           description: OK
           content:
             application/json:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/Category'
+                  $ref: "#/components/schemas/Category"
+  /category:
+    post:
+      summary: Create category
+      operationId: createCategory
+      description: "Create category"
+      tags:
+        - Category
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Category"
+        "401":
+          description: "Cannot create category"
+    put:
+      summary: Update category
+      operationId: updateCategory
+      description: "Update category"
+      tags:
+        - Category
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Category"
+        "401":
+          description: "Category not found"
+  /category/:id:
+    delete:
+      summary: Delete category by id
+      tags:
+        - Category
+      parameters:
+        - name: id
+          in: path
+          description: The ID of the item to retrieve
+          required: true
+          schema:
+            type: integer
+      responses:
+        "200":
+          description: "Delete category successfully"
 
 components:
   schemas:
@@ -152,7 +222,7 @@ components:
         categoryList:
           type: array
           items:
-            $ref: '#/components/schemas/Category'
+            $ref: "#/components/schemas/Category"
       required:
         - productName
         - price
@@ -184,8 +254,8 @@ components:
         productList:
           type: array
           items:
-            $ref: '#/components/schemas/OrderedProductDetail'
-    
+            $ref: "#/components/schemas/OrderedProductDetail"
+
     OrderedProductDetail:
       type: object
       properties:
