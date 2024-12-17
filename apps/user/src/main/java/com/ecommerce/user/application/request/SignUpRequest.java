@@ -1,5 +1,6 @@
 package com.ecommerce.user.application.request;
 
+import com.ecommerce.user.application.utils.DateTimeUtils;
 import com.ecommerce.user.repository.model.user.Gender;
 import com.fasterxml.jackson.annotation.JsonSetter;
 import com.fasterxml.jackson.annotation.Nulls;
@@ -24,7 +25,7 @@ public class SignUpRequest {
     private String phoneNumber;
 
     @JsonSetter(nulls = Nulls.SKIP)
-    private String dateOfBirth = String.valueOf(LocalDate.now());
+    private String dateOfBirth = DateTimeUtils.fromLocalDateToString(LocalDate.now());
 
     @JsonSetter(nulls = Nulls.SKIP)
     private String gender = String.valueOf(Gender.MALE);

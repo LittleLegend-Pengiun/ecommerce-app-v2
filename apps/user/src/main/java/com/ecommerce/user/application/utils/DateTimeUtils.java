@@ -10,8 +10,13 @@ import java.time.format.DateTimeParseException;
 @Slf4j
 public class DateTimeUtils {
 
+    private static final DateTimeFormatter formatter = DateTimeFormatter.ISO_LOCAL_DATE;
+
+    public static String fromLocalDateToString(LocalDate date) {
+        return date.format(formatter);
+    }
+
     public static LocalDate fromStringToLocalDate(String dateString) throws DateTimeParseException {
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
         try {
             return LocalDate.parse(dateString, formatter);
         } catch (DateTimeParseException exception) {
