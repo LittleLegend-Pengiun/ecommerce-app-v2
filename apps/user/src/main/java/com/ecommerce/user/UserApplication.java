@@ -1,28 +1,24 @@
 package com.ecommerce.user;
 
 import com.ecommerce.user.service.InitService;
-import com.ecommerce.user.service.UserAccountService;
-import jakarta.annotation.PostConstruct;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.boot.autoconfigure.domain.EntityScan;
-import org.springframework.context.annotation.ComponentScan;
-import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
+
+import java.io.IOException;
 
 @SpringBootApplication
-public class UserApplication {
-	@Autowired
-	public InitService initService;
+public class UserApplication implements CommandLineRunner {
+	public static void main(String[] args) { SpringApplication.run(UserApplication.class, args); }
 
-	public static void main(String[] args) {
+	private final InitService initService;
 
-		SpringApplication.run(UserApplication.class, args);
+	public UserApplication(InitService initService) {
+		this.initService = initService;
 	}
 
-	@PostConstruct
-	public void init() {
+	@Override
+	public void run(String... args) throws IOException {
 		initService.cleanUpDb();
 		initService.setupRoles();
 	}
