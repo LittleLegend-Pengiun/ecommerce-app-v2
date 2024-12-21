@@ -42,3 +42,7 @@ bootRun {
 bootTestRun {
 	environment('spring.profiles.active', 'qa')
 }
+
+tasks.register('startDb', Exec) {
+	commandLine("docker-compose", "up", "-d")
+}
