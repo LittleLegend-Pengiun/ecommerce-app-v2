@@ -23,7 +23,6 @@ import lombok.extern.slf4j.Slf4j;
 
 import java.time.LocalDate;
 import java.time.ZonedDateTime;
-import java.time.format.DateTimeParseException;
 import java.util.Collections;
 import java.util.Set;
 import java.util.stream.Collectors;
@@ -69,7 +68,7 @@ public class UserAccountService implements UserDetailsService {
             throw new BadRequestException("Invalid dateOfBirth or gender");
         }
 
-        UserRole roles = roleRepository.findByRoleName("normal").orElse(null);
+        UserRole roles = roleRepository.findByRoleName("ROLE_USER").orElse(null);
 
 
         Users newUser = Users.builder()

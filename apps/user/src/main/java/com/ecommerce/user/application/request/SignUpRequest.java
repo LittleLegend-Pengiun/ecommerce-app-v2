@@ -4,21 +4,14 @@ import com.ecommerce.user.application.utils.DateTimeUtils;
 import com.ecommerce.user.repository.model.user.Gender;
 import com.fasterxml.jackson.annotation.JsonSetter;
 import com.fasterxml.jackson.annotation.Nulls;
-import jakarta.validation.constraints.NotEmpty;
-import jakarta.validation.constraints.NotNull;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 import java.time.LocalDate;
 
 @Data
-public class SignUpRequest {
-    @NotNull
-    @NotEmpty
-    private String username;
-
-    @NotNull
-    @NotEmpty
-    private String password;
+@EqualsAndHashCode(callSuper = true)
+public class SignUpRequest extends LoginRequest {
     private String email;
     private String fullname;
     private String address;
