@@ -21,5 +21,6 @@ public class UserApplication implements CommandLineRunner {
 	public void run(String... args) throws IOException {
 		initService.cleanUpDb();
 		initService.setupRoles();
+		initService.setupAdminUser();
 	}
 }

@@ -68,7 +68,7 @@ public class UserAccountService implements UserDetailsService {
             throw new BadRequestException("Invalid dateOfBirth or gender");
         }
 
-        UserRole roles = roleRepository.findByRoleName("normal").orElse(null);
+        UserRole roles = roleRepository.findByRoleName("ROLE_USER").orElse(null);
 
 
         Users newUser = Users.builder()

@@ -1,7 +1,5 @@
-package com.ecommerce.user.application;
+package com.ecommerce.user.application.exeption;
 
-import com.ecommerce.user.application.exeption.BadRequestException;
-import com.ecommerce.user.application.exeption.NotFoundException;
 import jakarta.validation.ValidationException;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.dao.DataAccessException;
