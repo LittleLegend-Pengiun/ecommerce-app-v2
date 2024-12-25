@@ -1,7 +1,7 @@
 package com.ecommerce.user.service;
 
+import com.ecommerce.user.application.dto.CustomUserDetails;
 import com.ecommerce.user.application.exeption.BadRequestException;
-import com.ecommerce.user.application.exeption.NotFoundException;
 import com.ecommerce.user.application.request.SignUpRequest;
 import com.ecommerce.user.application.response.GenericResponse;
 import com.ecommerce.user.application.utils.DateTimeUtils;
@@ -9,8 +9,6 @@ import com.ecommerce.user.repository.RoleRepository;
 import com.ecommerce.user.repository.model.user.Gender;
 import com.ecommerce.user.repository.model.user.UserRole;
 import org.springframework.security.core.userdetails.UserDetailsService;
-import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -24,8 +22,6 @@ import lombok.extern.slf4j.Slf4j;
 import java.time.LocalDate;
 import java.time.ZonedDateTime;
 import java.util.Collections;
-import java.util.Set;
-import java.util.stream.Collectors;
 
 
 @Service
@@ -41,14 +37,7 @@ public class UserAccountService implements UserDetailsService {
         Users user = userRepository.findByUsername(username)
                 .orElseThrow(() -> new UsernameNotFoundException("Username not found"));
 
-        Set<GrantedAuthority> authorities = user
-                .getUserRoles()
-                .stream()
-                .map((role) -> new SimpleGrantedAuthority(role.getRoleName())).collect(Collectors.toSet());
-
-        return new org.springframework.security.core.userdetails.User(user.getUsername(),
-                user.getPassword(),
-                authorities);
+        return new CustomUserDetails(user);
     }
 
     public GenericResponse createNewUser(SignUpRequest request) throws RuntimeException {
