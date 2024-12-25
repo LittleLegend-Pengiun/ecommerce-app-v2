@@ -1,4 +1,4 @@
-package com.ecommerce.user.application.dto;
+package com.ecommerce.user.application.entity;
 
 import com.ecommerce.user.repository.model.user.Users;
 import lombok.AllArgsConstructor;

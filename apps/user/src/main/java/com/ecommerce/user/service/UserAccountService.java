@@ -1,6 +1,6 @@
 package com.ecommerce.user.service;
 
-import com.ecommerce.user.application.dto.CustomUserDetails;
+import com.ecommerce.user.application.entity.CustomUserDetails;
 import com.ecommerce.user.application.exeption.BadRequestException;
 import com.ecommerce.user.application.request.SignUpRequest;
 import com.ecommerce.user.application.response.GenericResponse;

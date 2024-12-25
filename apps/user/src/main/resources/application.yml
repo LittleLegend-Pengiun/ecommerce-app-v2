@@ -18,8 +18,4 @@ server:
 
 infrastructure:
   jwt:
-    secret: user-secret
-    expiration-time: 604800000L
-
-
-
+    secret: and0LXNlY3JldCZqd3Qtc2VjcmV0Jmp3dC1zZWNyZXQmand0LXNlY3JldA==
