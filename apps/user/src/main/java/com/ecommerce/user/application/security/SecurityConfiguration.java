@@ -1,4 +1,4 @@
-package com.ecommerce.user.application.config;
+package com.ecommerce.user.application.security;
 
 import com.ecommerce.user.service.UserAccountService;
 import org.springframework.context.annotation.Bean;
