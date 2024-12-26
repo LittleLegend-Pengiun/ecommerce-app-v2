@@ -1,6 +1,7 @@
 package com.ecommerce.user.application.security;
 
 import com.ecommerce.user.service.UserAccountService;
+import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -15,13 +16,10 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 
 @Configuration
+@RequiredArgsConstructor
 @EnableMethodSecurity
 public class SecurityConfiguration {
     private final UserAccountService userAccountService;
-
-    public SecurityConfiguration(UserAccountService userAccountService) {
-        this.userAccountService = userAccountService;
-    }
 
     @Bean
     public static PasswordEncoder passwordEncoder(){
@@ -48,6 +46,7 @@ public class SecurityConfiguration {
                .authorizeHttpRequests((authorize) ->
                         //authorize.anyRequest().authenticated()
                         authorize.requestMatchers("/signup").permitAll()
+                                .requestMatchers("/login").permitAll()
                                 .anyRequest().authenticated()
                );
 

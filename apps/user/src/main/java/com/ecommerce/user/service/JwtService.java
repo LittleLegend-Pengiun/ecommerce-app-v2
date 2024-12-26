@@ -13,7 +13,6 @@ import org.springframework.stereotype.Service;
 
 import javax.crypto.SecretKey;
 import java.util.Date;
-import java.util.function.Function;
 
 @Service
 @Slf4j
@@ -21,7 +20,7 @@ public class JwtService {
     @Value("${infrastructure.jwt.secret}")
     private String jwtSecret;
 
-    private String createToken(Users user) {
+    public String createToken(Users user) {
         int expireTime = 1000 * 60 * 30; // Token valid for 30 minutes
         JwtPayload payload = new JwtPayload(user);
 

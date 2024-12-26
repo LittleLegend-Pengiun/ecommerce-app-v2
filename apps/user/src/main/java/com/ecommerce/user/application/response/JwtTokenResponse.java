@@ -9,6 +9,6 @@ import lombok.Data;
 @Builder
 @Data
 @AllArgsConstructor
-public class GenericResponse {
-    private String message;
+public class JwtTokenResponse {
+    private String token;
 }
