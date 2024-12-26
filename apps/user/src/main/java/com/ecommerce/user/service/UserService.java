@@ -93,7 +93,5 @@ public class UserService {
             log.error("Cannot authenticate user {}", authRequest.getUsername());
             throw exp;
         }
-
-
     }
 }
