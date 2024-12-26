@@ -1,8 +1,11 @@
 package com.ecommerce.user.controller;
 
+import com.ecommerce.user.application.request.LoginRequest;
 import com.ecommerce.user.application.request.SignUpRequest;
 import com.ecommerce.user.application.response.GenericResponse;
+import com.ecommerce.user.application.response.JwtTokenResponse;
 import com.ecommerce.user.service.UserAccountService;
+import com.ecommerce.user.service.UserService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -19,12 +22,19 @@ import org.springframework.web.bind.annotation.RestController;
 @RequiredArgsConstructor
 @RestController
 public class UserController {
-    private final UserAccountService userAccountService;
+    private final UserService userService;
 
     @PostMapping("/signup")
     public ResponseEntity<GenericResponse> signUpNewUser(
             @Valid @RequestBody final SignUpRequest signUpRequest
     ) {
-        return new ResponseEntity<>(userAccountService.createNewUser(signUpRequest), HttpStatus.CREATED);
+        return new ResponseEntity<>(userService.createNewUser(signUpRequest), HttpStatus.CREATED);
+    }
+
+    @PostMapping("/login")
+    public ResponseEntity<JwtTokenResponse> loginAccount(
+            @Valid @RequestBody final LoginRequest loginRequest
+    ) {
+        return new ResponseEntity<>(userService.authenticateAndGetToken(loginRequest), HttpStatus.ACCEPTED);
     }
 }

@@ -1,0 +1,21 @@
+spring:
+  application:
+    name: user
+  jpa:
+    hibernate:
+      ddl-auto: create
+    show-sql: false
+    properties:
+      hibernate:
+        format_sql: true
+  datasource:
+    url: jdbc:postgresql://localhost:5435/user_db
+    username: user_dev
+    password: user-microservice
+
+server:
+  port: 8001
+
+infrastructure:
+  jwt:
+    secret: and0LXNlY3JldCZqd3Qtc2VjcmV0Jmp3dC1zZWNyZXQmand0LXNlY3JldA==
