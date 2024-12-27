@@ -1,27 +1,29 @@
-import React from 'react'
-import { Form } from 'antd'
-import { useNavigate } from 'react-router-dom'
+import React from 'react';
+import { Form } from 'antd';
+import { redirect } from 'next/navigation';
 import {
   WrapperInputField,
   WrapperTitle,
   WrapperForm,
   WrapperButton,
-} from './style'
-const RetrivePasswordCompoennt = () => {
-  const navigate = useNavigate()
-  const onFinish = (values) => {
+} from './style';
+
+const RetrievePasswordComponent: React.FC = () => {
+
+  const onFinish = (values: unknown) => {
     console.log('Success:', values);
-    navigate('/sign-in');
+    redirect('/sign-in');
   };
-  const onFinishFailed = (errorInfo) => {
+
+  const onFinishFailed = (errorInfo: any) => {
     console.log('Failed:', errorInfo);
   };
+
   return (
     <center style={{ height: '100%' }}>
       <WrapperForm
-        name="retrivepassword"
-        initialValues=
-        {{
+        name="retrievepassword"
+        initialValues={{
           remember: true,
         }}
         onFinish={onFinish}
@@ -29,7 +31,7 @@ const RetrivePasswordCompoennt = () => {
         autoComplete="off"
       >
         <WrapperTitle>Khôi phục mật khẩu</WrapperTitle>
-        <p>Mật khẩu mới sẽ được gửi đến emaill của bạn</p>
+        <p>Mật khẩu mới sẽ được gửi đến email của bạn</p>
         <Form.Item
           name="email"
           rules={[
@@ -59,7 +61,7 @@ const RetrivePasswordCompoennt = () => {
         </Form.Item>
       </WrapperForm>
     </center>
-  )
-}
+  );
+};
 
-export default RetrivePasswordCompoennt
+export default RetrievePasswordComponent;

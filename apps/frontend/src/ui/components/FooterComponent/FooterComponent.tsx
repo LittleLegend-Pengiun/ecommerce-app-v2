@@ -1,3 +1,5 @@
+"use client"
+
 import React from 'react';
 import { Col } from 'antd';
 import { WrapperLi, WrapperUl, WrapperInput, WrapperButton } from './style';

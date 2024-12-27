@@ -1,8 +1,8 @@
 import { styled } from 'styled-components';
 import { Row, Col, Form, Checkbox, Table, Radio } from 'antd';
-import InputComponent from '../../components/InputComponent/InputComponent';
-import ButtonComponent from '../../components/ButtonComponent/ButtonComponent';
-import InputAccountComponent from '../../components/InputAccountComponent/InputAccountComponent';
+import InputComponent from '../InputComponent/InputComponent';
+import ButtonComponent from '../ButtonComponent/ButtonComponent';
+import InputAccountComponent from '../InputAccountComponent/InputAccountComponent';
 const { Column } = Table;
 export const WrapperRow = styled(Row)`
     padding:10px;

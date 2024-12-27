@@ -1,3 +1,5 @@
+"use client"
+
 import React, { useState, useEffect } from 'react';
 import { Badge, Col, Dropdown, Menu } from 'antd';
 import { UserOutlined, ShoppingCartOutlined } from '@ant-design/icons';
@@ -10,7 +12,6 @@ import {
 } from './style';
 
 import { useRouter, redirect } from 'next/navigation';
-import { useSelector, useDispatch } from 'react-redux';
 import PopUpComponent from '../PopUpComponent/PopUpComponent';
 // import { clearMess } from '../../redux/slice/notiSlice';
 
@@ -21,8 +22,7 @@ interface RootState {
 }
 
 const HeaderComponent: React.FC = () => {
-  const dispatch = useDispatch();
-  const totalQuantity = useSelector((state: RootState) => state.cart.totalQuantity);
+  const totalQuantity = 0;
   const [username, setUsername] = useState<string>('');
 
   useEffect(() => {

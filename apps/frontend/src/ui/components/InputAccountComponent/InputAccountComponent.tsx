@@ -5,7 +5,7 @@ import {
 } from './style';
 
 interface InputAccountComponentProps {
-  value?: string | number;
+  value?: any | number;
   className?: string;
   label?: string;
   size?: "large" | "middle" | "small";

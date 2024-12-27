@@ -1,11 +1,11 @@
-import React from 'react';
+import React, { ForwardedRef } from 'react';
 import { Button, ButtonProps } from 'antd';
 
 interface ButtonComponentProps extends ButtonProps {
   size?: 'large' | 'middle' | 'small';
   styleButton?: React.CSSProperties;
   styleTextButton?: React.CSSProperties;
-  textButton: string;
+  textButton: string | ForwardedRef<HTMLDivElement>;
 }
 
 const ButtonComponent: React.FC<ButtonComponentProps> = ({
@@ -21,7 +21,13 @@ const ButtonComponent: React.FC<ButtonComponentProps> = ({
       style={styleButton}
       {...rests}
     >
-      <span style={styleTextButton}>{textButton}</span>
+      <span style={styleTextButton}> {
+        typeof textButton === 'string' ? (
+          <span>{textButton}</span>
+        ) : (
+          <div ref={textButton} />
+        )
+      }</span>
     </Button>
   );
 };

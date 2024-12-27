@@ -1,5 +1,5 @@
-import React from 'react'
-import { useNavigate } from 'react-router-dom';
+import React from 'react';
+import { useRouter } from 'next/navigation';
 import axios from 'axios';
 import {
     WrapperInputField,
@@ -8,53 +8,63 @@ import {
     WrapperButton,
     WrrapperNavigateSignIn,
     WrappperAcceptPolicy,
-} from './style'
+} from './style';
 import { Form } from 'antd';
 
-const SignUpFormComponent = () => {
-    const navigate = useNavigate();
-    const onFinish = async (values) => {
+interface FormValues {
+    username: string;
+    password: string;
+    confirmPassword: string;
+    fullName: string;
+    phone: string;
+    email: string;
+    acceptPolicy: boolean;
+}
+
+const SignUpFormComponent: React.FC = () => {
+    const router = useRouter();
+
+    const onFinish = async (values: any): Promise<void> => {
+        const formValues = values as FormValues;
         console.log('Success:', values);
-        const username = values.username;
-        const password = values.password;
-        const fullname = values.fullName;
-        const phonenumber = values.phone;
-        const email = values.email;
+        const { username, password, fullName: fullname, phone: phonenumber, email } = formValues;
+
         try {
-            const res = await axios.post(`${process.env.REACT_APP_AUTHEN_MS_URL}/signup`, {
-                username: username,
-                password: password,
-                fullname: fullname,
-                phonenumber: phonenumber,
-                email: email,
-            });
+            const res = await axios.post<{ status: number }>(
+                `${process.env.REACT_APP_AUTHEN_MS_URL}/signup`,
+                {
+                    username,
+                    password,
+                    fullname,
+                    phonenumber,
+                    email,
+                }
+            );
+
             if (res.status === 200) {
                 alert('Đăng ký tài khoản thành công');
-                navigate('/sign-in');
+                router.push('/sign-in');
+            } else {
+                alert('Đăng ký không thành công. Vui lòng thực hiện lại');
             }
-            else {
-                alert('Đăng ký không thành công. Vui lòng thực hiện lại')
-            }
-        }
-        catch (error) {
-            if (error.response.status === 400) {
+        } catch (error) {
+            if (axios.isAxiosError(error) && error.response?.status === 400) {
                 alert('Tên đăng nhập đã tồn tại. Vui lòng chọn tên đăng nhập khác');
-            }
-            else {
+            } else {
                 alert('Hệ thống đang gặp sự cố. Vui lòng thử lại sau');
             }
         }
-
     };
-    const onFinishFailed = (errorInfo) => {
+
+    const onFinishFailed = (errorInfo: any): void => {
         console.log('Failed:', errorInfo);
     };
+
     return (
         <center style={{ height: '100%' }}>
             <WrapperForm
                 name="register"
-                initialValues=
-                {{
+                initialValues={{
                     remember: true,
                 }}
                 onFinish={onFinish}
@@ -200,7 +210,7 @@ const SignUpFormComponent = () => {
                 </WrrapperNavigateSignIn>
             </WrapperForm>
         </center>
-    )
-}
+    );
+};
 
-export default SignUpFormComponent
+export default SignUpFormComponent;

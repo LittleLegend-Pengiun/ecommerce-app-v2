@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
-
+import UserPageLayout from "@/ui/layouts/UserLayout";
 
 export const metadata: Metadata = {
     title: "Ecommerce app v2",
@@ -16,7 +16,9 @@ export default function RootLayout({
     return (
         <html lang="en">
             <body>
-                {children}
+                <UserPageLayout>
+                    {children}
+                </UserPageLayout>
             </body>
         </html>
     );

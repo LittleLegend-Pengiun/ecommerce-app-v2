@@ -1,6 +1,6 @@
 import { styled } from 'styled-components';
-import InputComponent from '../../components/InputComponent/InputComponent';
-import ButtonComponent from '../../components/ButtonComponent/ButtonComponent';
+import InputComponent from '../InputComponent/InputComponent';
+import ButtonComponent from '../ButtonComponent/ButtonComponent';
 import { Form, Checkbox } from 'antd';
 export const WrapperForm = styled(Form)
     `
