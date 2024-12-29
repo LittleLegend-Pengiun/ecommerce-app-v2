@@ -22,7 +22,7 @@ export default function UserLayout({ children }: Readonly<{ children: React.Reac
         ...antdConfigGen(isDarkMode),
         algorithm: isDarkMode ? darkAlgorithm : defaultAlgorithm,
     }}>
-        <ThemeProvider theme={isDarkMode ? styledComponentTheme.dark : styledComponentTheme.light}>
+        <ThemeProvider theme={styledComponentTheme(isDarkMode)}>
             <StyledBody>
                 <main>
                     <AppHeader toggleDarkMode={toggleDarkMode} isDarkMode={isDarkMode} />

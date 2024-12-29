@@ -1,5 +1,5 @@
 const antdConfigGen = (isDarkMode: boolean) => {
-    const theme = (isDarkMode) ? styledComponentTheme.dark : styledComponentTheme.light;
+    const theme = styledComponentTheme(isDarkMode);
 
     return {
         token: {},
@@ -11,8 +11,8 @@ const antdConfigGen = (isDarkMode: boolean) => {
     };
 };
 
-export const styledComponentTheme = {
-    light: {
+export const styledComponentTheme = (isDarkMode: boolean) => {
+    return !isDarkMode ? {
         color: {
             div: {
                 primary: '#363738',
@@ -29,8 +29,7 @@ export const styledComponentTheme = {
                 secondary: '#000'
             }
         }
-    },
-    dark: {
+    } : {
         color: {
             div: {
                 primary: '#FFFFFF',
@@ -47,7 +46,7 @@ export const styledComponentTheme = {
                 secondary: '#FFF'
             }
         }
-    },
+    };
 }
 
 export default antdConfigGen;
