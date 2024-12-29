@@ -39,7 +39,7 @@ public class JwtAuthFilter extends OncePerRequestFilter {
         }
 
         // If the token is valid and no authentication is set in the context
-        if (username != null && SecurityContextHolder.getContext().getAuthentication() == null) {
+        if (username != null &&  .getContext().getAuthentication() == null) {
             UserDetails userDetails = userAccountService.loadUserByUsername(username);
 
             // Validate token and set authentication
