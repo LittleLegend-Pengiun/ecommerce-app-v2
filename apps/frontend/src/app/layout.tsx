@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import UserLayout from "@/layout/user-layout";
+import UserLayout from "@/layout/UserLayout";
 
 export const metadata: Metadata = {
     title: "Ecommerce app v2",

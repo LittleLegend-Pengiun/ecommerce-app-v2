@@ -1,16 +1,13 @@
 'use client';
 
-import AppHeader from "@/layout/header";
-import AppFooter from "./footer";
+import AppHeader from "@/layout/AppHeader";
+import AppFooter from "@/layout/AppFooter";
 import { ConfigProvider, theme } from 'antd';
 import antdConfigGen from "@/theme/config";
 import { useState } from "react";
-import styled, { ThemeProvider } from "styled-components";
+import { ThemeProvider } from "styled-components";
 import { styledComponentTheme } from "@/theme/config";
-
-export const StyledBody = styled.body`
-    margin: 0;
-`;
+import { StyledBody } from "./UserLayout.style";
 
 export default function UserLayout({ children }: Readonly<{ children: React.ReactNode; }>) {
     const { defaultAlgorithm, darkAlgorithm } = theme;

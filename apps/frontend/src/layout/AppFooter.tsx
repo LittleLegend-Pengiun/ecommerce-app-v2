@@ -1,17 +1,10 @@
 import React from "react";
-import { Layout, Typography, Input, Button, Row, Col } from "antd";
+import { Typography, Button, Row, Col } from "antd";
 import { MailOutlined } from "@ant-design/icons";
-import styled from "styled-components";
-
-const { Footer } = Layout;
+import { StyledFooter, StyledSubscribeInput, StyledCopyrightRow } from "./AppFooter.style";
 const { Title, Text, Link } = Typography;
 
-const StyledFooter = styled(Footer)`
-    background-color: ${props => props.theme.color.div.backgroundColor};
-    color: ${props => props.theme.color.text.primary};
-    padding: 40px 20px;
-    border-top: 1px solid #ddd;
-`;
+
 
 const AppFooter = () => {
     return (
@@ -26,13 +19,9 @@ const AppFooter = () => {
                     <Text>
                         Get 10% off your first order
                     </Text>
-                    <Input
+                    <StyledSubscribeInput
                         placeholder="Enter your email"
                         suffix={<MailOutlined />}
-                        style={{
-                            borderRadius: "4px",
-                            marginBottom: "16px",
-                        }}
                     />
                     <Button>
                         Subscribe
@@ -56,7 +45,7 @@ const AppFooter = () => {
                     <Title level={5}>
                         Account
                     </Title>
-                    <ul style={{ listStyle: "none", padding: 0, margin: 0 }}>
+                    <ul>
                         <li>
                             <Link href="#">
                                 My Account
@@ -90,7 +79,7 @@ const AppFooter = () => {
                     <Title level={5}>
                         Quick Link
                     </Title>
-                    <ul style={{ listStyle: "none", padding: 0, margin: 0 }}>
+                    <ul>
                         <li>
                             <Link href="#">
                                 Privacy Policy
@@ -114,13 +103,13 @@ const AppFooter = () => {
                     </ul>
                 </Col>
             </Row>
-            <Row style={{ marginTop: 32, textAlign: "center" }}>
+            <StyledCopyrightRow>
                 <Col span={24}>
                     <Text>
                         © Copyright Rimel 2022. All rights reserved
                     </Text>
                 </Col>
-            </Row>
+            </StyledCopyrightRow>
         </StyledFooter>
     );
 };

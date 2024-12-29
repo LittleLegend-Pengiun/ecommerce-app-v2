@@ -3,49 +3,7 @@
 import React from "react";
 import { Layout, Menu, Input, Typography, Card, Button } from "antd";
 import { BulbOutlined, MoonOutlined } from "@ant-design/icons";
-import styled from "styled-components";
-
-const { Header } = Layout;
-
-// Styled Components
-const PromoBanner = styled.div`
-background-color: ${props => props.theme.color.div.backgroundColor};
-color: ${props => props.theme.color.text.primary};
-text-align: center;
-padding: 5px 0;
-font-size: 14px;
-
-a {
-  text-decoration: underline;
-}
-`;
-
-const StyledHeader = styled(Header)`
-display: flex;
-align-items: center;
-justify-content: space-between;
-background-color: ${props => props.theme.color.div.backgroundColor};
-color: ${props => props.theme.color.text.primary};
-padding: 0 20px;
-border-bottom: 1px solid #ddd;
-
-.logo {
-  font-size: 18px;
-  font-weight: bold;
-}
-
-.menu {
-  flex: 1;
-  border: none;
-  display: flex;
-  justify-content: center;
-}
-
-.search-bar {
-  margin-left: auto;
-  width: 200px;
-}
-`;
+import { PromoBanner, StyledHeader, DarkModeButton } from "./AppHeader.style";
 
 
 const AppHeader = ({ toggleDarkMode, isDarkMode }: { toggleDarkMode: () => void, isDarkMode: boolean }) => {
@@ -91,19 +49,14 @@ const AppHeader = ({ toggleDarkMode, isDarkMode }: { toggleDarkMode: () => void,
 
                 &nbsp;&nbsp;&nbsp;&nbsp;
 
-                <Button
+                <DarkModeButton
                     type="primary"
                     shape="round"
                     icon={!isDarkMode ? <BulbOutlined /> : <MoonOutlined />}
                     onClick={toggleDarkMode}
-                    style={{
-                        backgroundColor: !isDarkMode ? "#fff" : "#000",
-                        color: !isDarkMode ? "#000" : "#fff",
-                        borderColor: !isDarkMode ? "#777" : "#ddd",
-                    }}
                 >
                     {!isDarkMode ? "Light Mode" : "Dark Mode"}
-                </Button>
+                </DarkModeButton>
             </StyledHeader>
         </Layout>
     );
