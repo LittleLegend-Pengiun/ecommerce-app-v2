@@ -32,7 +32,7 @@ const darkStyledComponentTheme: StyledComponentTheme = {
         palette: colorsTheme,
         div: {
             primary: colorsTheme.white,
-            backgroundColor: colorsTheme.grey[200] ?? '#EFF0F6',
+            backgroundColor: colorsTheme.grey[800] ?? '#141414'
         },
         text: {
             primary: 'rgba(255,255,255,0.88)',
@@ -50,7 +50,7 @@ const lightStyledComponentTheme: StyledComponentTheme = {
     color: {
         palette: colorsTheme,
         div: {
-            primary: '#363738',
+            primary: colorsTheme.grey[700] ?? '#4E4B66',
             backgroundColor: colorsTheme.white
         },
         text: {
