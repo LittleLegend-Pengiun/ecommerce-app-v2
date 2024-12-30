@@ -1,116 +1,139 @@
-import React from "react";
+import React, { ReactNode } from "react";
 import { Typography, Button, Row, Col } from "antd";
-import { MailOutlined } from "@ant-design/icons";
-import { StyledFooter, StyledSubscribeInput, StyledCopyrightRow } from "./AppFooter.style";
+import { SendOutlined } from "@ant-design/icons";
+import { StyledUnorderedList, StyledFooter, StyledSubscribeInput, StyledCopyrightRow, CopyrightedTextStyle } from "./AppFooter.style";
 const { Title, Text, Link } = Typography;
 
+type FooterColumn = {
+    title: String,
+    titleLevel: 1 | 2 | 3 | 4 | 5 | undefined,
+    children: ReactNode
+}
 
+type FooterLink = {
+    label: string,
+    link: string
+}
 
 const AppFooter = () => {
+
+    const accountFooterLinks: FooterLink[] = [
+        {
+            label: 'My Account',
+            link: '#'
+        },
+        {
+            label: 'Login / Register',
+            link: '#'
+        },
+        {
+            label: 'Cart',
+            link: '#'
+        },
+        {
+            label: 'Wishlist',
+            link: '#'
+        },
+        {
+            label: 'Shop',
+            link: '#'
+        }
+    ];
+
+    const quickLinkFooterLinks: FooterLink[] = [
+        {
+            label: 'Privacy Policy',
+            link: '#'
+        },
+        {
+            label: 'Term Of Use',
+            link: '#'
+        },
+        {
+            label: 'FAQ',
+            link: '#'
+        },
+        {
+            label: 'Contact',
+            link: '#'
+        },
+    ];
+
+    const footerColumns: FooterColumn[] = [
+        {
+            title: 'Exclusive',
+            titleLevel: 4,
+            children: <>
+                <Title level={5}>
+                    Subscribe
+                </Title>
+                <Text>Get 10% off your first order</Text>
+                <StyledSubscribeInput
+                    placeholder="Enter your email"
+                    suffix={<SendOutlined />}
+                />
+            </>
+        },
+        {
+            title: 'Support',
+            titleLevel: 5,
+            children: <>
+                <StyledUnorderedList>
+                    <li>
+                        <Text>268 Ly Thuong Kiet St, District 10, Ho Chi Minh City, Vietnam</Text>
+                    </li>
+                    <li>
+                        <Text>ecommerce-app-v2@gmail.com</Text>
+                    </li>
+                    <li>
+                        <Text>+99999-99999-9999</Text>
+                    </li>
+                </StyledUnorderedList>
+            </>
+        },
+        {
+            title: 'Account',
+            titleLevel: 5,
+            children: <>
+                <StyledUnorderedList>
+                    {accountFooterLinks.map(footerLink => (
+                        <li>
+                            <Link href={footerLink.link}>{footerLink.label}</Link>
+                        </li>
+                    ))}
+                </StyledUnorderedList>
+            </>
+        },
+        {
+            title: 'Quick Link',
+            titleLevel: 5,
+            children: <>
+                <StyledUnorderedList>
+                    {quickLinkFooterLinks.map(footerLink => (
+                        <li>
+                            <Link href={footerLink.link}>{footerLink.label}</Link>
+                        </li>
+                    ))}
+                </StyledUnorderedList>
+            </>
+        }
+    ]
+
     return (
         <StyledFooter>
             <Row gutter={[32, 32]}>
-                {/* Column 1: Subscribe */}
-                <Col xs={24} sm={12} md={6}>
-                    <Title level={4}>
-                        Exclusive
-                    </Title>
-                    <Text>Subscribe</Text>
-                    <Text>
-                        Get 10% off your first order
-                    </Text>
-                    <StyledSubscribeInput
-                        placeholder="Enter your email"
-                        suffix={<MailOutlined />}
-                    />
-                    <Button>
-                        Subscribe
-                    </Button>
-                </Col>
-
-                {/* Column 2: Support */}
-                <Col xs={24} sm={12} md={6}>
-                    <Title level={5} >
-                        Support
-                    </Title>
-                    <Text>
-                        111 Bijoy Sarani, Dhaka, DH 1515, Bangladesh.
-                    </Text>
-                    <Text>exclusive@gmail.com</Text>
-                    <Text>+88015-88888-9999</Text>
-                </Col>
-
-                {/* Column 3: Account */}
-                <Col xs={24} sm={12} md={6}>
-                    <Title level={5}>
-                        Account
-                    </Title>
-                    <ul>
-                        <li>
-                            <Link href="#">
-                                My Account
-                            </Link>
-                        </li>
-                        <li>
-                            <Link href="#">
-                                Login / Register
-                            </Link>
-                        </li>
-                        <li>
-                            <Link href="#">
-                                Cart
-                            </Link>
-                        </li>
-                        <li>
-                            <Link href="#">
-                                Wishlist
-                            </Link>
-                        </li>
-                        <li>
-                            <Link href="#">
-                                Shop
-                            </Link>
-                        </li>
-                    </ul>
-                </Col>
-
-                {/* Column 4: Quick Link */}
-                <Col xs={24} sm={12} md={6}>
-                    <Title level={5}>
-                        Quick Link
-                    </Title>
-                    <ul>
-                        <li>
-                            <Link href="#">
-                                Privacy Policy
-                            </Link>
-                        </li>
-                        <li>
-                            <Link href="#">
-                                Terms Of Use
-                            </Link>
-                        </li>
-                        <li>
-                            <Link href="#">
-                                FAQ
-                            </Link>
-                        </li>
-                        <li>
-                            <Link href="#">
-                                Contact
-                            </Link>
-                        </li>
-                    </ul>
-                </Col>
-            </Row>
+                {footerColumns.map(footerColumn => (<Col xs={24} sm={12} md={6}>
+                    <Title level={footerColumn.titleLevel}>{footerColumn.title}</Title>
+                    <br></br>
+                    {footerColumn.children}
+                </Col>))}
+            </Row >
             <StyledCopyrightRow>
                 <Col span={24}>
-                    <Text>
-                        © Copyright Rimel 2022. All rights reserved
-                    </Text>
+                    <CopyrightedTextStyle>© Copyright Ecommerce-v2 2024. All rights reserved</CopyrightedTextStyle>
                 </Col>
             </StyledCopyrightRow>
-        </StyledFooter>
+        </StyledFooter >
     );
 };
 

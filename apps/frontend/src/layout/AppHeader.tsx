@@ -5,8 +5,12 @@ import { Layout, Menu, Input, Typography, Card, Button } from "antd";
 import { BulbOutlined, MoonOutlined } from "@ant-design/icons";
 import { PromoBanner, StyledHeader, DarkModeButton } from "./AppHeader.style";
 
+type AppHeaderProps = {
+    toggleDarkMode: () => void,
+    isDarkMode: boolean
+};
 
-const AppHeader = ({ toggleDarkMode, isDarkMode }: { toggleDarkMode: () => void, isDarkMode: boolean }) => {
+const AppHeader = ({ toggleDarkMode, isDarkMode }: AppHeaderProps) => {
     const items: any[] = [
         {
             label: "Home",
@@ -50,7 +54,7 @@ const AppHeader = ({ toggleDarkMode, isDarkMode }: { toggleDarkMode: () => void,
                 &nbsp;&nbsp;&nbsp;&nbsp;
 
                 <DarkModeButton
-                    type="primary"
+                    type="default"
                     shape="round"
                     icon={!isDarkMode ? <BulbOutlined /> : <MoonOutlined />}
                     onClick={toggleDarkMode}

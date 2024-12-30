@@ -1,17 +1,32 @@
+import { Inter } from "next/font/google";
+
+const inter = Inter({
+    subsets: ["latin"],
+    weight: "400",
+});
+
+
 const antdConfigGen = (isDarkMode: boolean) => {
     const theme = styledComponentTheme(isDarkMode);
 
     return {
-        token: {},
+        token: {
+            fontFamily: inter.style.fontFamily,
+        },
         components: {
             Button: {
-                defaultBg: theme.color.button.primary
+                colorBgContainerActive: theme.color.button.secondary,
+                colorBgContainer: theme.color.button.secondary,
+                defaultActiveBg: theme.color.button.secondary,
+                defaultActiveBorderColor: theme.color.button.secondaryBorder,
+                defaultBorderColor: theme.color.button.secondaryBorder,
+                defaultBg: theme.color.button.primary,
             },
         }
     };
 };
 
-export type StyledComponentTheme = {
+type StyledComponentTheme = {
     color: {
         div: {
             primary: string;
@@ -26,11 +41,12 @@ export type StyledComponentTheme = {
         button: {
             primary: string;
             secondary: string;
+            secondaryBorder: string;
         };
     };
 };
 
-export const styledComponentTheme: (isDarkMode: boolean) => StyledComponentTheme = (isDarkMode: boolean) => {
+export function styledComponentTheme(isDarkMode: boolean): StyledComponentTheme {
     return !isDarkMode ? lightStyledComponentTheme : darkStyledComponentTheme;
 }
 
@@ -48,7 +64,8 @@ const darkStyledComponentTheme: StyledComponentTheme = {
         },
         button: {
             primary: '#DB4444',
-            secondary: '#FFF'
+            secondary: '#000',
+            secondaryBorder: '#FFF',
         }
     }
 }
@@ -67,7 +84,8 @@ const lightStyledComponentTheme: StyledComponentTheme = {
         },
         button: {
             primary: '#DB4444',
-            secondary: '#000'
+            secondary: '#FFF',
+            secondaryBorder: '#000',
         }
     }
 };

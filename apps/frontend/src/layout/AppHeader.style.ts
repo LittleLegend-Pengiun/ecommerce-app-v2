@@ -1,6 +1,5 @@
 import styled from "styled-components";
-import { Layout, Menu, Input, Typography, Card, Button } from "antd";
-import { BulbOutlined, MoonOutlined } from "@ant-design/icons";
+import { Layout, Input, Button } from "antd";
 const { Header } = Layout;
 
 // Styled Components
@@ -47,4 +46,10 @@ export const DarkModeButton = styled(Button)`
     background-color: ${props => props.theme.color.div.backgroundColor};
     color: ${props => props.theme.color.text.primary};
     border-color: ${props => props.theme.color.text.primary};
+
+    &:active {
+        background-color: ${props => props.theme.color.div.backgroundColor}; /* Background when active */
+        color: ${props => props.theme.color.text.primary};              /* Text color when active */
+        transform: scale(0.98);   /* Slight scale effect to mimic a press */
+    }
 `;
