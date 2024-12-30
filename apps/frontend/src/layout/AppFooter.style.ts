@@ -9,7 +9,6 @@ export const StyledFooter = styled(Footer)`
     color: ${props => props.theme.color.text.primary};
     padding: 40px 20px;
     border-top: 1px solid #ddd;
-    border-bottom: 1px solid #ddd;
 `;
 
 export const StyledSubscribeInput = styled(Input)`
@@ -28,17 +27,14 @@ export const StyledUnorderedList = styled.ul`
         margin-bottom: 10px;
 
         a {
-        color: ${props => props.theme.color.text.primary};
-        text-decoration: none;
-
-        &:hover {
-            color: #db4444;
+            color: ${props => props.theme.color.text.primary};
+            text-decoration: none;
         }
     }
 `;
 
 export const StyledFooterButton = styled(Button)`
-    color: #fff;
+    color: ${props => props.theme.color.palette.white};
 `
 
 export const StyledCopyrightRow = styled(Row)`
@@ -47,5 +43,5 @@ export const StyledCopyrightRow = styled(Row)`
 `;
 
 export const CopyrightedTextStyle = styled(Text)`
-    color: #7D8184;
+    color: ${props => props.theme.color.palette.grey[500]};
 `

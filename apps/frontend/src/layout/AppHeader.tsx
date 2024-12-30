@@ -3,7 +3,9 @@
 import React from "react";
 import { Layout, Menu, Input, Typography, Card, Button } from "antd";
 import { BulbOutlined, MoonOutlined } from "@ant-design/icons";
-import { PromoBanner, StyledHeader, DarkModeButton } from "./AppHeader.style";
+import { PromoBanner, StyledHeader, DarkModeButton, ShopNowLink } from "./AppHeader.style";
+
+const { Link } = Typography;
 
 type AppHeaderProps = {
     toggleDarkMode: () => void,
@@ -33,7 +35,7 @@ const AppHeader = ({ toggleDarkMode, isDarkMode }: AppHeaderProps) => {
     return (
         <Layout>
             <PromoBanner>
-                <p>Summer Sale For All Swim Suits And Free Express Delivery - OFF 50%!{" "}<a href="/shop">ShopNow</a></p>
+                <p>Summer Sale For All Swim Suits And Free Express Delivery - OFF 50%! &nbsp;&nbsp;&nbsp; <ShopNowLink href="/shop">ShopNow</ShopNowLink></p>
             </PromoBanner>
             <StyledHeader>
                 <div className="logo">Exclusive</div>

@@ -6,7 +6,6 @@ const { Text } = Typography;
 export default function Home() {
   return (
     <div>
-
     </div>
   );
 }

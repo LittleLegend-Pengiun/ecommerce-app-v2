@@ -6,7 +6,7 @@ const { Title, Text, Link } = Typography;
 
 type FooterColumn = {
     title: String,
-    titleLevel: 1 | 2 | 3 | 4 | 5 | undefined,
+    titleLevel?: 1 | 2 | 3 | 4 | 5,
     children: ReactNode
 }
 

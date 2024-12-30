@@ -3,7 +3,7 @@
 import AppHeader from "@/layout/AppHeader";
 import AppFooter from "@/layout/AppFooter";
 import { ConfigProvider, theme } from 'antd';
-import antdConfigGen from "@/theme/config";
+import { antdConfigGen } from "@/theme/config";
 import { useState } from "react";
 import { ThemeProvider } from "styled-components";
 import { styledComponentTheme } from "@/theme/config";
@@ -20,13 +20,13 @@ export default function UserLayout({ children }: Readonly<{ children: React.Reac
         algorithm: isDarkMode ? darkAlgorithm : defaultAlgorithm,
     }}>
         <ThemeProvider theme={styledComponentTheme(isDarkMode)}>
-            <StyledBody>
-                <main>
+            <main>
+                <StyledBody>
                     <AppHeader toggleDarkMode={toggleDarkMode} isDarkMode={isDarkMode} />
                     {children}
                     <AppFooter />
-                </main>
-            </StyledBody>
+                </StyledBody>
+            </main>
         </ThemeProvider>
     </ConfigProvider>;
 }

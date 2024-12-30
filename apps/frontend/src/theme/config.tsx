@@ -1,4 +1,6 @@
+import { ThemeConfig } from "antd";
 import { Inter } from "next/font/google";
+import { ColorsTheme, colorsTheme } from "./colors";
 
 const inter = Inter({
     subsets: ["latin"],
@@ -6,28 +8,9 @@ const inter = Inter({
 });
 
 
-const antdConfigGen = (isDarkMode: boolean) => {
-    const theme = styledComponentTheme(isDarkMode);
-
-    return {
-        token: {
-            fontFamily: inter.style.fontFamily,
-        },
-        components: {
-            Button: {
-                colorBgContainerActive: theme.color.button.secondary,
-                colorBgContainer: theme.color.button.secondary,
-                defaultActiveBg: theme.color.button.secondary,
-                defaultActiveBorderColor: theme.color.button.secondaryBorder,
-                defaultBorderColor: theme.color.button.secondaryBorder,
-                defaultBg: theme.color.button.primary,
-            },
-        }
-    };
-};
-
 type StyledComponentTheme = {
     color: {
+        palette: ColorsTheme,
         div: {
             primary: string;
             second1: string;
@@ -46,12 +29,9 @@ type StyledComponentTheme = {
     };
 };
 
-export function styledComponentTheme(isDarkMode: boolean): StyledComponentTheme {
-    return !isDarkMode ? lightStyledComponentTheme : darkStyledComponentTheme;
-}
-
 const darkStyledComponentTheme: StyledComponentTheme = {
     color: {
+        palette: colorsTheme,
         div: {
             primary: '#FFFFFF',
             second1: '#FEFAF1',
@@ -63,7 +43,7 @@ const darkStyledComponentTheme: StyledComponentTheme = {
             secondary: 'rgba(255,255,255,0.65)',
         },
         button: {
-            primary: '#DB4444',
+            primary: colorsTheme.primary,
             secondary: '#000',
             secondaryBorder: '#FFF',
         }
@@ -72,10 +52,11 @@ const darkStyledComponentTheme: StyledComponentTheme = {
 
 const lightStyledComponentTheme: StyledComponentTheme = {
     color: {
+        palette: colorsTheme,
         div: {
             primary: '#363738',
             second1: '#FEFAF1',
-            second2: '#DB4444',
+            second2: colorsTheme.primary,
             backgroundColor: '#FFF'
         },
         text: {
@@ -83,11 +64,28 @@ const lightStyledComponentTheme: StyledComponentTheme = {
             secondary: 'rgba(0,0,0,0.65)',
         },
         button: {
-            primary: '#DB4444',
+            primary: colorsTheme.primary,
             secondary: '#FFF',
             secondaryBorder: '#000',
         }
     }
 };
 
-export default antdConfigGen;
+export function styledComponentTheme(isDarkMode: boolean): StyledComponentTheme {
+    return !isDarkMode ? lightStyledComponentTheme : darkStyledComponentTheme;
+}
+
+export function antdConfigGen(isDarkMode: boolean): ThemeConfig {
+    const theme = styledComponentTheme(isDarkMode);
+
+    return {
+        token: {
+            fontFamily: inter.style.fontFamily,
+        },
+        components: {
+            Button: {
+                defaultBg: theme.color.button.primary,
+            },
+        }
+    };
+};

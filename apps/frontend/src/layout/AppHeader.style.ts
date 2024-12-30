@@ -1,6 +1,7 @@
 import styled from "styled-components";
-import { Layout, Input, Button } from "antd";
+import { Layout, Typography, Button } from "antd";
 const { Header } = Layout;
+const { Link } = Typography;
 
 // Styled Components
 export const PromoBanner = styled.div`
@@ -53,3 +54,10 @@ export const DarkModeButton = styled(Button)`
         transform: scale(0.98);   /* Slight scale effect to mimic a press */
     }
 `;
+
+export const ShopNowLink = styled(Link)`
+    a {
+        color: ${props => props.theme.color.text.primary};
+        text-decoration: none;
+    }
+`
