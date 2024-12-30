@@ -13,8 +13,6 @@ type StyledComponentTheme = {
         palette: ColorsTheme,
         div: {
             primary: string;
-            second1: string;
-            second2: string;
             backgroundColor: string;
         };
         text: {
@@ -33,10 +31,8 @@ const darkStyledComponentTheme: StyledComponentTheme = {
     color: {
         palette: colorsTheme,
         div: {
-            primary: '#FFFFFF',
-            second1: '#FEFAF1',
-            second2: '#F5F5F5',
-            backgroundColor: '#141414'
+            primary: colorsTheme.white,
+            backgroundColor: colorsTheme.grey[200] ?? '#EFF0F6',
         },
         text: {
             primary: 'rgba(255,255,255,0.88)',
@@ -44,8 +40,8 @@ const darkStyledComponentTheme: StyledComponentTheme = {
         },
         button: {
             primary: colorsTheme.primary,
-            secondary: '#000',
-            secondaryBorder: '#FFF',
+            secondary: colorsTheme.black,
+            secondaryBorder: colorsTheme.white,
         }
     }
 }
@@ -55,9 +51,7 @@ const lightStyledComponentTheme: StyledComponentTheme = {
         palette: colorsTheme,
         div: {
             primary: '#363738',
-            second1: '#FEFAF1',
-            second2: colorsTheme.primary,
-            backgroundColor: '#FFF'
+            backgroundColor: colorsTheme.white
         },
         text: {
             primary: 'rgba(0,0,0,0.88)',
@@ -65,8 +59,8 @@ const lightStyledComponentTheme: StyledComponentTheme = {
         },
         button: {
             primary: colorsTheme.primary,
-            secondary: '#FFF',
-            secondaryBorder: '#000',
+            secondary: colorsTheme.white,
+            secondaryBorder: colorsTheme.black,
         }
     }
 };
