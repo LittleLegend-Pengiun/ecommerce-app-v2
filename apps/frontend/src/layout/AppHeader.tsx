@@ -58,12 +58,6 @@ const AppHeader = ({ toggleDarkMode, isDarkMode }: AppHeaderProps) => {
                 <div className="logo">Exclusive</div>
                 <Menu mode="horizontal" defaultSelectedKeys={["home"]} className="menu" items={items} onClick={handleClick} />
 
-                {/* <Card style={{ width: "max-content" }}>
-                    <Button onClick={toggleDarkMode}>
-                        Change Theme to {isDarkMode ? "Light" : "Dark"}
-                    </Button>
-                </Card> */}
-
                 <Input.Search
                     placeholder="What are you looking for?"
                     className="search-bar"
