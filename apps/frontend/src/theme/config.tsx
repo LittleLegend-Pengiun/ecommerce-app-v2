@@ -33,7 +33,7 @@ type StyledComponentTheme = {
 const darkStyledComponentTheme: StyledComponentTheme = {
     color: {
         palette: colorsTheme,
-        background: colorsTheme.grey[800],
+        background: '#141414', // Antd dark background
         text: {
             base: colorsTheme.white,
             primary: 'rgba(255,255,255,0.88)', // Antd text color
