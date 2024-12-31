@@ -2,12 +2,14 @@
 
 import AppHeader from "@/layout/AppHeader";
 import AppFooter from "@/layout/AppFooter";
-import { ConfigProvider, theme } from 'antd';
+import { ConfigProvider, Layout, theme } from 'antd';
 import { antdConfigGen } from "@/theme/config";
 import { useState } from "react";
 import { ThemeProvider } from "styled-components";
 import { styledComponentTheme } from "@/theme/config";
-import { StyledAppLayout, StyledAppContent, StyledBody } from "./AppLayout.style";
+import { StyledAppLayout, StyledBody } from "./AppLayout.style";
+
+const { Content } = Layout;
 
 export default function AppLayout({ children }: Readonly<{ children: React.ReactNode; }>) {
     const { defaultAlgorithm, darkAlgorithm } = theme;
@@ -23,7 +25,7 @@ export default function AppLayout({ children }: Readonly<{ children: React.React
             <ThemeProvider theme={styledComponentTheme(isDarkMode)}>
                 <StyledAppLayout>
                     <AppHeader toggleDarkMode={toggleDarkMode} isDarkMode={isDarkMode} />
-                    <StyledAppContent>{children}</StyledAppContent>
+                    <Content>{children}</Content>
                     <AppFooter />
                 </StyledAppLayout>
             </ThemeProvider>
