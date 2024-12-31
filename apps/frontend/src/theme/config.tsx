@@ -11,17 +11,20 @@ const inter = Inter({
 type StyledComponentTheme = {
     color: {
         palette: ColorsTheme,
-        div: {
-            primary: string;
-            backgroundColor: string;
-        };
+        background: string,
         text: {
-            primary: string;
-            secondary: string;
+            primary: string,
+            secondary: string,
+            tertiary: string,
+            quaternary: string,
+            base: string,
         };
         button: {
-            primary: string;
-            secondary: string;
+            primaryText: string;
+            primaryBg: string;
+            primaryBorder: string;
+            secondaryText: string;
+            secondaryBg: string;
             secondaryBorder: string;
         };
     };
@@ -30,17 +33,20 @@ type StyledComponentTheme = {
 const darkStyledComponentTheme: StyledComponentTheme = {
     color: {
         palette: colorsTheme,
-        div: {
-            primary: colorsTheme.white,
-            backgroundColor: colorsTheme.grey[800] ?? '#141414'
-        },
+        background: colorsTheme.grey[800],
         text: {
-            primary: 'rgba(255,255,255,0.88)',
+            base: colorsTheme.white,
+            primary: 'rgba(255,255,255,0.88)', // Antd text color
             secondary: 'rgba(255,255,255,0.65)',
+            tertiary: 'rgba(255,255,255,0.45)',
+            quaternary: 'rgba(255,255,255,0.25)',
         },
         button: {
-            primary: colorsTheme.primary,
-            secondary: colorsTheme.black,
+            primaryText: colorsTheme.white,
+            primaryBg: '#db4444',
+            primaryBorder: colorsTheme.white,
+            secondaryText: colorsTheme.white,
+            secondaryBg: colorsTheme.black,
             secondaryBorder: colorsTheme.white,
         }
     }
@@ -49,17 +55,20 @@ const darkStyledComponentTheme: StyledComponentTheme = {
 const lightStyledComponentTheme: StyledComponentTheme = {
     color: {
         palette: colorsTheme,
-        div: {
-            primary: colorsTheme.grey[700] ?? '#4E4B66',
-            backgroundColor: colorsTheme.white
-        },
+        background: colorsTheme.white,
         text: {
-            primary: 'rgba(0,0,0,0.88)',
+            base: colorsTheme.black,
+            primary: 'rgba(0,0,0,0.88)', // Antd text color
             secondary: 'rgba(0,0,0,0.65)',
+            tertiary: 'rgba(0,0,0,0.45)',
+            quaternary: 'rgba(0,0,0,0.25)',
         },
         button: {
-            primary: colorsTheme.primary,
-            secondary: colorsTheme.white,
+            primaryText: colorsTheme.white,
+            primaryBg: '#db4444',
+            primaryBorder: colorsTheme.white,
+            secondaryText: colorsTheme.black,
+            secondaryBg: colorsTheme.white,
             secondaryBorder: colorsTheme.black,
         }
     }
@@ -75,10 +84,13 @@ export function antdConfigGen(isDarkMode: boolean): ThemeConfig {
     return {
         token: {
             fontFamily: inter.style.fontFamily,
+            colorTextBase: theme.color.text.base,
         },
         components: {
             Button: {
-                defaultBg: theme.color.button.primary,
+                defaultBg: theme.color.button.primaryBg,
+                defaultHoverBorderColor: theme.color.button.secondaryBorder,
+                defaultHoverColor: theme.color.button.secondaryText
             },
         }
     };
