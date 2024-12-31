@@ -11,5 +11,4 @@ export const StyledAppLayout = styled(Layout)`
     margin: 0;
     display: grid;
     grid-template-rows: auto 1fr auto;
-    // min-height: 100vh; /* Ensures the grid spans the full viewport height */
 `;
