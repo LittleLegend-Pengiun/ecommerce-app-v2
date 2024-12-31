@@ -36,17 +36,6 @@ const AppHeader = ({ toggleDarkMode, isDarkMode }: AppHeaderProps) => {
         {
             label: "Playground",
             key: "playground",
-            children: [
-                {
-                    type: 'group',
-                    label: 'Components',
-                    children: [
-                        { label: 'Button', key: 'playground:button' },
-                        { label: 'Input', key: 'playground:input' },
-                        { label: 'Card', key: 'playground:card' },
-                    ],
-                },
-            ],
         }
     ];
 
@@ -56,11 +45,7 @@ const AppHeader = ({ toggleDarkMode, isDarkMode }: AppHeaderProps) => {
         if (e.key === 'about') redirect('/');
         if (e.key === 'contact') redirect('/');
         if (e.key === 'sign-up') redirect('/');
-
         if (e.key === 'playground') redirect('/playground');
-        if (e.key === 'playground:button') redirect('/playground/button');
-        if (e.key === 'playground:input') redirect('/playground/input');
-        if (e.key === 'playground:card') redirect('/playground/card');
     };
 
     return (
