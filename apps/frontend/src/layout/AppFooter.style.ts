@@ -7,7 +7,8 @@ import styled from "styled-components";
 export const StyledFooter = styled(Footer)`
     background-color: ${props => props.theme.color.background};
     color: ${props => props.theme.color.text.primary};
-    padding: 40px 20px;
+    padding: 40px 20px 5px 20px;
+    margin-top: 20px;
     border-top: 1px solid #ddd;
 `;
 

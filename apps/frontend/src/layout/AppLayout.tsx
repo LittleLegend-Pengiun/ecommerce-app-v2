@@ -7,26 +7,26 @@ import { antdConfigGen } from "@/theme/config";
 import { useState } from "react";
 import { ThemeProvider } from "styled-components";
 import { styledComponentTheme } from "@/theme/config";
-import { StyledBody } from "./UserLayout.style";
+import { StyledAppLayout, StyledAppContent, StyledBody } from "./AppLayout.style";
 
-export default function UserLayout({ children }: Readonly<{ children: React.ReactNode; }>) {
+export default function AppLayout({ children }: Readonly<{ children: React.ReactNode; }>) {
     const { defaultAlgorithm, darkAlgorithm } = theme;
 
     const [isDarkMode, setIsDarkMode] = useState(false);
     const toggleDarkMode = () => setIsDarkMode(!isDarkMode);
 
-    return <ConfigProvider theme={{
-        ...antdConfigGen(isDarkMode),
-        algorithm: isDarkMode ? darkAlgorithm : defaultAlgorithm,
-    }}>
-        <ThemeProvider theme={styledComponentTheme(isDarkMode)}>
-            <main>
-                <StyledBody>
+    return <StyledBody>
+        <ConfigProvider theme={{
+            ...antdConfigGen(isDarkMode),
+            algorithm: isDarkMode ? darkAlgorithm : defaultAlgorithm,
+        }}>
+            <ThemeProvider theme={styledComponentTheme(isDarkMode)}>
+                <StyledAppLayout>
                     <AppHeader toggleDarkMode={toggleDarkMode} isDarkMode={isDarkMode} />
-                    {children}
+                    <StyledAppContent>{children}</StyledAppContent>
                     <AppFooter />
-                </StyledBody>
-            </main>
-        </ThemeProvider>
-    </ConfigProvider>;
+                </StyledAppLayout>
+            </ThemeProvider>
+        </ConfigProvider>
+    </StyledBody>;
 }

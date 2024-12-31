@@ -85,10 +85,15 @@ export function antdConfigGen(isDarkMode: boolean): ThemeConfig {
         token: {
             fontFamily: inter.style.fontFamily,
             colorTextBase: theme.color.text.base,
+            colorBgLayout: theme.color.background
         },
         components: {
+            Layout: {
+                headerHeight: 'fit-content'
+            },
             Button: {
                 defaultBg: theme.color.button.primaryBg,
+                defaultBorderColor: theme.color.button.primaryBorder,
                 defaultHoverBorderColor: theme.color.button.secondaryBorder,
                 defaultHoverColor: theme.color.button.secondaryText
             },

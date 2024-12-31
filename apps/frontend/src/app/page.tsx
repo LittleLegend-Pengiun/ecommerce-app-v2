@@ -1,11 +1,14 @@
+'use client'
+
 import Link from "next/link";
 import { Card, Typography } from 'antd';
+import { Layout } from 'antd';
 
-const { Text } = Typography;
+const { Title } = Typography;
+const { Content } = Layout;
 
 export default function Home() {
   return (
-    <div>
-    </div>
+    <Title level={1}>Component Testing</Title>
   );
 }

@@ -3,26 +3,13 @@ import { Layout, Typography, Button } from "antd";
 const { Header } = Layout;
 const { Link } = Typography;
 
-// Styled Components
-export const PromoBanner = styled.div`
-    background-color: ${props => props.theme.color.background};
-    color: ${props => props.theme.color.text.primary};
-    text-align: center;
-    padding: 5px 0;
-    font-size: 14px;
-
-    a {
-        text-decoration: underline;
-    }
-`;
-
 export const StyledHeader = styled(Header)`
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+    display: grid;
+    grid-template-rows: auto 1fr;
+
     background-color: ${props => props.theme.color.background};
     color: ${props => props.theme.color.text.primary};
-    padding: 0 20px;
+    padding: 0 20px 20px 20px;
     border-bottom: 1px solid #ddd;
 
     .logo {
@@ -41,6 +28,26 @@ export const StyledHeader = styled(Header)`
         margin-left: auto;
         width: 200px;
     }
+`;
+
+export const PromoBanner = styled.div`
+    width: 100%;
+    background-color: ${props => props.theme.color.background};
+    color: ${props => props.theme.color.text.primary};
+    text-align: center;
+    padding: 5px 0;
+    font-size: 14px;
+
+    a {
+        text-decoration: underline;
+    }
+`;
+
+export const StyledNavBar = styled.span`
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 `;
 
 export const DarkModeButton = styled(Button)`

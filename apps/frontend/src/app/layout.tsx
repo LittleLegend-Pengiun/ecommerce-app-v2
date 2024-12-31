@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import UserLayout from "@/layout/UserLayout";
+import AppLayout from "@/layout/AppLayout";
 
 export const metadata: Metadata = {
     title: "Ecommerce app v2",
@@ -13,9 +13,9 @@ export default function RootLayout({
 }>) {
     return (
         <html lang="en">
-            <UserLayout>
+            <AppLayout>
                 {children}
-            </UserLayout>
+            </AppLayout>
         </html>
     );
 }

@@ -5,7 +5,7 @@ import { StyledUnorderedList, StyledFooter, StyledSubscribeInput, StyledCopyrigh
 const { Title, Text, Link } = Typography;
 
 type FooterColumn = {
-    title: String,
+    title: string,
     titleLevel?: 1 | 2 | 3 | 4 | 5,
     children: ReactNode
 }
@@ -97,7 +97,7 @@ const AppFooter = () => {
             children: <>
                 <StyledUnorderedList>
                     {accountFooterLinks.map(footerLink => (
-                        <li>
+                        <li key={footerLink.label}>
                             <Link href={footerLink.link}>{footerLink.label}</Link>
                         </li>
                     ))}
@@ -110,7 +110,7 @@ const AppFooter = () => {
             children: <>
                 <StyledUnorderedList>
                     {quickLinkFooterLinks.map(footerLink => (
-                        <li>
+                        <li key={footerLink.label}>
                             <Link href={footerLink.link}>{footerLink.label}</Link>
                         </li>
                     ))}
@@ -122,7 +122,7 @@ const AppFooter = () => {
     return (
         <StyledFooter>
             <Row gutter={[32, 32]}>
-                {footerColumns.map(footerColumn => (<Col xs={24} sm={12} md={6}>
+                {footerColumns.map(footerColumn => (<Col key={footerColumn.title} xs={24} sm={12} md={6}>
                     <Title level={footerColumn.titleLevel}>{footerColumn.title}</Title>
                     <br></br>
                     {footerColumn.children}

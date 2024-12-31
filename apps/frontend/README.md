@@ -38,9 +38,9 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/bui
 # Frontend Documentation
 
 ## Dark/Light mode
-The project support dark/light mode switching, based on variable state `isDarkMode` created and maintained in [UserLayout component](./src/layout/user-layout.tsx)
+The project support dark/light mode switching, based on variable state `isDarkMode` created and maintained in [AppLayout component](./src/layout/user-layout.tsx)
 
 The file [config.tsx](./src/theme/config.tsx) contains global theme config for Ant Design (`antdConfigGen` function) and Styled Component Global Theme (`styledComponentTheme` object passed into styled-components's [`ThemeProvider`](./src/layout/user-layout.tsx))
 
-Both dark/light will be set for both Ant Design & Styled Component in [UserLayout](./src/layout/user-layout.tsx)
+Both dark/light will be set for both Ant Design & Styled Component in [AppLayout](./src/layout/user-layout.tsx)
 . Ant Design will use the corresponding style set by `antdConfigGen` automatically. But styled components should be defined explicitly in each React components to support global theme retrieved from ThemeProvider. For example, the [AppFooter](./src/layout/footer.tsx) component define a wrapper `StyledFooter` around antd's `Footer` component and choosing correct theme from props.
