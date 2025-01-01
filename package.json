@@ -4,7 +4,8 @@
   "version": "0.0.1",
   "scripts": {
     "build": "turbo build",
-    "dev": "turbo dev"
+    "dev": "turbo dev",
+    "init:kafka": "docker compose -f kafka-docker-compose.yml up -d"
   },
   "devDependencies": {
     "turbo": "^2.3.3"
