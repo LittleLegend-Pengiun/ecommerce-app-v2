@@ -14,8 +14,18 @@ const { Content } = Layout;
 export default function AppLayout({ children }: Readonly<{ children: React.ReactNode; }>) {
     const { defaultAlgorithm, darkAlgorithm } = theme;
 
-    const [isDarkMode, setIsDarkMode] = useState(false);
-    const toggleDarkMode = () => setIsDarkMode(!isDarkMode);
+    let isDarkModeLS;
+    try {
+        isDarkModeLS = Boolean(window.localStorage.getItem("isDarkMode")) || false;
+    } catch (e) {
+        isDarkModeLS = false;
+    }
+
+    const [isDarkMode, setIsDarkMode] = useState(isDarkModeLS);
+    const toggleDarkMode = () => {
+        window.localStorage.setItem("isDarkMode", String(!isDarkMode));
+        setIsDarkMode(!isDarkMode);
+    };
 
     return <StyledBody>
         <ConfigProvider theme={{

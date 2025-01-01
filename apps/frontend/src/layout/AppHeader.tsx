@@ -41,11 +41,20 @@ const AppHeader = ({ toggleDarkMode, isDarkMode }: AppHeaderProps) => {
 
     function handleClick(e: any): void {
         console.log(e.key)
-        if (e.key === 'home') redirect('/');
-        if (e.key === 'about') redirect('/');
-        if (e.key === 'contact') redirect('/');
-        if (e.key === 'sign-up') redirect('/');
-        if (e.key === 'playground') redirect('/playground');
+        switch (e.key) {
+            case 'home':
+                redirect('/');
+            case 'about':
+                redirect('/');
+            case 'contact':
+                redirect('/');
+            case 'sign-up':
+                redirect('/');
+            case 'playground':
+                redirect('/playground');
+            default:
+                redirect('/');
+        }
     };
 
     return (
