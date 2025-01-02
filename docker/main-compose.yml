@@ -1,0 +1,6 @@
+name: dev-env
+version: "3"
+include:
+  - kafka-docker-compose.yml
+  - ../apps/product/docker-compose.yml
+  - ../apps/user/docker-compose.yml
