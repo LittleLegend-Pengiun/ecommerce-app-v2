@@ -8,7 +8,7 @@ const { Title } = Typography;
 const { Content } = Layout;
 
 export default function Home() {
-  return (
-    <Title level={1}>Component Testing</Title>
-  );
+    return (
+        <Title level={1}>Playground Testing</Title>
+    );
 }
