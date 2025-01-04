@@ -8,6 +8,7 @@ import { useState } from "react";
 import { ThemeProvider } from "styled-components";
 import { styledComponentTheme } from "@/theme/config";
 import { StyledAppLayout, StyledBody } from "./AppLayout.style";
+import { Provider } from 'jotai'
 
 const { Content } = Layout;
 
@@ -34,9 +35,11 @@ export default function AppLayout({ children }: Readonly<{ children: React.React
         }}>
             <ThemeProvider theme={styledComponentTheme(isDarkMode)}>
                 <StyledAppLayout>
-                    <AppHeader toggleDarkMode={toggleDarkMode} isDarkMode={isDarkMode} />
-                    <Content>{children}</Content>
-                    <AppFooter />
+                    <Provider>
+                        <AppHeader toggleDarkMode={toggleDarkMode} isDarkMode={isDarkMode} />
+                        <Content>{children}</Content>
+                        <AppFooter />
+                    </Provider>
                 </StyledAppLayout>
             </ThemeProvider>
         </ConfigProvider>

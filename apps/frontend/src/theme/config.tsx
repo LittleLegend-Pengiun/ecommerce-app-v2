@@ -7,30 +7,7 @@ const inter = Inter({
     weight: "400",
 });
 
-
-type StyledComponentTheme = {
-    color: {
-        palette: ColorsTheme,
-        background: string,
-        text: {
-            primary: string,
-            secondary: string,
-            tertiary: string,
-            quaternary: string,
-            base: string,
-        };
-        button: {
-            primaryText: string;
-            primaryBg: string;
-            primaryBorder: string;
-            secondaryText: string;
-            secondaryBg: string;
-            secondaryBorder: string;
-        };
-    };
-};
-
-const darkStyledComponentTheme: StyledComponentTheme = {
+const darkStyledComponentTheme = {
     color: {
         palette: colorsTheme,
         background: '#141414', // Antd dark background
@@ -52,7 +29,7 @@ const darkStyledComponentTheme: StyledComponentTheme = {
     }
 }
 
-const lightStyledComponentTheme: StyledComponentTheme = {
+const lightStyledComponentTheme = {
     color: {
         palette: colorsTheme,
         background: colorsTheme.white,
@@ -74,7 +51,7 @@ const lightStyledComponentTheme: StyledComponentTheme = {
     }
 };
 
-export function styledComponentTheme(isDarkMode: boolean): StyledComponentTheme {
+export function styledComponentTheme(isDarkMode: boolean): any {
     return !isDarkMode ? lightStyledComponentTheme : darkStyledComponentTheme;
 }
 

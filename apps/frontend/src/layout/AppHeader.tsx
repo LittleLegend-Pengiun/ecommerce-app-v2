@@ -36,11 +36,22 @@ const AppHeader = ({ toggleDarkMode, isDarkMode }: AppHeaderProps) => {
         {
             label: "Playground",
             key: "playground",
+            children: [
+                {
+                    key: 'playground-1',
+                    label: 'Playground 1',
+                },
+                {
+                    key: 'playground-2',
+                    label: 'Playground 2',
+                }
+            ],
         }
     ];
 
     function handleClick(e: any): void {
-        console.log(e.key)
+        console.log(e.key);
+
         switch (e.key) {
             case 'home':
                 redirect('/');
@@ -50,8 +61,11 @@ const AppHeader = ({ toggleDarkMode, isDarkMode }: AppHeaderProps) => {
                 redirect('/');
             case 'sign-up':
                 redirect('/');
-            case 'playground':
-                redirect('/playground');
+
+            case 'playground-1':
+                redirect('/playground/playground-1');
+            case 'playground-2':
+                redirect('/playground/playground-2');
             default:
                 redirect('/');
         }
