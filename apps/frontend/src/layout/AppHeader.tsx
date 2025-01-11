@@ -1,9 +1,9 @@
 "use client";
 
 import React, { EventHandler } from "react";
-import { Layout, Menu, Input, Typography, Card, Button } from "antd";
-import { BulbOutlined, MoonOutlined } from "@ant-design/icons";
-import { PromoBanner, StyledHeader, DarkModeButton, ShopNowLink, StyledNavBar } from "./AppHeader.style";
+import { Layout, Menu, Input, Typography, Card, Button, Switch } from "antd";
+import { BulbOutlined, MoonOutlined, ShoppingCartOutlined } from "@ant-design/icons";
+import { PromoBanner, StyledHeader, DarkModeButton, ShopNowLink, StyledNavBar, StyledShoppingCartButton, StyledSwitch } from "./AppHeader.style";
 import { ItemType } from "antd/es/menu/interface";
 import { useRouter, redirect } from "next/navigation";
 
@@ -88,14 +88,15 @@ const AppHeader = ({ toggleDarkMode, isDarkMode }: AppHeaderProps) => {
 
                 &nbsp;&nbsp;&nbsp;&nbsp;
 
-                <DarkModeButton
-                    type="default"
-                    shape="round"
-                    icon={!isDarkMode ? <BulbOutlined /> : <MoonOutlined />}
-                    onClick={toggleDarkMode}
-                >
-                    {!isDarkMode ? "Light Mode" : "Dark Mode"}
-                </DarkModeButton>
+                <StyledSwitch
+                    value={isDarkMode}
+                    checkedChildren={<MoonOutlined />}
+                    unCheckedChildren={<BulbOutlined />}
+                    defaultChecked
+                    onChange={toggleDarkMode}
+                />
+
+                <StyledShoppingCartButton />
             </StyledNavBar>
         </StyledHeader>
     );
