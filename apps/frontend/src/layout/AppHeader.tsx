@@ -32,20 +32,6 @@ const AppHeader = ({ toggleDarkMode, isDarkMode }: AppHeaderProps) => {
         {
             label: "Sign Up",
             key: "sign-up"
-        },
-        {
-            label: "Playground",
-            key: "playground",
-            children: [
-                {
-                    key: 'playground-1',
-                    label: 'Playground 1',
-                },
-                {
-                    key: 'playground-2',
-                    label: 'Playground 2',
-                }
-            ],
         }
     ];
 
@@ -61,11 +47,6 @@ const AppHeader = ({ toggleDarkMode, isDarkMode }: AppHeaderProps) => {
                 redirect('/');
             case 'sign-up':
                 redirect('/');
-
-            case 'playground-1':
-                redirect('/playground/playground-1');
-            case 'playground-2':
-                redirect('/playground/playground-2');
             default:
                 redirect('/');
         }
@@ -96,7 +77,9 @@ const AppHeader = ({ toggleDarkMode, isDarkMode }: AppHeaderProps) => {
                     onChange={toggleDarkMode}
                 />
 
-                <StyledShoppingCartButton />
+                <StyledShoppingCartButton
+                    onClick={() => redirect('/cart')}
+                />
             </StyledNavBar>
         </StyledHeader>
     );

@@ -1,6 +1,6 @@
 import { atom } from 'jotai';
 
-export const cartAtom = atom<Cart>([
+export const productsAtom = atom<Product[]>([
     {
         "id": 1,
         "productName": "Laptop HP ProBook",
@@ -12,7 +12,6 @@ export const cartAtom = atom<Cart>([
         "releaseDate": "21-04-2022",
         "soldQuantity": 50,
         "categoryList": [],
-        cartQuantity: 1
     },
     {
         "id": 31,
@@ -25,6 +24,17 @@ export const cartAtom = atom<Cart>([
         "releaseDate": "03-04-2022",
         "soldQuantity": 260,
         "categoryList": [],
-        cartQuantity: 2
-    }
+    },
+    {
+        "id": 32,
+        "productName": "Loa Karaoke YS-119 SUYOSD",
+        "description": "Loa Karaoke YS-119 SUYOSD",
+        "price": 899000.0,
+        "imageUrl": "https://i.ibb.co/b1fZQGb/audio-3.webp",
+        "quantity": 6,
+        "manufacturer": "SUYOSD",
+        "releaseDate": "10-04-2022",
+        "soldQuantity": 270,
+        "categoryList": []
+    },
 ]);
