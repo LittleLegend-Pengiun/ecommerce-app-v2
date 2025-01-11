@@ -1,9 +1,7 @@
 'use client'
 
-import Link from "next/link";
 import { Card, Typography } from 'antd';
-import { Layout } from 'antd';
-import { atom, useAtom } from 'jotai';
+import { useAtom } from 'jotai';
 import { cartAtom } from "@/state/atoms/cart";
 import { Button, InputNumber, Space } from "antd";
 

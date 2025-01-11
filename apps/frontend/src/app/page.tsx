@@ -1,12 +1,9 @@
 'use client'
 
-import Link from "next/link";
-import { Card, Typography } from 'antd';
-import { Layout } from 'antd';
-import { atom, useAtom } from 'jotai';
+import { Typography } from 'antd';
+import { useAtom } from 'jotai';
 import { cartAtom } from "@/state/atoms/cart";
 import { productsAtom } from "@/state/atoms/products";
-import { Button, InputNumber, Space } from "antd";
 
 const { Title } = Typography;
 

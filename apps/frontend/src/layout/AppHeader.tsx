@@ -1,9 +1,9 @@
 "use client";
 
-import React, { EventHandler } from "react";
-import { Layout, Menu, Input, Typography, Card, Button, Switch } from "antd";
-import { BulbOutlined, MoonOutlined, ShoppingCartOutlined } from "@ant-design/icons";
-import { PromoBanner, StyledHeader, DarkModeButton, ShopNowLink, StyledNavBar, StyledShoppingCartButton, StyledSwitch } from "./AppHeader.style";
+import React from "react";
+import { Menu, Input, Typography } from "antd";
+import { BulbOutlined, MoonOutlined } from "@ant-design/icons";
+import { PromoBanner, StyledHeader, ShopNowLink, StyledNavBar, StyledShoppingCartButton, StyledSwitch } from "./AppHeader.style";
 import { ItemType } from "antd/es/menu/interface";
 import { useRouter, redirect } from "next/navigation";
 
