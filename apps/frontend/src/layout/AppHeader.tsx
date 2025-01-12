@@ -10,7 +10,7 @@ import { useRouter, redirect } from "next/navigation";
 const { Link } = Typography;
 
 type AppHeaderProps = {
-    toggleDarkMode: () => void,
+    toggleDarkMode: (checked: boolean) => void,
     isDarkMode: boolean
 };
 

@@ -1,4 +1,4 @@
-import { ThemeConfig } from "antd";
+import { ThemeConfig, theme } from "antd";
 import { Inter } from "next/font/google";
 import { ColorsTheme, colorsTheme } from "./colors";
 
@@ -56,24 +56,26 @@ export function styledComponentTheme(isDarkMode: boolean): any {
 }
 
 export function antdConfigGen(isDarkMode: boolean): ThemeConfig {
-    const theme = styledComponentTheme(isDarkMode);
+    const scTheme: any = styledComponentTheme(isDarkMode);
+    const { defaultAlgorithm, darkAlgorithm } = theme;
 
     return {
         token: {
             fontFamily: inter.style.fontFamily,
-            colorTextBase: theme.color.text.base,
-            colorBgLayout: theme.color.background
+            colorTextBase: scTheme.color.text.base,
+            colorBgLayout: scTheme.color.background
         },
         components: {
             Layout: {
                 headerHeight: 'fit-content'
             },
             Button: {
-                defaultBg: theme.color.button.primaryBg,
-                defaultBorderColor: theme.color.button.primaryBorder,
-                defaultHoverBorderColor: theme.color.button.secondaryBorder,
-                defaultHoverColor: theme.color.button.secondaryText
+                defaultBg: scTheme.color.button.primaryBg,
+                defaultBorderColor: scTheme.color.button.primaryBorder,
+                defaultHoverBorderColor: scTheme.color.button.secondaryBorder,
+                defaultHoverColor: scTheme.color.button.secondaryText
             },
-        }
+        },
+        algorithm: isDarkMode ? darkAlgorithm : defaultAlgorithm
     };
 };
