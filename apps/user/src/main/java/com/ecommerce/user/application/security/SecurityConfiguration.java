@@ -48,6 +48,7 @@ public class SecurityConfiguration {
         http.csrf(AbstractHttpConfigurer::disable)
                .authorizeHttpRequests(authorize -> authorize
                        .requestMatchers("/", "/signup", "/login").permitAll()
+                       .requestMatchers("/services/**").permitAll()
                        .anyRequest().authenticated())
                 .sessionManagement(sess -> sess
                         .sessionCreationPolicy(SessionCreationPolicy.STATELESS))
