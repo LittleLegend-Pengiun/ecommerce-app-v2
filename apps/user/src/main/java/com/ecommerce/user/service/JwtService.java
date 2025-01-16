@@ -1,10 +1,12 @@
 package com.ecommerce.user.service;
 
+import com.ecommerce.user.application.exeption.BadRequestException;
 import com.ecommerce.user.application.request.JwtDecodeRequest;
 import com.ecommerce.user.application.response.JwtDecodeResponse;
 import com.ecommerce.user.repository.model.user.UserRole;
 import com.ecommerce.user.repository.model.user.Users;
 import io.jsonwebtoken.Claims;
+import io.jsonwebtoken.ExpiredJwtException;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.io.Decoders;
 import io.jsonwebtoken.security.Keys;
@@ -25,10 +27,14 @@ public class JwtService {
 
     public JwtDecodeResponse decodeToken(JwtDecodeRequest request) {
         String token = request.getToken();
-        return JwtDecodeResponse.builder()
-                .payload(extractAllClaims(token))
-                .build();
-
+        try {
+            return JwtDecodeResponse.builder()
+                    .payload(extractAllClaims(token))
+                    .build();
+        } catch (ExpiredJwtException exception) {
+            log.error("Decode token expired!");
+            throw new BadRequestException(exception.getMessage());
+        }
     }
 
     public String createToken(Users user) {
