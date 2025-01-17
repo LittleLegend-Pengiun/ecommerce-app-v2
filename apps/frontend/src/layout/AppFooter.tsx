@@ -1,5 +1,5 @@
 import React, { ReactNode } from "react";
-import { Typography, Button, Row, Col } from "antd";
+import { Typography, Row, Col } from "antd";
 import { SendOutlined } from "@ant-design/icons";
 import { StyledUnorderedList, StyledFooter, StyledSubscribeInput, StyledCopyrightRow, CopyrightedTextStyle } from "./AppFooter.style";
 const { Title, Text, Link } = Typography;
