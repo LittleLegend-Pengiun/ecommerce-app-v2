@@ -5,9 +5,7 @@ import com.ecommerce.user.application.request.JwtDecodeRequest;
 import com.ecommerce.user.application.response.JwtDecodeResponse;
 import com.ecommerce.user.repository.model.user.UserRole;
 import com.ecommerce.user.repository.model.user.Users;
-import io.jsonwebtoken.Claims;
-import io.jsonwebtoken.ExpiredJwtException;
-import io.jsonwebtoken.Jwts;
+import io.jsonwebtoken.*;
 import io.jsonwebtoken.io.Decoders;
 import io.jsonwebtoken.security.Keys;
 import lombok.extern.slf4j.Slf4j;
@@ -31,8 +29,11 @@ public class JwtService {
             return JwtDecodeResponse.builder()
                     .payload(extractAllClaims(token))
                     .build();
-        } catch (ExpiredJwtException exception) {
-            log.error("Decode token expired!");
+        } catch (JwtException exception) {
+            log.error("{} throws in JWT service", exception.getClass().getSimpleName());
+            throw new BadRequestException(exception.getMessage());
+        } catch (IllegalArgumentException exception) {
+            log.error("The jwt string is null or empty or only whitespace");
             throw new BadRequestException(exception.getMessage());
         }
     }
