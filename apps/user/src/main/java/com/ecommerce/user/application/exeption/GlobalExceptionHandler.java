@@ -1,7 +1,7 @@
 package com.ecommerce.user.application.exeption;
 
 import com.ecommerce.user.application.response.GenericResponse;
-import io.jsonwebtoken.ExpiredJwtException;
+import io.jsonwebtoken.JwtException;
 import jakarta.validation.ValidationException;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.dao.DataAccessException;
@@ -20,7 +20,7 @@ import java.util.NoSuchElementException;
 public class GlobalExceptionHandler {
 
     @ExceptionHandler({BadRequestException.class, ValidationException.class, IllegalArgumentException.class, HttpMessageNotReadableException.class,
-            MethodArgumentNotValidException.class})
+            MethodArgumentNotValidException.class, IllegalStateException.class})
     public ResponseEntity<GenericResponse> handleBadRequest(Exception exception) {
         log.error(exception.getMessage());
         if (exception.getClass().getSimpleName().equals("BadRequestException")) {
@@ -41,7 +41,7 @@ public class GlobalExceptionHandler {
         return new ResponseEntity<>(new GenericResponse("Internal server error"), HttpStatus.INTERNAL_SERVER_ERROR);
     }
 
-    @ExceptionHandler({AuthenticationException.class, ExpiredJwtException.class})
+    @ExceptionHandler({AuthenticationException.class, JwtException.class})
     public ResponseEntity<GenericResponse> handleForbidden(RuntimeException exception) {
         log.error(exception.getMessage());
         return new ResponseEntity<>(new GenericResponse(exception.getMessage()), HttpStatus.UNAUTHORIZED);
