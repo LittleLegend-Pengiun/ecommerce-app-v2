@@ -1,16 +1,16 @@
 "use client";
 
-import React, { EventHandler } from "react";
-import { Layout, Menu, Input, Typography, Card, Button } from "antd";
+import React from "react";
+import { Menu, Input, Typography } from "antd";
 import { BulbOutlined, MoonOutlined } from "@ant-design/icons";
-import { PromoBanner, StyledHeader, DarkModeButton, ShopNowLink, StyledNavBar } from "./AppHeader.style";
+import { PromoBanner, StyledHeader, ShopNowLink, StyledNavBar, StyledShoppingCartButton, StyledSwitch } from "./AppHeader.style";
 import { ItemType } from "antd/es/menu/interface";
 import { useRouter, redirect } from "next/navigation";
 
 const { Link } = Typography;
 
 type AppHeaderProps = {
-    toggleDarkMode: () => void,
+    toggleDarkMode: (checked: boolean) => void,
     isDarkMode: boolean
 };
 
@@ -32,15 +32,12 @@ const AppHeader = ({ toggleDarkMode, isDarkMode }: AppHeaderProps) => {
         {
             label: "Sign Up",
             key: "sign-up"
-        },
-        {
-            label: "Playground",
-            key: "playground",
         }
     ];
 
     function handleClick(e: any): void {
-        console.log(e.key)
+        console.log(e.key);
+
         switch (e.key) {
             case 'home':
                 redirect('/');
@@ -50,8 +47,6 @@ const AppHeader = ({ toggleDarkMode, isDarkMode }: AppHeaderProps) => {
                 redirect('/');
             case 'sign-up':
                 redirect('/');
-            case 'playground':
-                redirect('/playground');
             default:
                 redirect('/');
         }
@@ -74,14 +69,17 @@ const AppHeader = ({ toggleDarkMode, isDarkMode }: AppHeaderProps) => {
 
                 &nbsp;&nbsp;&nbsp;&nbsp;
 
-                <DarkModeButton
-                    type="default"
-                    shape="round"
-                    icon={!isDarkMode ? <BulbOutlined /> : <MoonOutlined />}
-                    onClick={toggleDarkMode}
-                >
-                    {!isDarkMode ? "Light Mode" : "Dark Mode"}
-                </DarkModeButton>
+                <StyledSwitch
+                    value={isDarkMode}
+                    checkedChildren={<MoonOutlined />}
+                    unCheckedChildren={<BulbOutlined />}
+                    defaultChecked
+                    onChange={toggleDarkMode}
+                />
+
+                <StyledShoppingCartButton
+                    onClick={() => redirect('/cart')}
+                />
             </StyledNavBar>
         </StyledHeader>
     );

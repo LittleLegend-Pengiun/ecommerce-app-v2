@@ -1,4 +1,4 @@
-import { ThemeConfig } from "antd";
+import { ThemeConfig, theme } from "antd";
 import { Inter } from "next/font/google";
 import { ColorsTheme, colorsTheme } from "./colors";
 
@@ -7,30 +7,7 @@ const inter = Inter({
     weight: "400",
 });
 
-
-type StyledComponentTheme = {
-    color: {
-        palette: ColorsTheme,
-        background: string,
-        text: {
-            primary: string,
-            secondary: string,
-            tertiary: string,
-            quaternary: string,
-            base: string,
-        };
-        button: {
-            primaryText: string;
-            primaryBg: string;
-            primaryBorder: string;
-            secondaryText: string;
-            secondaryBg: string;
-            secondaryBorder: string;
-        };
-    };
-};
-
-const darkStyledComponentTheme: StyledComponentTheme = {
+const darkStyledComponentTheme = {
     color: {
         palette: colorsTheme,
         background: '#141414', // Antd dark background
@@ -52,7 +29,7 @@ const darkStyledComponentTheme: StyledComponentTheme = {
     }
 }
 
-const lightStyledComponentTheme: StyledComponentTheme = {
+const lightStyledComponentTheme = {
     color: {
         palette: colorsTheme,
         background: colorsTheme.white,
@@ -74,29 +51,31 @@ const lightStyledComponentTheme: StyledComponentTheme = {
     }
 };
 
-export function styledComponentTheme(isDarkMode: boolean): StyledComponentTheme {
+export function styledComponentTheme(isDarkMode: boolean): any {
     return !isDarkMode ? lightStyledComponentTheme : darkStyledComponentTheme;
 }
 
 export function antdConfigGen(isDarkMode: boolean): ThemeConfig {
-    const theme = styledComponentTheme(isDarkMode);
+    const scTheme: any = styledComponentTheme(isDarkMode);
+    const { defaultAlgorithm, darkAlgorithm } = theme;
 
     return {
         token: {
             fontFamily: inter.style.fontFamily,
-            colorTextBase: theme.color.text.base,
-            colorBgLayout: theme.color.background
+            colorTextBase: scTheme.color.text.base,
+            colorBgLayout: scTheme.color.background
         },
         components: {
             Layout: {
                 headerHeight: 'fit-content'
             },
             Button: {
-                defaultBg: theme.color.button.primaryBg,
-                defaultBorderColor: theme.color.button.primaryBorder,
-                defaultHoverBorderColor: theme.color.button.secondaryBorder,
-                defaultHoverColor: theme.color.button.secondaryText
+                defaultBg: scTheme.color.button.primaryBg,
+                defaultBorderColor: scTheme.color.button.primaryBorder,
+                defaultHoverBorderColor: scTheme.color.button.secondaryBorder,
+                defaultHoverColor: scTheme.color.button.secondaryText
             },
-        }
+        },
+        algorithm: isDarkMode ? darkAlgorithm : defaultAlgorithm
     };
 };
