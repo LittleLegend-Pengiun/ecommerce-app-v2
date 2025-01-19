@@ -1,15 +1,10 @@
-package com.ecommerce.product.mapper;
+package com.ecommerce.product.repository.mapper;
 
-import com.ecommerce.product.dto.CategoryDto;
-import com.ecommerce.product.dto.ProductDto;
-import com.ecommerce.product.model.Category;
-import com.ecommerce.product.model.Product;
+import com.ecommerce.product.repository.dto.ProductDto;
+import com.ecommerce.product.repository.model.Product;
 
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 import java.time.*;
 import java.time.format.DateTimeFormatter;
-import java.util.List;
 
 public class ProductMapper {
     public static ProductDto toDto(Product product) {

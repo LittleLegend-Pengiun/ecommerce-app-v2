@@ -1,4 +1,4 @@
-package com.ecommerce.product.model;
+package com.ecommerce.product.repository.model;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotEmpty;

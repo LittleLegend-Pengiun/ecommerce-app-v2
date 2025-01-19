@@ -1,7 +1,7 @@
-package com.ecommerce.product.mapper;
+package com.ecommerce.product.repository.mapper;
 
-import com.ecommerce.product.dto.CategoryDto;
-import com.ecommerce.product.model.Category;
+import com.ecommerce.product.repository.dto.CategoryDto;
+import com.ecommerce.product.repository.model.Category;
 
 public class CategoryMapper {
     public static CategoryDto toDto(Category category){
