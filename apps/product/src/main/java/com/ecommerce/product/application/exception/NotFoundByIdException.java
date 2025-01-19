@@ -1,4 +1,4 @@
-package com.ecommerce.product.exception;
+package com.ecommerce.product.application.exception;
 
 public class NotFoundByIdException extends RuntimeException{
     String className;

@@ -1,5 +1,5 @@
 package com.ecommerce.product.controller;
-import com.ecommerce.product.dto.ProductDto;
+import com.ecommerce.product.repository.dto.ProductDto;
 import com.ecommerce.product.service.ProductService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;

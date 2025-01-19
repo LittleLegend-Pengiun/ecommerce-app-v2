@@ -1,11 +1,7 @@
 package com.ecommerce.product.service;
 
-import com.ecommerce.product.dto.CategoryDto;
-import com.ecommerce.product.dto.ProductDto;
-import com.ecommerce.product.model.Category;
-import com.ecommerce.product.model.Product;
-import com.ecommerce.product.repository.CategoryRepo;
-import com.ecommerce.product.repository.ProductRepo;
+import com.ecommerce.product.repository.dto.CategoryDto;
+import com.ecommerce.product.repository.dto.ProductDto;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.RequiredArgsConstructor;
