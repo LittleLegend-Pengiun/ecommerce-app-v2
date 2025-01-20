@@ -1,6 +1,5 @@
 package com.ecommerce.product.application.security;
 
-import com.ecommerce.product.service.security.VerifyTokenService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -20,8 +19,11 @@ public class SecurityConfiguration {
     @Bean
     SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception {
         httpSecurity.csrf(AbstractHttpConfigurer::disable)
-                .authorizeHttpRequests(authorizeHttpRequests -> authorizeHttpRequests.anyRequest().permitAll())
-                .sessionManagement(sessionManagement -> sessionManagement.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
+                .authorizeHttpRequests(auth -> auth
+                        .requestMatchers("/category/**","/product/**").permitAll()
+                        .requestMatchers("/auth/**").authenticated()
+                        .anyRequest().permitAll())
+                .sessionManagement(sess -> sess.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .addFilterBefore(externalAuthFilter, UsernamePasswordAuthenticationFilter.class);
         return httpSecurity.build();
     }

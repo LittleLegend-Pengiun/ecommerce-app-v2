@@ -1,5 +1,6 @@
 package com.ecommerce.product.application.security;
 
+import com.ecommerce.product.service.security.AuthTokenClaimService;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
@@ -17,16 +18,15 @@ import java.io.IOException;
 @Slf4j
 public class ExternalAuthFilter extends OncePerRequestFilter {
     private final HandlerExceptionResolver handlerExceptionResolver;
+    private final AuthTokenClaimService authTokenClaimService;
 
     @Override
     protected void doFilterInternal(
             HttpServletRequest request, HttpServletResponse response, FilterChain filterChain
     ) throws ServletException, IOException {
         try {
+            authTokenClaimService.verifyToken(request);
             filterChain.doFilter(request, response);
-            /**
-             * VerifyTokenService.validate(...)
-             */
         } catch (ServletException | IOException e) {
             throw e;
         } catch (Exception e) {
