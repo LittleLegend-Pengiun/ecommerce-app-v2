@@ -10,7 +10,7 @@ services:
     ports:
       - 9092:9092
       - 9093:9093
-    container_name: broker-1
+    container_name: broker1 # Container name need to sync with kraft
     environment:
       KAFKA_ENABLE_KRAFT: yes
       KAFKA_CFG_NODE_ID: 1
