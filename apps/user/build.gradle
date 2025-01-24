@@ -39,3 +39,6 @@ tasks.register('startDb', Exec) {
 	commandLine("docker-compose", "up", "-d")
 }
 
+tasks.register('startDevEnvironment', Exec) {
+	commandLine("docker-compose", "-f", "dev-env.yml", "up", "-d")
+}
