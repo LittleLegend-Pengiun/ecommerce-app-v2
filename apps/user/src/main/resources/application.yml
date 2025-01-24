@@ -1,6 +1,10 @@
 spring:
   application:
     name: user
+  datasource:
+    url: jdbc:postgresql://localhost:5435/user_db
+    username: user_dev
+    password: user-microservice
   jpa:
     hibernate:
       ddl-auto: create
@@ -8,10 +12,10 @@ spring:
     properties:
       hibernate:
         format_sql: true
-  datasource:
-    url: jdbc:postgresql://localhost:5435/user_db
-    username: user_dev
-    password: user-microservice
+  kafka:
+    bootstrap-servers: 'localhost:9092'
+    consumer:
+      group-id: test-group
 
 server:
   port: 8001
