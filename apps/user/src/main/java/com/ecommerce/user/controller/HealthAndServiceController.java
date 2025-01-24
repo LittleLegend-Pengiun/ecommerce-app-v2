@@ -43,7 +43,7 @@ public class HealthAndServiceController {
 
     @PostMapping("/services/test-kafka")
     public ResponseEntity<GenericResponse> publishKafkaMessage(@Valid @RequestBody TestKafkaRequest request) {
-        testProducer.sendMessage("test", request.getMessage());
+        testProducer.sendMessage("test-topic", request.getMessage());
         return new ResponseEntity<>(new GenericResponse("Message sent"), HttpStatus.OK);
     }
 }
