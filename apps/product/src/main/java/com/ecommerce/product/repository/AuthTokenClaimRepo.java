@@ -28,7 +28,7 @@ public class AuthTokenClaimRepo {
                 throw new RuntimeException("Invalid token response from user service.");
             }
         } catch (Exception e) {
-            throw new RuntimeException("Unexpected error while verifying token.", e);
+            throw new RuntimeException("User M/S response error: Unexpected error while verifying token.", e);
         }
     }
 }

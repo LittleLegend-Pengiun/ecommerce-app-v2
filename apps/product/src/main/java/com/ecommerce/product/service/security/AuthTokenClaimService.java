@@ -14,15 +14,10 @@ public class AuthTokenClaimService {
         this.authTokenClaimRepo = authTokenClaimRepo;
     }
 
-    public ResponseEntity<String> verifyToken(HttpServletRequest request) {
+    public void verifyToken(HttpServletRequest request) {
         String token = "";
-
-        // Get the Authorization header
         String authorizationHeader = request.getHeader("Authorization");
-
-        // Check if the header is present and starts with "Bearer"
         if (authorizationHeader != null && authorizationHeader.startsWith("Bearer ")) {
-            // Extract the token by removing the "Bearer " prefix
             token = authorizationHeader.substring(7);
         }
 
@@ -31,6 +26,6 @@ public class AuthTokenClaimService {
         }
 
         String claimStr = authTokenClaimRepo.verifyTokenClaim(token);
-        return ResponseEntity.status(HttpStatus.OK).body(claimStr);
+        ResponseEntity.status(HttpStatus.OK).body(claimStr);
     }
 }

@@ -1,5 +1,6 @@
 package com.ecommerce.product.application.security;
 
+import com.ecommerce.product.application.exception.BadRequestException;
 import com.ecommerce.product.service.security.AuthTokenClaimService;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
@@ -27,11 +28,10 @@ public class ExternalAuthFilter extends OncePerRequestFilter {
         try {
             authTokenClaimService.verifyToken(request);
             filterChain.doFilter(request, response);
-        } catch (ServletException | IOException e) {
-            throw e;
         } catch (Exception e) {
-            log.error("ExternalAuthFilter Exception type: {}", e.getClass().getName());
-            handlerExceptionResolver.resolveException(request, response, null, e); // Forward the exception to the GlobalExceptionHandler
+            log.error("ExternalAuthFilter Exception Message: {}", e.getMessage());
+            BadRequestException badRequestException = new BadRequestException(e.getMessage());
+            handlerExceptionResolver.resolveException(request, response, null, badRequestException); // Forward the exception to the GlobalExceptionHandler
         }
     }
 }

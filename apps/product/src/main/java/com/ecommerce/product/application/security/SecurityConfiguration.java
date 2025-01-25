@@ -20,11 +20,10 @@ public class SecurityConfiguration {
     SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception {
         httpSecurity.csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/category/**","/product/**").permitAll()
-                        .requestMatchers("/auth/**").authenticated()
-                        .anyRequest().permitAll())
+                        .requestMatchers("/category", "/product","/category/**","/product/**").permitAll()
+                        .anyRequest().authenticated())
                 .sessionManagement(sess -> sess.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
-                .addFilterBefore(externalAuthFilter, UsernamePasswordAuthenticationFilter.class);
+                .addFilterAt(externalAuthFilter, UsernamePasswordAuthenticationFilter.class);
         return httpSecurity.build();
     }
 }
