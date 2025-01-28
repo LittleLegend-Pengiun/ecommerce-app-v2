@@ -1,6 +1,6 @@
 package com.ecommerce.product.controller;
 
-import com.ecommerce.product.service.security.AuthTokenClaimService;
+import com.ecommerce.product.service.security.ExternalJwtClaimService;
 import jakarta.servlet.http.HttpServletRequest;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RequiredArgsConstructor
 @Validated
 public class ExternalAuthController {
-    private final AuthTokenClaimService authTokenClaimService;
+    private final ExternalJwtClaimService externalJwtClaimService;
 
     @GetMapping("")
     public ResponseEntity<String> authorizeToken(HttpServletRequest request) {

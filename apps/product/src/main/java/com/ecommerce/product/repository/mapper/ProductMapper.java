@@ -1,7 +1,7 @@
 package com.ecommerce.product.repository.mapper;
 
 import com.ecommerce.product.repository.dto.ProductDto;
-import com.ecommerce.product.repository.model.Product;
+import com.ecommerce.product.repository.model.product.Product;
 
 import java.time.*;
 import java.time.format.DateTimeFormatter;
