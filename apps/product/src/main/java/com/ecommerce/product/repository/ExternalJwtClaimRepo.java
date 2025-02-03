@@ -4,6 +4,7 @@ import com.ecommerce.product.repository.model.user.UserClaim;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.*;
 import org.springframework.stereotype.Repository;
 import org.springframework.web.reactive.function.client.WebClient;
@@ -12,18 +13,27 @@ import java.util.Map;
 
 @Repository
 public class ExternalJwtClaimRepo {
+    @Value("${external.microservice.user.url}")
+    private String serviceUrl;
+
+    @Value("${external.microservice.user.uri.token-verify}")
+    private String verifyTokenUri;
+
+
     private final WebClient webClient;
 
     public ExternalJwtClaimRepo(WebClient.Builder webClientBuilder) {
         this.webClient = webClientBuilder
-                .baseUrl("http://localhost:8001")
                 .defaultHeader(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE)
                 .build();
     }
 
     public UserClaim verifyTokenClaim(String token) {
         try {
-            return webClient.post().uri("/services/jwt-decode")
+            WebClient dynamicWebClient = webClient.mutate()
+                    .baseUrl(serviceUrl)
+                    .build();
+            return dynamicWebClient.post().uri(verifyTokenUri)
                     .bodyValue(Map.of("token", token))
                     .retrieve()
                     .bodyToMono(String.class)
