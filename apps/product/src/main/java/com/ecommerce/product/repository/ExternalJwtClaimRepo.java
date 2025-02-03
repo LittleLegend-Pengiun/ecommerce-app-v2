@@ -6,40 +6,43 @@ import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.http.*;
 import org.springframework.stereotype.Repository;
-import org.springframework.web.client.RestTemplate;
+import org.springframework.web.reactive.function.client.WebClient;
+
+import java.util.Map;
 
 @Repository
 public class ExternalJwtClaimRepo {
-    private final RestTemplate restTemplate;
+    private final WebClient webClient;
 
-    public ExternalJwtClaimRepo(RestTemplate restTemplate) {
-        this.restTemplate = restTemplate;
+    public ExternalJwtClaimRepo(WebClient.Builder webClientBuilder) {
+        this.webClient = webClientBuilder
+                .baseUrl("http://localhost:8001")
+                .defaultHeader(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE)
+                .build();
     }
 
     public UserClaim verifyTokenClaim(String token) {
-        String userMSUrl = "http://localhost:8001/services/jwt-decode";
-        HttpHeaders headers = new HttpHeaders();
-        headers.setContentType(MediaType.APPLICATION_JSON);
-
-        String requestBody = String.format("{\"token\": \"%s\"}", token);
-        HttpEntity<String> entity = new HttpEntity<>(requestBody, headers);
-
         try {
-            ResponseEntity<String> response = restTemplate.postForEntity(userMSUrl, entity, String.class);
-            if (response.getStatusCode() == HttpStatus.OK) {
-                return extractUserFromJson(response.getBody());
-            } else {
-                throw new RuntimeException("Invalid token response from user service.");
-            }
-        } catch (Exception e) {
-            throw new RuntimeException("User M/S response error: Unexpected error while verifying token.", e);
+            return webClient.post().uri("/services/jwt-decode")
+                    .bodyValue(Map.of("token", token))
+                    .retrieve()
+                    .bodyToMono(String.class)
+                    .map(this::extractUserFromJson)
+                    .block();
+        }
+        catch (Exception e) {
+            throw new RuntimeException("User M/S response error:", e);
         }
     }
 
-    UserClaim extractUserFromJson(String json) throws JsonProcessingException {
-        ObjectMapper mapper = new ObjectMapper();
-        JsonNode root = mapper.readTree(json);
-        JsonNode payload = root.get("payload");
-        return mapper.readValue(payload.toString(), UserClaim.class);
+    UserClaim extractUserFromJson(String json){
+        try {
+            ObjectMapper mapper = new ObjectMapper();
+            JsonNode root = mapper.readTree(json);
+            JsonNode payload = root.get("payload");
+            return mapper.readValue(payload.toString(), UserClaim.class);
+        } catch (JsonProcessingException e) {
+            throw new RuntimeException("Extracting UserClaim from json error:", e);
+        }
     }
 }
