@@ -1,5 +1,7 @@
 package com.ecommerce.product.repository;
 
+import com.ecommerce.product.application.exception.BadRequestException;
+import com.ecommerce.product.application.response.GenericResponse;
 import com.ecommerce.product.repository.model.user.UserClaim;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonNode;
@@ -29,23 +31,21 @@ public class ExternalJwtClaimRepo {
     }
 
     public UserClaim verifyTokenClaim(String token) {
-        try {
-            WebClient dynamicWebClient = webClient.mutate()
-                    .baseUrl(serviceUrl)
-                    .build();
-            return dynamicWebClient.post().uri(verifyTokenUri)
-                    .bodyValue(Map.of("token", token))
-                    .retrieve()
-                    .bodyToMono(String.class)
-                    .map(this::extractUserFromJson)
-                    .block();
-        }
-        catch (Exception e) {
-            throw new RuntimeException("User M/S response error:", e);
-        }
+        WebClient dynamicWebClient = webClient.mutate()
+                .baseUrl(serviceUrl)
+                .build();
+        return dynamicWebClient.post().uri(verifyTokenUri)
+                .bodyValue(Map.of("token", token))
+                .retrieve()
+                .onStatus(
+                        HttpStatus.BAD_REQUEST::equals,
+                        response -> response.bodyToMono(GenericResponse.class).map(object -> new BadRequestException("[user-ms-error-message](" + object.getMessage() + ")")))
+                .bodyToMono(String.class)
+                .map(this::extractUserFromJson)
+                .block();
     }
 
-    UserClaim extractUserFromJson(String json){
+    private UserClaim extractUserFromJson(String json){
         try {
             ObjectMapper mapper = new ObjectMapper();
             JsonNode root = mapper.readTree(json);

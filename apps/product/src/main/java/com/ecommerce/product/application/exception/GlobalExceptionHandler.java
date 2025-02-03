@@ -100,10 +100,10 @@ public class GlobalExceptionHandler {
 
     @ExceptionHandler({BadRequestException.class})
     public ResponseEntity<Object> handleBadRequestException(BadRequestException exception) {
-        log.error(exception.getMessage());
+       log.error(exception.getMessage());
         if (exception.getClass().getSimpleName().equals("BadRequestException")) {
-            return new ResponseEntity<>(new GenericResponse("Error: " + exception.getMessage()), HttpStatus.BAD_REQUEST);
+            return new ResponseEntity<>(new GenericResponse("Bad request error: " + exception.getMessage()), HttpStatus.BAD_REQUEST);
         }
-        return new ResponseEntity<>(new GenericResponse("Error: Bad request"), HttpStatus.BAD_REQUEST);
+        return new ResponseEntity<>(new GenericResponse("Bad request error"), HttpStatus.BAD_REQUEST);
     }
 }

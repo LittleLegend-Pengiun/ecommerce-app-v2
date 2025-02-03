@@ -4,15 +4,13 @@ import com.ecommerce.product.application.security.CustomUserDetails;
 import com.ecommerce.product.repository.ExternalJwtClaimRepo;
 import com.ecommerce.product.repository.model.user.UserClaim;
 import jakarta.servlet.http.HttpServletRequest;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 @Service
+@RequiredArgsConstructor
 public class ExternalJwtClaimService {
     private final ExternalJwtClaimRepo externalJwtClaimRepo;
-
-    public ExternalJwtClaimService(ExternalJwtClaimRepo externalJwtClaimRepo) {
-        this.externalJwtClaimRepo = externalJwtClaimRepo;
-    }
 
     public CustomUserDetails verifyTokenClaim(HttpServletRequest request) {
         String token = "";
