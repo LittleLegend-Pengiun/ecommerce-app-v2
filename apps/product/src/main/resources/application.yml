@@ -1,0 +1,27 @@
+external:
+  microservice:
+    user:
+      url: http://localhost:8001
+      uri:
+        token-verify: /services/jwt-decode
+      timeout: 5000
+      feature-flags:
+        enable-logging: true
+
+spring:
+  application:
+    name: product
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+  datasource:
+    url: jdbc:postgresql://localhost:5436/product_db
+    username: product_dev
+    password: product-microservice
+
+server:
+  port: 8000

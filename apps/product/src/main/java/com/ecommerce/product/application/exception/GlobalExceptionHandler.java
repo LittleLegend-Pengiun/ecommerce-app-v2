@@ -1,5 +1,6 @@
-package com.ecommerce.product.exception;
+package com.ecommerce.product.application.exception;
 
+import com.ecommerce.product.application.response.GenericResponse;
 import lombok.extern.slf4j.Slf4j;
 import org.hibernate.TransientObjectException;
 import org.springframework.core.env.Environment;
@@ -95,5 +96,14 @@ public class GlobalExceptionHandler {
             stackTraceSb.append(e.toString()).append('\n');
         }
         return stackTraceSb;
+    }
+
+    @ExceptionHandler({BadRequestException.class})
+    public ResponseEntity<Object> handleBadRequestException(BadRequestException exception) {
+       log.error(exception.getMessage());
+        if (exception.getClass().getSimpleName().equals("BadRequestException")) {
+            return new ResponseEntity<>(new GenericResponse("Bad request error: " + exception.getMessage()), HttpStatus.BAD_REQUEST);
+        }
+        return new ResponseEntity<>(new GenericResponse("Bad request error"), HttpStatus.BAD_REQUEST);
     }
 }

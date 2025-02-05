@@ -1,11 +1,8 @@
 package com.ecommerce.product.service;
-import com.ecommerce.product.dto.CategoryDto;
-import com.ecommerce.product.dto.ProductDto;
-import com.ecommerce.product.exception.NotFoundByIdException;
-import com.ecommerce.product.mapper.CategoryMapper;
-import com.ecommerce.product.mapper.ProductMapper;
-import com.ecommerce.product.model.Category;
-import com.ecommerce.product.model.Product;
+import com.ecommerce.product.repository.dto.ProductDto;
+import com.ecommerce.product.application.exception.NotFoundByIdException;
+import com.ecommerce.product.repository.mapper.ProductMapper;
+import com.ecommerce.product.repository.model.product.Product;
 import com.ecommerce.product.repository.ProductRepo;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
