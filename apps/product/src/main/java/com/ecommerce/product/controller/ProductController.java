@@ -1,4 +1,6 @@
 package com.ecommerce.product.controller;
+import com.ecommerce.product.application.request.CreateProductRequest;
+import com.ecommerce.product.application.request.EditProductRequest;
 import com.ecommerce.product.repository.dto.ProductDto;
 import com.ecommerce.product.service.ProductService;
 import jakarta.validation.Valid;
@@ -23,12 +25,12 @@ public class ProductController {
     }
 
     @PostMapping("")
-    public ResponseEntity<ProductDto> saveProduct(@Valid @RequestBody ProductDto dto){
+    public ResponseEntity<ProductDto> saveProduct(@Valid @RequestBody CreateProductRequest dto){
         return ResponseEntity.status(HttpStatus.OK).body(productService.saveProduct(dto));
     }
 
     @PutMapping("")
-    public ResponseEntity<ProductDto> updateProduct(@Valid @RequestBody ProductDto dto){
+    public ResponseEntity<ProductDto> updateProduct(@Valid @RequestBody EditProductRequest dto){
         return ResponseEntity.status(HttpStatus.OK).body(productService.updateProduct(dto));
     }
 

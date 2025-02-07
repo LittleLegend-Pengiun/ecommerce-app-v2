@@ -15,12 +15,8 @@ import org.springframework.web.bind.annotation.RestController;
 @RequiredArgsConstructor
 @Validated
 public class ExternalAuthController {
-    private final ExternalJwtClaimService externalJwtClaimService;
-
     @GetMapping("")
-    public ResponseEntity<String> authorizeToken(HttpServletRequest request) {
-//        ResponseEntity<String> extResponse = authTokenClaimService.verifyToken(request);
-//        String responseBody = extResponse.getBody();
+    public ResponseEntity<String> authorizeToken() {
         return ResponseEntity.status(HttpStatus.OK).body("Pass");
     }
 
