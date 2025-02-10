@@ -1,4 +1,4 @@
-import { ThemeConfig, theme } from "antd";
+import { MappingAlgorithm, ThemeConfig, theme } from "antd";
 import { Inter } from "next/font/google";
 import { ColorsTheme, colorsTheme } from "./colors";
 

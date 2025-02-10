@@ -67,7 +67,7 @@ const AppHeader = ({ toggleDarkMode, isDarkMode }: AppHeaderProps) => {
                     className="search-bar"
                 />
 
-                &nbsp;&nbsp;&nbsp;&nbsp;
+                {/* &nbsp;&nbsp;&nbsp;&nbsp;
 
                 <StyledSwitch
                     value={isDarkMode}
@@ -75,7 +75,7 @@ const AppHeader = ({ toggleDarkMode, isDarkMode }: AppHeaderProps) => {
                     unCheckedChildren={<BulbOutlined />}
                     defaultChecked
                     onChange={toggleDarkMode}
-                />
+                /> */}
 
                 <StyledShoppingCartButton
                     onClick={() => redirect('/cart')}
