@@ -6,6 +6,7 @@ import { BulbOutlined, MoonOutlined } from "@ant-design/icons";
 import { PromoBanner, StyledHeader, ShopNowLink, StyledNavBar, StyledShoppingCartButton, StyledSwitch } from "./AppHeader.style";
 import { ItemType } from "antd/es/menu/interface";
 import { useRouter, redirect } from "next/navigation";
+import Image from 'next/image';
 
 const { Link } = Typography;
 
@@ -59,7 +60,7 @@ const AppHeader = ({ toggleDarkMode, isDarkMode }: AppHeaderProps) => {
             </PromoBanner>
 
             <StyledNavBar>
-                <div className="logo">Exclusive</div>
+                <Image src={'/icons/Logo.svg'} alt="Logo" width={100} height={100}/>
                 <Menu mode="horizontal" defaultSelectedKeys={["home"]} className="menu" items={items} onClick={handleClick} />
 
                 <Input.Search
