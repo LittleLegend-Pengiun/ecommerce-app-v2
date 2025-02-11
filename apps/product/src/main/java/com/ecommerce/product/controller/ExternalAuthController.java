@@ -1,5 +1,6 @@
 package com.ecommerce.product.controller;
 
+import com.ecommerce.product.application.response.GenericResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -14,8 +15,8 @@ import org.springframework.web.bind.annotation.RestController;
 @Validated
 public class ExternalAuthController {
     @GetMapping("")
-    public ResponseEntity<String> authorizeToken() {
-        return ResponseEntity.status(HttpStatus.OK).body("Pass");
+    public ResponseEntity<GenericResponse> authorizeToken() {
+        return new ResponseEntity<>(new GenericResponse("Pass"), HttpStatus.OK);
     }
 
 }

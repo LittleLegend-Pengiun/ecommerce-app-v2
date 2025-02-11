@@ -22,6 +22,10 @@ spring:
     url: jdbc:postgresql://localhost:5436/product_db
     username: product_dev
     password: product-microservice
+  kafka:
+    bootstrap-servers: 'localhost:9092'
+    consumer:
+      group-id: test-group
 
 server:
   port: 8000

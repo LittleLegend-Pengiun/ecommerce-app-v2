@@ -1,6 +1,9 @@
 package com.ecommerce.product.controller;
 import com.ecommerce.product.application.request.CreateProductRequest;
 import com.ecommerce.product.application.request.EditProductRequest;
+import com.ecommerce.product.application.response.GenericResponse;
+import com.ecommerce.product.application.response.ProductDtoResponse;
+import com.ecommerce.product.application.response.ProductDtosResponse;
 import com.ecommerce.product.application.utils.dto.ProductDto;
 import com.ecommerce.product.service.ProductService;
 import jakarta.validation.Valid;
@@ -20,23 +23,22 @@ public class ProductController {
     private final ProductService productService;
 
     @GetMapping("/all")
-    public ResponseEntity<List<ProductDto>> getAllProducts() {
-        return ResponseEntity.status(HttpStatus.OK).body(productService.getAllProducts());
+    public ResponseEntity<ProductDtosResponse> getAllProducts() {
+        return new ResponseEntity<>(productService.getAllProducts(), HttpStatus.OK);
     }
-
     @PostMapping("")
-    public ResponseEntity<ProductDto> saveProduct(@Valid @RequestBody CreateProductRequest dto){
-        return ResponseEntity.status(HttpStatus.OK).body(productService.saveProduct(dto));
+    public ResponseEntity<ProductDtoResponse> saveProduct(@Valid @RequestBody CreateProductRequest dto){
+        return new ResponseEntity<>(productService.saveProduct(dto), HttpStatus.OK);
     }
 
     @PutMapping("")
-    public ResponseEntity<ProductDto> updateProduct(@Valid @RequestBody EditProductRequest dto){
-        return ResponseEntity.status(HttpStatus.OK).body(productService.updateProduct(dto));
+    public ResponseEntity<ProductDtoResponse> updateProduct(@Valid @RequestBody EditProductRequest dto){
+        return new ResponseEntity<>(productService.updateProduct(dto), HttpStatus.OK);
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<String> deleteProductById(@Valid @PathVariable Integer id) {
+    public ResponseEntity<GenericResponse> deleteProductById(@Valid @PathVariable Integer id) {
         productService.deleteProductById(id);
-        return ResponseEntity.status(HttpStatus.OK).body("Delete product successfully!");
+        return new ResponseEntity<>(new GenericResponse("Delete product successfully!"), HttpStatus.OK);
     }
 }
