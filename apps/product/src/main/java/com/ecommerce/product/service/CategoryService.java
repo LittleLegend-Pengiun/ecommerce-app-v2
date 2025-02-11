@@ -1,6 +1,6 @@
 package com.ecommerce.product.service;
-import com.ecommerce.product.application.response.CategoryDtoResponse;
-import com.ecommerce.product.application.response.CategoryDtosResponse;
+import com.ecommerce.product.application.response.CategoryResponse;
+import com.ecommerce.product.application.response.CategoryListResponse;
 import com.ecommerce.product.application.utils.dto.CategoryDto;
 import com.ecommerce.product.application.exception.NotFoundByIdException;
 import com.ecommerce.product.application.utils.mapper.CategoryMapper;
@@ -19,24 +19,24 @@ import java.util.Optional;
 public class CategoryService {
     private final CategoryRepo categoryRepo;
 
-    public CategoryDtosResponse getAllCategories() {
+    public CategoryListResponse getAllCategories() {
         List<CategoryDto> categoryDtos = categoryRepo.findAll().stream().map(CategoryMapper::toDto).toList();
-        return new CategoryDtosResponse(categoryDtos);
+        return new CategoryListResponse(categoryDtos);
     }
 
-    public CategoryDtosResponse saveAll(List<CategoryDto> categoryDtos) {
+    public CategoryListResponse saveAll(List<CategoryDto> categoryDtos) {
         List<Category> categories = categoryRepo.saveAll(categoryDtos.stream().map(CategoryMapper::toEntity).toList());
         List<CategoryDto> updatedCategoryDtos = categories.stream().map(CategoryMapper::toDto).toList();
-        return new CategoryDtosResponse(updatedCategoryDtos);
+        return new CategoryListResponse(updatedCategoryDtos);
     }
 
-    public CategoryDtoResponse saveCategory(CategoryDto dto) {
+    public CategoryResponse saveCategory(CategoryDto dto) {
         Category newCategory = categoryRepo.save(CategoryMapper.toEntity(dto));
         CategoryDto categoryDto = CategoryMapper.toDto(newCategory);
-        return new CategoryDtoResponse(categoryDto);
+        return new CategoryResponse(categoryDto);
     }
 
-    public CategoryDtoResponse updateCategory(CategoryDto dto) {
+    public CategoryResponse updateCategory(CategoryDto dto) {
         Category category = CategoryMapper.toEntity(dto);
         Optional<Category> existingCategory = categoryRepo.findById(category.getId());
         if (existingCategory.isEmpty()) {
@@ -46,7 +46,7 @@ public class CategoryService {
         Category updatedCategory = categoryRepo.save(category);
         log.info("Category with id: {} updated successfully", category.getId());
         CategoryDto updatedCategoryDto = CategoryMapper.toDto(updatedCategory);
-        return new CategoryDtoResponse(updatedCategoryDto);
+        return new CategoryResponse(updatedCategoryDto);
     }
 
     public void deleteAll() {

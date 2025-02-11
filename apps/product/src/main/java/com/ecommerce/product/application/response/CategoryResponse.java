@@ -6,12 +6,10 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 
-import java.util.List;
-
 @JsonInclude(JsonInclude.Include.NON_EMPTY)
 @Builder
 @Data
 @AllArgsConstructor
-public class CategoryDtosResponse {
-    private List<CategoryDto> categories;
+public class CategoryResponse {
+    private CategoryDto category;
 }
