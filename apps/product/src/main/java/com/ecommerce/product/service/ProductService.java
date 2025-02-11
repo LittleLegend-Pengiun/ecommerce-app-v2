@@ -1,7 +1,7 @@
 package com.ecommerce.product.service;
-import com.ecommerce.product.repository.dto.ProductDto;
+import com.ecommerce.product.application.utils.dto.ProductDto;
 import com.ecommerce.product.application.exception.NotFoundByIdException;
-import com.ecommerce.product.repository.mapper.ProductMapper;
+import com.ecommerce.product.application.utils.mapper.ProductMapper;
 import com.ecommerce.product.repository.model.product.Product;
 import com.ecommerce.product.repository.ProductRepo;
 import lombok.RequiredArgsConstructor;

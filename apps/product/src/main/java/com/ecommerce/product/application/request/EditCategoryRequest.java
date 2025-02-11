@@ -1,7 +1,6 @@
 package com.ecommerce.product.application.request;
 
-import com.ecommerce.product.repository.dto.CategoryDto;
-import jakarta.validation.constraints.NotEmpty;
+import com.ecommerce.product.application.utils.dto.CategoryDto;
 
 public class EditCategoryRequest extends CategoryDto {
 }

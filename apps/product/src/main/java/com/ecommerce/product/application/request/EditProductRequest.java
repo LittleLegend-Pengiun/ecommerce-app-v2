@@ -1,7 +1,6 @@
 package com.ecommerce.product.application.request;
 
-import com.ecommerce.product.repository.dto.ProductDto;
-import jakarta.validation.constraints.NotEmpty;
+import com.ecommerce.product.application.utils.dto.ProductDto;
 
 public class EditProductRequest extends ProductDto {
 }

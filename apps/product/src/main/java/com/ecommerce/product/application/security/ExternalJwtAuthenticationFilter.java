@@ -1,9 +1,8 @@
 package com.ecommerce.product.application.security;
 
 import com.ecommerce.product.application.exception.BadRequestException;
-import com.ecommerce.product.service.security.ExternalJwtClaimService;
+import com.ecommerce.product.service.ExternalJwtClaimService;
 import jakarta.servlet.FilterChain;
-import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.RequiredArgsConstructor;

@@ -1,7 +1,5 @@
 package com.ecommerce.product.controller;
 
-import com.ecommerce.product.service.security.ExternalJwtClaimService;
-import jakarta.servlet.http.HttpServletRequest;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
