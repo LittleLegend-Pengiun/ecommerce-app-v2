@@ -1,5 +1,9 @@
 package com.ecommerce.product.controller;
-import com.ecommerce.product.repository.dto.ProductDto;
+import com.ecommerce.product.application.request.CreateProductRequest;
+import com.ecommerce.product.application.request.EditProductRequest;
+import com.ecommerce.product.application.response.GenericResponse;
+import com.ecommerce.product.application.response.ProductResponse;
+import com.ecommerce.product.application.response.ProductListResponse;
 import com.ecommerce.product.service.ProductService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
@@ -7,8 +11,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
 
 @RestController
 @RequestMapping("/product")
@@ -18,23 +20,22 @@ public class ProductController {
     private final ProductService productService;
 
     @GetMapping("/all")
-    public ResponseEntity<List<ProductDto>> getAllProducts() {
-        return ResponseEntity.status(HttpStatus.OK).body(productService.getAllProducts());
+    public ResponseEntity<ProductListResponse> getAllProducts() {
+        return new ResponseEntity<>(productService.getAllProducts(), HttpStatus.OK);
     }
-
     @PostMapping("")
-    public ResponseEntity<ProductDto> saveProduct(@Valid @RequestBody ProductDto dto){
-        return ResponseEntity.status(HttpStatus.OK).body(productService.saveProduct(dto));
+    public ResponseEntity<ProductResponse> saveProduct(@Valid @RequestBody CreateProductRequest dto){
+        return new ResponseEntity<>(productService.saveProduct(dto), HttpStatus.OK);
     }
 
     @PutMapping("")
-    public ResponseEntity<ProductDto> updateProduct(@Valid @RequestBody ProductDto dto){
-        return ResponseEntity.status(HttpStatus.OK).body(productService.updateProduct(dto));
+    public ResponseEntity<ProductResponse> updateProduct(@Valid @RequestBody EditProductRequest dto){
+        return new ResponseEntity<>(productService.updateProduct(dto), HttpStatus.OK);
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<String> deleteProductById(@Valid @PathVariable Integer id) {
+    public ResponseEntity<GenericResponse> deleteProductById(@Valid @PathVariable Integer id) {
         productService.deleteProductById(id);
-        return ResponseEntity.status(HttpStatus.OK).body("Delete product successfully!");
+        return new ResponseEntity<>(new GenericResponse("Delete product successfully!"), HttpStatus.OK);
     }
 }

@@ -1,6 +1,6 @@
-package com.ecommerce.product.repository.mapper;
+package com.ecommerce.product.application.utils.mapper;
 
-import com.ecommerce.product.repository.dto.ProductDto;
+import com.ecommerce.product.application.utils.dto.ProductDto;
 import com.ecommerce.product.repository.model.product.Product;
 
 import java.time.*;
