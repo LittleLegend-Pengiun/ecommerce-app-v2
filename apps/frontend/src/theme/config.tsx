@@ -8,11 +8,11 @@ const inter = Inter({
 });
 
 
-const antdConfigGen = {
+const antdConfigGen: ThemeConfig = {
     token: {
         fontFamily: inter.style.fontFamily,
         colorTextBase: colorPallete.text1,
-        colorBgLayout: colorPallete.background
+        colorBgLayout: colorPallete.background,
     },
     components: {
         Layout: {

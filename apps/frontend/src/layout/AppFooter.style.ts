@@ -47,6 +47,7 @@ export const StyledCopyrightedText = styled(Text)`
     color: ${props => props.theme.colors.secondary1};
 `
 
+
 export const StyledTitle = styled(Title)`
-    color: ${props => props.theme.colors.secondary1};
+    color: ${props => props.theme.colors.secondary1} !important;
 `

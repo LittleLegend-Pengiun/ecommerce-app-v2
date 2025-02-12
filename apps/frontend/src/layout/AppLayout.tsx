@@ -6,7 +6,7 @@ import { ConfigProvider, Layout } from 'antd';
 import { antdConfigGen, styledComponentTheme } from "@/theme/config";
 import { ThemeProvider } from "styled-components";
 import { StyledAppLayout, StyledBody } from "./AppLayout.style";
-import { Provider } from 'jotai'
+import { Provider as JotaiProvider } from 'jotai'
 const { Content } = Layout;
 
 type AppLayoutType = { children: React.ReactNode; }
@@ -16,13 +16,15 @@ const AppLayout: React.FC<AppLayoutType> = ({ children }) => {
         <html lang="en">
             <ConfigProvider theme={antdConfigGen}>
                 <ThemeProvider theme={styledComponentTheme}>
-                    <StyledBody>
-                        <StyledAppLayout>
-                            <AppHeader />
-                            <Provider><Content>{children}</Content></Provider>
-                        </StyledAppLayout>
-                        <AppFooter />
-                    </StyledBody>
+                    <JotaiProvider>
+                        <StyledBody>
+                            <StyledAppLayout>
+                                <AppHeader />
+                                <Content>{children}</Content>
+                            </StyledAppLayout>
+                            <AppFooter />
+                        </StyledBody>
+                    </JotaiProvider>
                 </ThemeProvider>
             </ConfigProvider>
         </html>
