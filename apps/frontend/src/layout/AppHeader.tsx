@@ -7,14 +7,8 @@ import { PromoBanner, StyledHeader, ShopNowLink, StyledNavBar, StyledShoppingCar
 import { ItemType } from "antd/es/menu/interface";
 import { useRouter, redirect } from "next/navigation";
 
-const { Link } = Typography;
 
-type AppHeaderProps = {
-    toggleDarkMode: (checked: boolean) => void,
-    isDarkMode: boolean
-};
-
-const AppHeader = ({ toggleDarkMode, isDarkMode }: AppHeaderProps) => {
+const AppHeader = () => {
     const router = useRouter();
     const items: ItemType[] = [
         {
@@ -66,16 +60,6 @@ const AppHeader = ({ toggleDarkMode, isDarkMode }: AppHeaderProps) => {
                     placeholder="What are you looking for?"
                     className="search-bar"
                 />
-
-                {/* &nbsp;&nbsp;&nbsp;&nbsp;
-
-                <StyledSwitch
-                    value={isDarkMode}
-                    checkedChildren={<MoonOutlined />}
-                    unCheckedChildren={<BulbOutlined />}
-                    defaultChecked
-                    onChange={toggleDarkMode}
-                /> */}
 
                 <StyledShoppingCartButton
                     onClick={() => redirect('/cart')}
