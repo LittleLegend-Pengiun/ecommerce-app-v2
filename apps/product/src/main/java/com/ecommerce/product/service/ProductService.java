@@ -1,7 +1,9 @@
 package com.ecommerce.product.service;
-import com.ecommerce.product.repository.dto.ProductDto;
+import com.ecommerce.product.application.response.ProductResponse;
+import com.ecommerce.product.application.response.ProductListResponse;
+import com.ecommerce.product.application.utils.dto.ProductDto;
 import com.ecommerce.product.application.exception.NotFoundByIdException;
-import com.ecommerce.product.repository.mapper.ProductMapper;
+import com.ecommerce.product.application.utils.mapper.ProductMapper;
 import com.ecommerce.product.repository.model.product.Product;
 import com.ecommerce.product.repository.ProductRepo;
 import lombok.RequiredArgsConstructor;
@@ -17,21 +19,24 @@ import java.util.Optional;
 public class ProductService {
     private final ProductRepo productRepo;
 
-    public List<ProductDto> getAllProducts(){
-        return productRepo.findAll().stream().map(ProductMapper::toDto).toList();
+    public ProductListResponse getAllProducts(){
+        List<ProductDto> productDtos = productRepo.findAll().stream().map(ProductMapper::toDto).toList();
+        return new ProductListResponse(productDtos);
     }
 
-    public List<ProductDto> saveAll(List<ProductDto> productDtos) {
+    public ProductListResponse saveAll(List<ProductDto> productDtos) {
         List<Product> saveProducts = productRepo.saveAll(productDtos.stream().map(ProductMapper::toEntity).toList());
-        return saveProducts.stream().map(ProductMapper::toDto).toList();
+        List<ProductDto> savedProductDtos = saveProducts.stream().map(ProductMapper::toDto).toList();
+        return new ProductListResponse(savedProductDtos);
     }
 
-    public ProductDto saveProduct(ProductDto dto) {
+    public ProductResponse saveProduct(ProductDto dto) {
         Product newProduct = productRepo.save(ProductMapper.toEntity(dto));
-        return ProductMapper.toDto(newProduct);
+        ProductDto productDto = ProductMapper.toDto(newProduct);
+        return new ProductResponse(productDto);
     }
 
-    public ProductDto updateProduct(ProductDto dto) {
+    public ProductResponse updateProduct(ProductDto dto) {
         Product product = ProductMapper.toEntity(dto);
         Optional<Product> existingProduct = productRepo.findById(product.getId());
         if (existingProduct.isEmpty()) {
@@ -40,7 +45,8 @@ public class ProductService {
         }
         Product updatedProduct = productRepo.save(product);
         log.info("Product with id: {} updated successfully", product.getId());
-        return ProductMapper.toDto(updatedProduct);
+        ProductDto productDto = ProductMapper.toDto(updatedProduct);
+        return new ProductResponse(productDto);
     }
 
     public void deleteProductById(Integer id) {
