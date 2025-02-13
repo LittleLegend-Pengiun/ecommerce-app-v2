@@ -10,8 +10,10 @@ export const StyledHeader = styled(Header)`
 
     background-color: ${props => props.theme.colors.background};
     color: ${props => props.theme.colors.text1};
-    padding: 0 20px 20px 20px;
-    border-bottom: 1px solid #ddd;
+    padding-left: 2rem;
+    padding-right: 2rem;
+    padding-bottom: 1rem;
+    border-bottom: 0.1rem solid #ddd;
 
     .logo {
         font-size: 18px;

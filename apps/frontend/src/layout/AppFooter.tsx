@@ -1,7 +1,7 @@
 import React, { ReactNode } from "react";
 import { Typography, Row, Col } from "antd";
 import { SendOutlined } from "@ant-design/icons";
-import { StyledUnorderedList, StyledFooter, StyledSubscribeInput, StyledCopyrightRow, StyledCopyrightedText, StyledTitle } from "./AppFooter.style";
+import { StyledUnorderedList, StyledFooter, StyledSubscribeInput, StyledCopyrightRow, StyledCopyrightedText, StyledTitle, StyledText } from "./AppFooter.style";
 const { Title, Text, Link } = Typography;
 
 type FooterColumn = {
@@ -62,10 +62,10 @@ const footerColumns: FooterColumn[] = [
         title: 'Exclusive',
         titleLevel: 4,
         children: <>
-            <Title level={5}>
+            <StyledTitle level={5}>
                 Subscribe
-            </Title>
-            <Text>Get 10% off your first order</Text>
+            </StyledTitle>
+            <StyledText>Get 10% off your first order</StyledText>
             <StyledSubscribeInput
                 placeholder="Enter your email"
                 suffix={<SendOutlined />}
@@ -78,13 +78,13 @@ const footerColumns: FooterColumn[] = [
         children: <>
             <StyledUnorderedList>
                 <li>
-                    <Text>268 Ly Thuong Kiet St, District 10, Ho Chi Minh City, Vietnam</Text>
+                    <StyledText>268 Ly Thuong Kiet St, District 10, Ho Chi Minh City, Vietnam</StyledText>
                 </li>
                 <li>
-                    <Text>ecommerce-app-v2@gmail.com</Text>
+                    <StyledText>ecommerce-app-v2@gmail.com</StyledText>
                 </li>
                 <li>
-                    <Text>+99999-99999-9999</Text>
+                    <StyledText>+99999-99999-9999</StyledText>
                 </li>
             </StyledUnorderedList>
         </>
@@ -117,8 +117,6 @@ const footerColumns: FooterColumn[] = [
     }
 ]
 const AppFooter = () => {
-
-
     return (
         <StyledFooter>
             <Row gutter={[32, 32]}>

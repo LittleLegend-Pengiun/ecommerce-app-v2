@@ -7,16 +7,15 @@ import styled from "styled-components";
 export const StyledFooter = styled(Footer)`
     background-color: ${props => props.theme.colors.background2};
     color: ${props => props.theme.colors.text2};
-    padding: 40px 20px 5px 20px;
-    margin-top: 20px;
+    padding: 2rem;
     border-top: 1px solid #ddd;
 `;
 
 export const StyledSubscribeInput = styled(Input)`
     width: 80%;
-    border-radius: 4px;
-    margin-top: 12px;
-    margin-bottom: 16px;
+    border-radius: 0.25rem;
+    margin-top: 0.75rem;
+    margin-bottom: 1rem;
 `;
 
 export const StyledUnorderedList = styled.ul`
@@ -26,7 +25,6 @@ export const StyledUnorderedList = styled.ul`
 
     li {
         margin-bottom: 10px;
-
         a {
             color: ${props => props.theme.colors.text2};
             text-decoration: none;
@@ -47,7 +45,17 @@ export const StyledCopyrightedText = styled(Text)`
     color: ${props => props.theme.colors.secondary1};
 `
 
+export const StyledText = styled(Text)`
+    color: ${props => props.theme.colors.text2};
+`
+
+export const StyledA = styled.a`
+    color: ${props => props.theme.colors.secondary1};
+    text-decoration: none;
+`
 
 export const StyledTitle = styled(Title)`
-    color: ${props => props.theme.colors.secondary1} !important;
+    &.ant-typography {
+        color: ${props => props.theme.colors.secondary1};
+    }
 `

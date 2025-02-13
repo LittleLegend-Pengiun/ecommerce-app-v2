@@ -2,12 +2,11 @@
 
 import AppHeader from "@/layout/AppHeader";
 import AppFooter from "@/layout/AppFooter";
-import { ConfigProvider, Layout } from 'antd';
+import { ConfigProvider } from 'antd';
 import { antdConfigGen, styledComponentTheme } from "@/theme/config";
 import { ThemeProvider } from "styled-components";
-import { StyledAppLayout, StyledBody } from "./AppLayout.style";
+import { StyledAppLayout, StyledBody, StyledContent } from "./AppLayout.style";
 import { Provider as JotaiProvider } from 'jotai'
-const { Content } = Layout;
 
 type AppLayoutType = { children: React.ReactNode; }
 
@@ -20,9 +19,9 @@ const AppLayout: React.FC<AppLayoutType> = ({ children }) => {
                         <StyledBody>
                             <StyledAppLayout>
                                 <AppHeader />
-                                <Content>{children}</Content>
+                                <StyledContent>{children}</StyledContent>
+                                <AppFooter />
                             </StyledAppLayout>
-                            <AppFooter />
                         </StyledBody>
                     </JotaiProvider>
                 </ThemeProvider>
