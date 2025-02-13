@@ -1,3 +1,4 @@
+import { fontSize } from './../theme/fontSize';
 import styled from "styled-components";
 import { Layout, Typography, Button, Switch } from "antd";
 import { ShoppingCartOutlined } from "@ant-design/icons";
@@ -16,7 +17,7 @@ export const StyledHeader = styled(Header)`
     border-bottom: 0.1rem solid #ddd;
 
     .logo {
-        font-size: 18px;
+        font-size: ${props => props.theme.fontSize.xl};
         font-weight: bold;
     }
 
@@ -38,8 +39,8 @@ export const PromoBanner = styled.div`
     background-color: ${props => props.theme.colors.background};
     color: ${props => props.theme.colors.text1};
     text-align: center;
-    padding: 5px 0;
-    font-size: 14px;
+    padding: 0.375rem 0;
+    font-size: ${props => props.theme.fontSize.sm};
 
     a {
         text-decoration: underline;
@@ -74,7 +75,7 @@ export const StyledSwitch = styled(Switch)`
 `;
 
 export const StyledShoppingCartButton = styled(ShoppingCartOutlined)`
-    font-size: 28px;
+    font-size: ${props => props.theme.fontSize.x2l};
     color: ${props => props.theme.colors.text1};
 `;
 

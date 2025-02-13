@@ -8,7 +8,7 @@ export const StyledFooter = styled(Footer)`
     background-color: ${props => props.theme.colors.background2};
     color: ${props => props.theme.colors.text2};
     padding: 2rem;
-    border-top: 1px solid #ddd;
+    border-top: 0.1rem solid #ddd;
 `;
 
 export const StyledSubscribeInput = styled(Input)`
@@ -24,7 +24,7 @@ export const StyledUnorderedList = styled.ul`
     margin: 0;
 
     li {
-        margin-bottom: 10px;
+        margin-bottom: 0.625rem;
         a {
             color: ${props => props.theme.colors.text2};
             text-decoration: none;
@@ -37,7 +37,7 @@ export const StyledFooterButton = styled(Button)`
 `
 
 export const StyledCopyrightRow = styled(Row)`
-    margin-top: 60px; 
+    margin-top: 3.75rem; 
     text-align: center;
 `;
 
