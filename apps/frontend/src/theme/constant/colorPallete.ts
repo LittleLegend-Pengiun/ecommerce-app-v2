@@ -7,7 +7,7 @@ export const colorPallete = {
     button1: '#DB4444',
     button2: '#47B486',
     hoverButton1: '#E2B93B',
-    hoverButton2: '#EB5757',
+    hoverButton2: '#A0BCE0',
     background: '#FFFFFF',
     background2: '#000000'
 }

@@ -1,10 +1,12 @@
 "use client";
 
 import React from "react";
-import { Menu, Input } from "antd";
-import { PromoBanner, StyledHeader, ShopNowLink, StyledNavBar, StyledShoppingCartButton, StyledP } from "./AppHeader.style";
+import { Menu, Input, Button } from "antd";
+import { PromoBanner, StyledHeader, ShopNowLink, StyledNavBar, StyledShoppingCartButton, StyledP, StyledButton } from "./AppHeader.style";
 import { ItemType } from "antd/es/menu/interface";
 import { useRouter, redirect } from "next/navigation";
+import Image from 'next/image';
+import { SearchOutlined } from "@ant-design/icons";
 
 
 const AppHeader = () => {
@@ -58,6 +60,12 @@ const AppHeader = () => {
                 <Input.Search
                     placeholder="What are you looking for?"
                     className="search-bar"
+                    enterButton={
+                        <StyledButton type="primary" icon={
+                            <Image src={'/icons/Search-icon.svg'} alt="Logo" width={20} height={20} />
+                        } />
+                    }
+                    size="large"
                 />
 
                 <StyledShoppingCartButton

@@ -72,6 +72,7 @@ export const StyledSwitch = styled(Switch)`
 `;
 
 export const StyledShoppingCartButton = styled(ShoppingCartOutlined)`
+    margin-left: 0.5rem;
     font-size: ${props => props.theme.fontSize.x2l};
     color: ${props => props.theme.colors.text1};
 `;
@@ -85,4 +86,14 @@ export const ShopNowLink = styled(Link)`
 
 export const StyledP = styled.p`
     color: ${props => props.theme.colors.text2};
+`
+
+export const StyledButton = styled(Button)`
+    background-color: ${props => props.theme.colors.background} !important;
+    border-color: ${props => props.theme.colors.text2} !important;
+
+    &:hover {
+        background-color: ${props => props.theme.colors.secondary1} !important;
+        border-color: ${props => props.theme.colors.hoverButton2} !important;
+    }
 `
