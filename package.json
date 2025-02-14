@@ -7,7 +7,8 @@
     "dev": "turbo dev",
     "init:kafka": "docker compose -f docker/kafka-docker-compose.yml up -d",
     "init:devEnvironment": "docker compose -f docker/main-compose.yml up -d",
-    "prepare": "husky"
+    "prepare": "husky",
+    "delete:cleanEnvironment": "docker compose -f docker/main-compose.yml  down --volumes"
   },
   "devDependencies": {
     "husky": "^9.1.7",

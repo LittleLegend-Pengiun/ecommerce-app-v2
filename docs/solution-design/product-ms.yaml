@@ -254,9 +254,9 @@ components:
         productList:
           type: array
           items:
-            $ref: "#/components/schemas/OrderedProductDetail"
+            $ref: "#/components/schemas/OrderItem"
 
-    OrderedProductDetail:
+    OrderItem:
       type: object
       properties:
         id:
