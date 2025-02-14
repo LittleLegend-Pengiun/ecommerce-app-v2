@@ -1,7 +1,7 @@
 import { ThemeConfig, theme } from "antd";
 import { Inter } from "next/font/google";
 import { colorPallete } from "./constant/colorPallete";
-import { fontSize } from "./constant/fontSize";
+import { fontSize, lineHeight } from "./constant/fontSize";
 
 const inter = Inter({
     subsets: ["latin"],
@@ -31,7 +31,8 @@ const antdConfigGen: ThemeConfig = {
 
 const styledComponentTheme = {
     colors: colorPallete,
-    fontSize: fontSize
+    fontSize: fontSize,
+    lineHeight: lineHeight
 }
 
 export { antdConfigGen, styledComponentTheme }

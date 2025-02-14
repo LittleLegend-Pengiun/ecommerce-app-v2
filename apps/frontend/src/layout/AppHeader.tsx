@@ -1,9 +1,8 @@
 "use client";
 
 import React from "react";
-import { Menu, Input, Typography } from "antd";
-import { BulbOutlined, MoonOutlined } from "@ant-design/icons";
-import { PromoBanner, StyledHeader, ShopNowLink, StyledNavBar, StyledShoppingCartButton, StyledSwitch } from "./AppHeader.style";
+import { Menu, Input } from "antd";
+import { PromoBanner, StyledHeader, ShopNowLink, StyledNavBar, StyledShoppingCartButton, StyledP } from "./AppHeader.style";
 import { ItemType } from "antd/es/menu/interface";
 import { useRouter, redirect } from "next/navigation";
 
@@ -49,7 +48,7 @@ const AppHeader = () => {
     return (
         <StyledHeader>
             <PromoBanner>
-                <p>Summer Sale For All Swim Suits And Free Express Delivery - OFF 50%! &nbsp;&nbsp;&nbsp; <ShopNowLink href="/shop">ShopNow</ShopNowLink></p>
+                <StyledP>Summer Sale For All Swim Suits And Free Express Delivery - OFF 50%! &nbsp;&nbsp;&nbsp; <ShopNowLink href="/shop">ShopNow</ShopNowLink></StyledP>
             </PromoBanner>
 
             <StyledNavBar>

@@ -9,7 +9,6 @@ export const StyledBody = styled.body`
 
 export const StyledAppLayout = styled(Layout)`
     min-height: 100vh;
-    margin-top: 1rem;
     display: grid;
     grid-template-rows: auto 1fr auto;
 `;

@@ -1,3 +1,4 @@
+import { lineHeight } from './../theme/constant/fontSize';
 import styled from "styled-components";
 import { Layout, Typography, Button, Switch } from "antd";
 import { ShoppingCartOutlined } from "@ant-design/icons";
@@ -7,12 +8,9 @@ const { Link } = Typography;
 export const StyledHeader = styled(Header)`
     display: grid;
     grid-template-rows: auto 1fr;
-
+    padding: 0;
     background-color: ${props => props.theme.colors.background};
     color: ${props => props.theme.colors.text1};
-    padding-left: 2rem;
-    padding-right: 2rem;
-    padding-bottom: 1rem;
     border-bottom: 0.1rem solid #ddd;
 
     .logo {
@@ -35,10 +33,9 @@ export const StyledHeader = styled(Header)`
 
 export const PromoBanner = styled.div`
     width: 100%;
-    background-color: ${props => props.theme.colors.background};
+    background-color: ${props => props.theme.colors.background2};
     color: ${props => props.theme.colors.text1};
     text-align: center;
-    padding: 0.375rem 0;
     font-size: ${props => props.theme.fontSize.sm};
 
     a {
@@ -48,6 +45,7 @@ export const PromoBanner = styled.div`
 
 export const StyledNavBar = styled.span`
     flex: 1;
+    padding: 1rem 2rem;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -79,8 +77,12 @@ export const StyledShoppingCartButton = styled(ShoppingCartOutlined)`
 `;
 
 export const ShopNowLink = styled(Link)`
-    a {
-        color: ${props => props.theme.colors.text1};
+    &.ant-typography {
+        color: ${props => props.theme.colors.primary1};
         text-decoration: none;
     }
+`
+
+export const StyledP = styled.p`
+    color: ${props => props.theme.colors.text2};
 `
