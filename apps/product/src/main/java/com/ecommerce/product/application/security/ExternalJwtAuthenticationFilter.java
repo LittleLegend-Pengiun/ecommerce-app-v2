@@ -27,7 +27,7 @@ public class ExternalJwtAuthenticationFilter extends OncePerRequestFilter {
     private final ExternalJwtClaimService externalJwtClaimService;
 
     private final AntPathMatcher pathMatcher = new AntPathMatcher();
-    private final Set<String> skipUrls = new HashSet<>(Arrays.asList("/product/**","/category/**","/order/all"));
+    private final Set<String> skipUrls = new HashSet<>(Arrays.asList("/product/**","/category/**","/order/**"));
 
     @Override
     protected boolean shouldNotFilter(HttpServletRequest request) {
