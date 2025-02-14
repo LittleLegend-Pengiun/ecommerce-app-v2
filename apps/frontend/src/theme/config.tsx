@@ -1,7 +1,7 @@
-import { MappingAlgorithm, ThemeConfig, theme } from "antd";
+import { ThemeConfig, theme } from "antd";
 import { Inter } from "next/font/google";
-import { colorPallete } from "./colorPallete";
-import { fontSize } from "./fontSize";
+import { colorPallete } from "./constant/colorPallete";
+import { fontSize } from "./constant/fontSize";
 
 const inter = Inter({
     subsets: ["latin"],

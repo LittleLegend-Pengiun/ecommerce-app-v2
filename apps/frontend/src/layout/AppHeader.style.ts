@@ -1,4 +1,3 @@
-import { fontSize } from './../theme/fontSize';
 import styled from "styled-components";
 import { Layout, Typography, Button, Switch } from "antd";
 import { ShoppingCartOutlined } from "@ant-design/icons";
