@@ -20,17 +20,12 @@ public class ProductMapper {
                 .imageUrl(product.getImageUrl())
                 .quantity(product.getQuantity())
                 .manufacturer(product.getManufacturer())
-                .releaseDate(formatReleaseDate(product.getReleaseDate()))
+                .releaseDate(DatetimeMapper.formatReleaseDate(product.getReleaseDate()))
                 .soldQuantity(product.getSoldQuantity())
                 .categoryList(product.getCategoryList().stream().map(CategoryMapper::toDto).toList())
                 .build();
     }
 
-    public static String formatReleaseDate(ZonedDateTime zdt) {
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
-        LocalDateTime ldt = zdt.toLocalDateTime();
-        return ldt.format(formatter);
-    }
 
     public static Product toEntity(ProductDto dto) {
         if (dto == null) {
@@ -45,18 +40,9 @@ public class ProductMapper {
                 .imageUrl(dto.getImageUrl())
                 .quantity(dto.getQuantity())
                 .manufacturer(dto.getManufacturer())
-                .releaseDate(parseReleaseDate(dto.getReleaseDate()))
+                .releaseDate(DatetimeMapper.parseReleaseDate(dto.getReleaseDate()))
                 .soldQuantity(dto.getSoldQuantity())
                 .categoryList(dto.getCategoryList().stream().map(CategoryMapper::toEntity).toList())
                 .build();
-    }
-
-    public static ZonedDateTime parseReleaseDate(String dateString) {
-        dateString = dateString.replaceAll("/","-");
-        String [] dateParts = dateString.split("-");
-        String day = dateParts[0];
-        String month = dateParts[1];
-        String year = dateParts[2];
-        return ZonedDateTime.of(Integer.parseInt(year), Integer.parseInt(month), Integer.parseInt(day), 0, 0, 0, 0, ZoneId.of("Asia/Ho_Chi_Minh"));
     }
 }
