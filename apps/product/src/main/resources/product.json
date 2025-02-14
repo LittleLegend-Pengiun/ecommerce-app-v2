@@ -8,7 +8,12 @@
     "manufacturer" : "HP",
     "releaseDate": "22/04/2022",
     "soldQuantity" : 50,
-    "categoryList" : []
+    "categoryList" : [
+      {
+        "id": 1,
+        "name":"laptop"
+      }
+    ]
   },
   {
     "imageUrl": "https://i.ibb.co/K9D67v8/laptop-2.webp",

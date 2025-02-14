@@ -1,30 +1,27 @@
-package com.ecommerce.product.repository.model.product;
+package com.ecommerce.product.application.utils.dto;
 
-import jakarta.persistence.*;
+import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.Pattern;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.experimental.SuperBuilder;
 
-import java.time.ZonedDateTime;
 import java.util.List;
 
 @SuperBuilder
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
-@Entity
-@Table(name="`order`")
-public class Order {
-    @Id
-    @GeneratedValue( strategy= GenerationType.AUTO )
+public class OrderDto {
     private Integer id;
 
     private Integer userId;
 
-    @Temporal(TemporalType.TIMESTAMP)
-    private ZonedDateTime orderDate;
+    @NotEmpty
+    @Pattern(regexp = "^[0-9]{2}[/-][0-9]{2}[/-][0-9]{4}$")
+    private String orderDate;
 
     @NotEmpty
     private String orderStatus;
@@ -35,6 +32,6 @@ public class Order {
     @NotEmpty
     private String payment;
 
-    @OneToMany(mappedBy = "order", cascade = CascadeType.ALL, orphanRemoval = true)
-    List<OrderItem> productList;
+    @Valid
+    private List<OrderItemDto> productList;
 }

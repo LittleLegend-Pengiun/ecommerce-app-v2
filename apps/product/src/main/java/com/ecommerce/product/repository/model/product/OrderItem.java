@@ -11,8 +11,8 @@ import lombok.experimental.SuperBuilder;
 @NoArgsConstructor
 @Data
 @Entity
-@Table(name="order_product_detail")
-public class OrderedProductDetail {
+@Table(name="order_item")
+public class OrderItem {
     @Id
     @GeneratedValue( strategy= GenerationType.AUTO )
     private Integer id;
