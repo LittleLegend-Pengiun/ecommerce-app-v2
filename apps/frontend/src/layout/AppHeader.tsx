@@ -1,20 +1,15 @@
 "use client";
 
 import React from "react";
-import { Menu, Input, Typography } from "antd";
-import { BulbOutlined, MoonOutlined } from "@ant-design/icons";
-import { PromoBanner, StyledHeader, ShopNowLink, StyledNavBar, StyledShoppingCartButton, StyledSwitch } from "./AppHeader.style";
+import { Menu, Input, Button } from "antd";
+import { PromoBanner, StyledHeader, ShopNowLink, StyledNavBar, StyledShoppingCartButton, StyledP, StyledButton } from "./AppHeader.style";
 import { ItemType } from "antd/es/menu/interface";
 import { useRouter, redirect } from "next/navigation";
+import Image from 'next/image';
+import { SearchOutlined } from "@ant-design/icons";
 
-const { Link } = Typography;
 
-type AppHeaderProps = {
-    toggleDarkMode: (checked: boolean) => void,
-    isDarkMode: boolean
-};
-
-const AppHeader = ({ toggleDarkMode, isDarkMode }: AppHeaderProps) => {
+const AppHeader = () => {
     const router = useRouter();
     const items: ItemType[] = [
         {
@@ -55,7 +50,7 @@ const AppHeader = ({ toggleDarkMode, isDarkMode }: AppHeaderProps) => {
     return (
         <StyledHeader>
             <PromoBanner>
-                <p>Summer Sale For All Swim Suits And Free Express Delivery - OFF 50%! &nbsp;&nbsp;&nbsp; <ShopNowLink href="/shop">ShopNow</ShopNowLink></p>
+                <StyledP>Summer Sale For All Swim Suits And Free Express Delivery - OFF 50%! &nbsp;&nbsp;&nbsp; <ShopNowLink href="/shop">ShopNow</ShopNowLink></StyledP>
             </PromoBanner>
 
             <StyledNavBar>
@@ -65,16 +60,12 @@ const AppHeader = ({ toggleDarkMode, isDarkMode }: AppHeaderProps) => {
                 <Input.Search
                     placeholder="What are you looking for?"
                     className="search-bar"
-                />
-
-                &nbsp;&nbsp;&nbsp;&nbsp;
-
-                <StyledSwitch
-                    value={isDarkMode}
-                    checkedChildren={<MoonOutlined />}
-                    unCheckedChildren={<BulbOutlined />}
-                    defaultChecked
-                    onChange={toggleDarkMode}
+                    enterButton={
+                        <StyledButton type="primary" icon={
+                            <Image src={'/icons/Search-icon.svg'} alt="Logo" width={20} height={20} />
+                        } />
+                    }
+                    size="large"
                 />
 
                 <StyledShoppingCartButton
