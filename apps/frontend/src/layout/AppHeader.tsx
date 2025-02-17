@@ -6,7 +6,6 @@ import { PromoBanner, StyledHeader, ShopNowLink, StyledNavBar, StyledShoppingCar
 import { ItemType } from "antd/es/menu/interface";
 import { useRouter, redirect } from "next/navigation";
 import Image from 'next/image';
-import { SearchOutlined } from "@ant-design/icons";
 
 
 const AppHeader = () => {
