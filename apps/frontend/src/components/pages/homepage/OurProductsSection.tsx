@@ -25,50 +25,58 @@ const Header = styled.div`
   }
 `;
 
-const ProductCard = styled(Card)`
+const StyledCard = styled(Card)`
   position: relative;
   text-align: center;
   border-radius: 10px;
   overflow: hidden;
-  .price {
-    color: red;
-    font-weight: bold;
-  }
-  .icons {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    display: flex;
-    gap: 10px;
-  }
-  .new-tag {
-    position: absolute;
-    top: 10px;
-    left: 10px;
-  }
-  .product-name {
-    font-weight: bold;
-    margin-top: 10px;
-  }
-  .cart-btn {
-    width: 100%;
-    background: black;
-    color: white;
-    font-weight: bold;
-    margin-top: 10px;
-  }
-  .color-options {
-    display: flex;
-    justify-content: center;
-    margin-top: 10px;
-    gap: 5px;
-  }
-  .color-dot {
-    width: 10px;
-    height: 10px;
-    border-radius: 50%;
-    display: inline-block;
-  }
+`;
+
+const Price = styled.p`
+  color: red;
+  font-weight: bold;
+`;
+
+const IconsWrapper = styled.div`
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  display: flex;
+  gap: 10px;
+`;
+
+const NewTag = styled(Tag)`
+  position: absolute;
+  top: 10px;
+  left: 10px;
+`;
+
+const ProductName = styled.p`
+  font-weight: bold;
+  margin-top: 10px;
+`;
+
+const CartButton = styled(Button)`
+  width: 100%;
+  background: black;
+  color: white;
+  font-weight: bold;
+  margin-top: 10px;
+`;
+
+const ColorOptions = styled.div`
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+  gap: 5px;
+`;
+
+const ColorDot = styled.span`
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  display: inline-block;
+  background-color: ${(props) => props.color};
 `;
 
 const products = [
@@ -95,26 +103,26 @@ const OurProductsSection = () => {
             <Row gutter={[16, 16]}>
                 {products.map((product) => (
                     <Col key={product.id} xs={24} sm={12} md={8} lg={6}>
-                        <ProductCard
+                        <StyledCard
                             cover={<img src={product.image} alt={product.name} style={{ height: "150px" }} />}
                         >
-                            {product.isNew && <Tag className="new-tag" color="green">NEW</Tag>}
-                            <div className="icons">
+                            {product.isNew && <NewTag color="green">NEW</NewTag>}
+                            <IconsWrapper>
                                 <HeartOutlined />
                                 <EyeOutlined />
-                            </div>
-                            <p className="product-name">{product.name}</p>
-                            <p className="price">${product.price}</p>
+                            </IconsWrapper>
+                            <ProductName>{product.name}</ProductName>
+                            <Price>${product.price}</Price>
                             <Rate disabled defaultValue={product.rating} /> <span>({product.reviews})</span>
                             {product.colors.length > 0 && (
-                                <div className="color-options">
+                                <ColorOptions>
                                     {product.colors.map((color, index) => (
-                                        <span key={index} className="color-dot" style={{ backgroundColor: color }}></span>
+                                        <ColorDot key={index} color={color} />
                                     ))}
-                                </div>
+                                </ColorOptions>
                             )}
-                            <Button className="cart-btn">Add To Cart</Button>
-                        </ProductCard>
+                            <CartButton>Add To Cart</CartButton>
+                        </StyledCard>
                     </Col>
                 ))}
             </Row>
