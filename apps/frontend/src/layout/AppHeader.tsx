@@ -53,7 +53,7 @@ const AppHeader = () => {
             </PromoBanner>
 
             <StyledNavBar>
-                <Image src={'/icons/Logo.svg'} alt="Logo" width={100} height={100}/>
+                <Image src={'/icons/Logo.svg'} alt="Logo" width={100} height={50}/>
                 <Menu mode="horizontal" defaultSelectedKeys={["home"]} className="menu" items={items} onClick={handleClick} />
 
                 <Input.Search
