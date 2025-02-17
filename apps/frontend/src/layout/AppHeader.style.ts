@@ -45,7 +45,8 @@ export const PromoBanner = styled.div`
 
 export const StyledNavBar = styled.span`
     flex: 1;
-    padding: 1rem 2rem;
+    padding: 2rem 2rem;
+    padding-bottom: 1rem;
     display: flex;
     align-items: center;
     justify-content: space-between;

@@ -6,7 +6,6 @@ import { PromoBanner, StyledHeader, ShopNowLink, StyledNavBar, StyledShoppingCar
 import { ItemType } from "antd/es/menu/interface";
 import { useRouter, redirect } from "next/navigation";
 import Image from 'next/image';
-import { SearchOutlined } from "@ant-design/icons";
 
 
 const AppHeader = () => {
@@ -54,7 +53,7 @@ const AppHeader = () => {
             </PromoBanner>
 
             <StyledNavBar>
-                <div className="logo">Exclusive</div>
+                <Image src={'/icons/Logo.svg'} alt="Logo" width={100} height={50}/>
                 <Menu mode="horizontal" defaultSelectedKeys={["home"]} className="menu" items={items} onClick={handleClick} />
 
                 <Input.Search
