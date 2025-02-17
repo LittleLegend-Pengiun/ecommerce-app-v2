@@ -1,4 +1,4 @@
-package com.ecommerce.product.service.security;
+package com.ecommerce.product.service;
 
 import com.ecommerce.product.application.security.CustomUserDetails;
 import com.ecommerce.product.repository.ExternalJwtClaimRepo;

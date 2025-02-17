@@ -1,7 +1,6 @@
 package com.ecommerce.product.controller;
 
-import com.ecommerce.product.service.security.ExternalJwtClaimService;
-import jakarta.servlet.http.HttpServletRequest;
+import com.ecommerce.product.application.response.GenericResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -15,13 +14,9 @@ import org.springframework.web.bind.annotation.RestController;
 @RequiredArgsConstructor
 @Validated
 public class ExternalAuthController {
-    private final ExternalJwtClaimService externalJwtClaimService;
-
     @GetMapping("")
-    public ResponseEntity<String> authorizeToken(HttpServletRequest request) {
-//        ResponseEntity<String> extResponse = authTokenClaimService.verifyToken(request);
-//        String responseBody = extResponse.getBody();
-        return ResponseEntity.status(HttpStatus.OK).body("Pass");
+    public ResponseEntity<GenericResponse> authorizeToken() {
+        return new ResponseEntity<>(new GenericResponse("Pass"), HttpStatus.OK);
     }
 
 }

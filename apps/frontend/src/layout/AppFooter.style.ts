@@ -1,22 +1,21 @@
 import { Layout, Input, Row, Typography, Button } from "antd";
 const { Footer } = Layout;
-const { Text } = Typography;
+const { Text, Title } = Typography;
 
 import styled from "styled-components";
 
 export const StyledFooter = styled(Footer)`
-    background-color: ${props => props.theme.color.background};
-    color: ${props => props.theme.color.text.primary};
-    padding: 40px 20px 5px 20px;
-    margin-top: 20px;
-    border-top: 1px solid #ddd;
+    background-color: ${props => props.theme.colors.background2};
+    color: ${props => props.theme.colors.text2};
+    padding: 2rem;
+    border-top: 0.1rem solid #ddd;
 `;
 
 export const StyledSubscribeInput = styled(Input)`
     width: 80%;
-    border-radius: 4px;
-    margin-top: 12px;
-    margin-bottom: 16px;
+    border-radius: 0.25rem;
+    margin-top: 0.75rem;
+    margin-bottom: 1rem;
 `;
 
 export const StyledUnorderedList = styled.ul`
@@ -25,24 +24,38 @@ export const StyledUnorderedList = styled.ul`
     margin: 0;
 
     li {
-        margin-bottom: 10px;
-
+        margin-bottom: 0.625rem;
         a {
-            color: ${props => props.theme.color.text.primary};
+            color: ${props => props.theme.colors.text2};
             text-decoration: none;
         }
     }
 `;
 
 export const StyledFooterButton = styled(Button)`
-    color: ${props => props.theme.color.palette.white};
+    color: ${props => props.theme.colors.secondary1};
 `
 
 export const StyledCopyrightRow = styled(Row)`
-    margin-top: 60px; 
+    margin-top: 3.75rem; 
     text-align: center;
 `;
 
-export const CopyrightedTextStyle = styled(Text)`
-    color: ${props => props.theme.color.text.tertiary};
+export const StyledCopyrightedText = styled(Text)`
+    color: ${props => props.theme.colors.secondary1};
+`
+
+export const StyledText = styled(Text)`
+    color: ${props => props.theme.colors.text2};
+`
+
+export const StyledA = styled.a`
+    color: ${props => props.theme.colors.secondary1};
+    text-decoration: none;
+`
+
+export const StyledTitle = styled(Title)`
+    &.ant-typography {
+        color: ${props => props.theme.colors.secondary1};
+    }
 `
