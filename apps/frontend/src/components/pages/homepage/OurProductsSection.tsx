@@ -1,7 +1,6 @@
 import React from "react";
 import { Button, Row, Col } from "antd";
 import { LeftOutlined, RightOutlined } from "@ant-design/icons";
-import styled from "styled-components";
 import ProductCard from "@/components/atoms/ProductCart/ProductCart";
 import {
   SectionWrapper,
