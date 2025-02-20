@@ -7,7 +7,7 @@ const Section = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 20px;
+  padding: 1.25rem;
 `;
 
 const TitleContainer = styled.div`
@@ -18,47 +18,47 @@ const TitleContainer = styled.div`
 const LabelContainer = styled.div`
   display: flex;
   align-items: center;
-  margin-bottom: 8px;
+  margin-bottom: 0.5rem;
 `;
 
 const LabelIcon = styled.div`
-  width: 12px;
-  height: 24px;
-  background-color: #a94442;
-  border-radius: 4px;
-  margin-right: 8px;
+  width: 0.75rem;
+  height: 1.5rem;
+  background-color: ${props => props.theme.colors.secondary2};
+  border-radius: 0.25rem;
+  margin-right: 0.5rem;
 `;
 
 const StyledText = styled(Text)`
-  color: #a94442;
-  font-size: 14px;
+  color: ${props => props.theme.colors.secondary2};
+  font-size: 0.875rem;
   font-weight: bold;
 `;
 
 const Title = styled.h2`
-  font-size: 32px;
+  font-size: 2rem;
   font-weight: bold;
   margin: 0;
 `;
 
 const NavButtons = styled.div`
   display: flex;
-  gap: 10px;
+  gap: 0.625px;
 `;
 
 const NavButton = styled(Button)`
-  width: 40px;
-  height: 40px;
+  width: 2.5rem;
+  height: 2.5rem;
   display: flex;
   align-items: center;
   justify-content: center;
   border-radius: 50%;
-  background: #f5f5f5;
+  background: ${props => props.theme.colors.secondary3};
   border: none;
   box-shadow: none;
 
   &:hover {
-    background: #e0e0e0;
+    background: ${props => props.theme.colors.secondary1};
   }
 `;
 

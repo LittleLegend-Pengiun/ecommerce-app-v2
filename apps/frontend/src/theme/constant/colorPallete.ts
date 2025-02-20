@@ -4,6 +4,7 @@ export const colorPallete = {
     text2: '#7D8184',
     secondary1: '#FEFAF1',
     secondary2: '#DB4444',
+    secondary3: '#F5F5F5',
     button1: '#DB4444',
     button2: '#47B486',
     hoverButton1: '#E2B93B',

@@ -10,17 +10,7 @@ export const WrapperCategoryProduct = styled.div`
     font-size: 24px;
     height: 44px;
 `  
-// export const WrapperButtonHover = styled(ButtonComponent)`
-//     &:hover{
-//         color: white;
-//         background-color: #008874;
-//         span {
-//             color: white;
-//         }
-//     }
-//     width:100%;
-//     text-align:center;
-// `
+
 export const WrapperProducts = styled.div`
     display: flex;
     flex-wrap: wrap;
@@ -45,10 +35,3 @@ export const WrapperColCategory = styled(Col)`
 export const WrapperSlider = styled(Col)`
     width:75%;
 `
-// export const WrapperInputSearch = styled(InputComponent)`
-//     width: 60%;
-//     margin-top: 40px;
-//     border-radius: 0;
-//     border: 1px solid black;
-//     height: 50px;
-// `
