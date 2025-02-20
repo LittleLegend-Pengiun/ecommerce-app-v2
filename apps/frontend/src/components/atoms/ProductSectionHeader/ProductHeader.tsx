@@ -1,7 +1,6 @@
 import React from "react";
 import { LeftOutlined, RightOutlined } from "@ant-design/icons";
-import { Section, TitleContainer, LabelContainer, LabelIcon, StyledText, Title, NavButtons, NavButton } from "./ProductHeader.styles";
-
+import { Section, TitleContainer, LabelContainer, LabelIcon, StyledText, NavButtons, NavButton, StyledTitle } from "./ProductHeader.styles";
 
 const ProductHeader: React.FC = () => {
   return (
@@ -11,7 +10,7 @@ const ProductHeader: React.FC = () => {
           <LabelIcon />
           <StyledText>Our Products</StyledText>
         </LabelContainer>
-        <Title>Explore Our Products</Title>
+        <StyledTitle level={2}>Explore Our Products</StyledTitle>
       </TitleContainer>
       <NavButtons>
         <NavButton icon={<LeftOutlined />} />

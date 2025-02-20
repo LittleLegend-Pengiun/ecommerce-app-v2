@@ -1,7 +1,7 @@
 import { Button, Typography } from "antd";
 import styled from "styled-components";
 
-const { Text } = Typography;
+const { Text, Title } = Typography;
 
 const Section = styled.div`
   display: flex;
@@ -35,9 +35,7 @@ const StyledText = styled(Text)`
   font-weight: bold;
 `;
 
-const Title = styled.h2`
-  font-size: 2rem;
-  font-weight: bold;
+const StyledTitle = styled(Title)`
   margin: 0;
 `;
 
@@ -69,7 +67,7 @@ export {
   TitleContainer,
   LabelContainer,
   LabelIcon,
-  Title,
+  StyledTitle,
   NavButtons,
   NavButton,
 };
