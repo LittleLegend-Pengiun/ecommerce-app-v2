@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Card, Rate } from "antd";
 import { HeartOutlined, EyeOutlined } from "@ant-design/icons";
 import styled from "styled-components";
@@ -16,20 +16,14 @@ interface ProductCardProps {
 const { Meta } = Card;
 
 const StyledCard = styled(Card)`
-  width: 250px;
-  border-radius: 12px;
+  width: 15.625rem;
+  border-radius: 0.75rem;
   overflow: hidden;
   position: relative;
-  .ant-card-cover {
-    position: relative;
-  }
-  .ant-card-cover img {
-    border-top-left-radius: 12px;
-    border-top-right-radius: 12px;
-    width: 100%;
-  }
-  .ant-card-body {
-    padding: 16px;
+  transition: all 0.3s ease;
+  &:hover .add-to-cart {
+    opacity: 1;
+    transform: translateY(0);
   }
 `;
 
@@ -39,46 +33,46 @@ const CoverWrapper = styled.div`
 
 const NewLabel = styled.div`
   position: absolute;
-  top: 10px;
-  left: 10px;
+  top: 0.625rem;
+  left: 0.625rem;
   background-color: #4caf50;
   color: white;
-  padding: 4px 8px;
-  font-size: 12px;
+  padding: 0.25rem 0.5rem;
+  font-size: 0.75rem;
   font-weight: bold;
-  border-radius: 5px;
+  border-radius: 0.3125rem;
 `;
 
 const IconsWrapper = styled.div`
   position: absolute;
-  top: 10px;
-  right: 10px;
+  top: 0.625rem;
+  right: 0.625rem;
   display: flex;
-  gap: 8px;
+  gap: 0.5rem;
 `;
 
 const IconButton = styled.div`
-  width: 32px;
-  height: 32px;
+  width: 2rem;
+  height: 2rem;
   background: white;
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 0.125rem 0.375rem rgba(0, 0, 0, 0.2);
 `;
 
 const Price = styled.span`
   color: red;
   font-weight: bold;
-  font-size: 18px;
+  font-size: 1.125rem;
 `;
 
 const RatingWrapper = styled.div`
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 0.5rem;
   color: gray;
 `;
 
@@ -90,17 +84,33 @@ const ActionsWrapper = styled.div`
 
 const ColorsWrapper = styled.div`
   display: flex;
-  gap: 8px;
-  margin-top: 8px;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
 `;
 
 const ColorOption = styled.div<{ color: string }>`
-  width: 16px;
-  height: 16px;
+  width: 1rem;
+  height: 1rem;
   border-radius: 50%;
   background-color: ${({ color }) => color};
-  border: 2px solid #000;
+  border: 0.125rem solid #000;
   cursor: pointer;
+`;
+
+const AddToCartButton = styled.div`
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background: black;
+  color: white;
+  text-align: center;
+  padding: 0.75rem;
+  font-weight: bold;
+  cursor: pointer;
+  opacity: 0;
+  transform: translateY(1.25rem);
+  transition: all 0.3s ease;
 `;
 
 const ProductCard: React.FC<ProductCardProps> = ({ image, title, price, rating, reviews, isNew, colors }) => {
@@ -113,6 +123,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ image, title, price, rating, 
           <IconButton><HeartOutlined /></IconButton>
           <IconButton><EyeOutlined /></IconButton>
         </IconsWrapper>
+        <AddToCartButton className="add-to-cart">Add To Cart</AddToCartButton>
       </CoverWrapper>
     }>
       <Meta title={title} />
