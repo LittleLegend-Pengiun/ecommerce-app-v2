@@ -110,9 +110,9 @@ const OurProductsSection: React.FC = () => {
           ({ id, name, price, image, rating, reviews, isNew, colors }) => (
             <Col key={id} xs={24} sm={12} md={8} lg={6}>
               <ProductCard
-                name={name}
+                title={name}
                 price={price}
-                image={image}
+                image={'/product-img/ideapad-gaming.png'}
                 rating={rating}
                 reviews={reviews}
                 isNew={isNew}
