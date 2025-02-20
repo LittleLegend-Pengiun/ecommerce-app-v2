@@ -27,7 +27,7 @@ export const StyledHeader = styled(Header)`
 
     .search-bar {
         margin-left: auto;
-        width: 200px;
+        width: 12.5rem;
     }
 `;
 

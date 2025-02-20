@@ -43,7 +43,7 @@ const Title = styled.h2`
 
 const NavButtons = styled.div`
   display: flex;
-  gap: 0.625px;
+  gap: 0.25rem;
 `;
 
 const NavButton = styled(Button)`
