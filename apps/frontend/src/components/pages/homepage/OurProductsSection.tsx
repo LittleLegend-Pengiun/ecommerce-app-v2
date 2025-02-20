@@ -4,6 +4,7 @@ import { LeftOutlined, RightOutlined } from "@ant-design/icons";
 import ProductCard from "@/components/atoms/ProductCart/ProductCart";
 import {
   SectionWrapper,
+  StyledButton,
 } from "./OurProductsSection.styles";
 import ProductHeader from "@/components/atoms/ProductSectionHeader/ProductHeader";
 
@@ -122,13 +123,13 @@ const OurProductsSection: React.FC = () => {
           )
         )}
       </Row>
-      <Button
-        type="primary"
-        block
-        style={{ marginTop: "20px", background: "red" }}
-      >
-        View All Products
-      </Button>
+      <Row justify="center">
+      <Col>
+        <StyledButton type="primary">
+          View All Products
+        </StyledButton>
+      </Col>
+    </Row>
     </SectionWrapper>
   );
 };
