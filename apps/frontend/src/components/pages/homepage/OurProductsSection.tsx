@@ -4,10 +4,8 @@ import { LeftOutlined, RightOutlined } from "@ant-design/icons";
 import ProductCard from "@/components/atoms/ProductCart/ProductCart";
 import {
   SectionWrapper,
-  HeaderWrapper,
-  Title,
-  NavIcons,
 } from "./OurProductsSection.styles";
+import ProductHeader from "@/components/atoms/ProductSectionHeader/ProductHeader";
 
 type Product = {
   id: number;
@@ -106,13 +104,7 @@ const products: Product[] = [
 const OurProductsSection: React.FC = () => {
   return (
     <SectionWrapper>
-      <HeaderWrapper>
-        <Title>Explore Our Products</Title>
-        <NavIcons>
-          <LeftOutlined />
-          <RightOutlined />
-        </NavIcons>
-      </HeaderWrapper>
+      <ProductHeader />
       <Row gutter={[16, 16]}>
         {products.map(
           ({ id, name, price, image, rating, reviews, isNew, colors }) => (
