@@ -1,5 +1,7 @@
+import { Product } from "@/models/homepage-model";
+
 export async function GET(request: Request) {
-  const data = [
+  const data: Product[] = [
     {
       id: 1,
       name: "Breed Dry Dog Food",
