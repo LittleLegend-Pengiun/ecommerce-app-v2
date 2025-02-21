@@ -52,18 +52,6 @@ export const StyledNavBar = styled.span`
     justify-content: space-between;
 `;
 
-export const DarkModeButton = styled(Button)`
-    background-color: ${props => props.theme.colors.background};
-    color: ${props => props.theme.colors.text1};
-    border-color: ${props => props.theme.colors.text1};
-
-    &:active {
-        background-color: ${props => props.theme.colors.background}; /* Background when active */
-        color: ${props => props.theme.colors.text1};              /* Text color when active */
-        transform: scale(0.98);   /* Slight scale effect to mimic a press */
-    }
-`;
-
 export const StyledSwitch = styled(Switch)`
     .ant-switch-disabled {
         background: ${props => props.theme.colors.background};

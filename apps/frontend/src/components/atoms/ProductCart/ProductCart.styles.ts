@@ -21,7 +21,7 @@ const NewLabel = styled.div`
   position: absolute;
   top: 0.625rem;
   left: 0.625rem;
-  background-color: #4caf50;
+  background-color: ${props => props.theme.colors.button2};
   color: white;
   padding: 0.25rem 0.5rem;
   font-size: 0.75rem;
