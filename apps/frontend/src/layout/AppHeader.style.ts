@@ -27,7 +27,7 @@ export const StyledHeader = styled(Header)`
 
     .search-bar {
         margin-left: auto;
-        width: 200px;
+        width: 12.5rem;
     }
 `;
 
@@ -45,22 +45,11 @@ export const PromoBanner = styled.div`
 
 export const StyledNavBar = styled.span`
     flex: 1;
-    padding: 1rem 2rem;
+    padding: 2rem 2rem;
+    padding-bottom: 1rem;
     display: flex;
     align-items: center;
     justify-content: space-between;
-`;
-
-export const DarkModeButton = styled(Button)`
-    background-color: ${props => props.theme.colors.background};
-    color: ${props => props.theme.colors.text1};
-    border-color: ${props => props.theme.colors.text1};
-
-    &:active {
-        background-color: ${props => props.theme.colors.background}; /* Background when active */
-        color: ${props => props.theme.colors.text1};              /* Text color when active */
-        transform: scale(0.98);   /* Slight scale effect to mimic a press */
-    }
 `;
 
 export const StyledSwitch = styled(Switch)`
