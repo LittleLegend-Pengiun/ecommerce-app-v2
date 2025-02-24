@@ -1,14 +1,11 @@
-'use client'
+'use client';
 
-import React, { useEffect, useState } from "react";
-import { Row, Col } from "antd";
-import ProductCard from "@/components/atoms/ProductCart/ProductCart";
-import {
-  SectionWrapper,
-  StyledButton,
-} from "./OurProductsSection.styles";
-import ProductHeader from "@/components/atoms/ProductSectionHeader/ProductHeader";
-import { Product } from "@/models/homepage-model";
+import React, { useEffect, useState } from 'react';
+import { Row, Col } from 'antd';
+import ProductCard from '@/components/atoms/ProductCart/ProductCart';
+import { SectionWrapper, StyledButton } from './OurProductsSection.styles';
+import ProductHeader from '@/components/atoms/ProductSectionHeader/ProductHeader';
+import { Product } from '@/models/homepage-model';
 
 const OurProductsSection: React.FC = () => {
   const [products, setProducts] = useState<Product[]>([]);
@@ -18,13 +15,13 @@ const OurProductsSection: React.FC = () => {
     fetch('/api/products')
       .then((res) => res.json())
       .then((data) => {
-        setProducts(data?.data)
-        setLoading(false)
-      })
+        setProducts(data?.data);
+        setLoading(false);
+      });
   }, []);
 
-  if (isLoading) return <p>Loading...</p>
-  if (!products) return <p>No profile data</p>
+  if (isLoading) return <p>Loading...</p>;
+  if (!products) return <p>No profile data</p>;
 
   return (
     <SectionWrapper>
@@ -43,16 +40,14 @@ const OurProductsSection: React.FC = () => {
                 colors={colors}
               />
             </Col>
-          )
+          ),
         )}
       </Row>
       <Row justify="center">
-      <Col>
-        <StyledButton type="primary">
-          View All Products
-        </StyledButton>
-      </Col>
-    </Row>
+        <Col>
+          <StyledButton type="primary">View All Products</StyledButton>
+        </Col>
+      </Row>
     </SectionWrapper>
   );
 };

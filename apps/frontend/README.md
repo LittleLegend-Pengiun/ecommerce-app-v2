@@ -38,6 +38,7 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/bui
 # Frontend Documentation
 
 ## Dark/Light mode
+
 The project support dark/light mode switching, based on variable state `isDarkMode` created and maintained in [AppLayout component](./src/layout/user-layout.tsx)
 
 The file [config.tsx](./src/theme/config.tsx) contains global theme config for Ant Design (`antdConfigGen` function) and Styled Component Global Theme (`styledComponentTheme` object passed into styled-components's [`ThemeProvider`](./src/layout/user-layout.tsx))

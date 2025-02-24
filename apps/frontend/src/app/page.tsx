@@ -1,4 +1,4 @@
-'use client'
+'use client';
 
 import OurProductsSection from '@/components/pages/homepage/OurProductsSection';
 
@@ -7,7 +7,7 @@ function HomePage() {
     <>
       <OurProductsSection />
     </>
-  )
+  );
 }
 
 export default HomePage;

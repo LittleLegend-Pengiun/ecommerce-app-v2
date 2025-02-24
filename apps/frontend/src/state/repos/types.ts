@@ -1,25 +1,25 @@
 // Cart
 
 type Product = {
-    id: number;
-    productName: string;
-    description: string;
-    price: number;
-    imageUrl: string;
-    quantity: number;
-    manufacturer: string;
-    releaseDate: string;
-    soldQuantity: number;
-    categoryList: Category[];
-}
+  id: number;
+  productName: string;
+  description: string;
+  price: number;
+  imageUrl: string;
+  quantity: number;
+  manufacturer: string;
+  releaseDate: string;
+  soldQuantity: number;
+  categoryList: Category[];
+};
 
 type Category = {
-    id: number;
-    name: string;
-}
+  id: number;
+  name: string;
+};
 
 type CartItem = Product & {
-    cartQuantity: number;
+  cartQuantity: number;
 };
 
 type Cart = CartItem[];

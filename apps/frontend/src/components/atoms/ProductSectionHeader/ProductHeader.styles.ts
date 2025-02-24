@@ -1,5 +1,5 @@
-import { Button, Typography } from "antd";
-import styled from "styled-components";
+import { Button, Typography } from 'antd';
+import styled from 'styled-components';
 
 const { Text, Title } = Typography;
 
@@ -24,13 +24,13 @@ const LabelContainer = styled.div`
 const LabelIcon = styled.div`
   width: 0.75rem;
   height: 1.5rem;
-  background-color: ${props => props.theme.colors.secondary2};
+  background-color: ${(props) => props.theme.colors.secondary2};
   border-radius: 0.25rem;
   margin-right: 0.5rem;
 `;
 
 const StyledText = styled(Text)`
-  color: ${props => props.theme.colors.secondary2};
+  color: ${(props) => props.theme.colors.secondary2};
   font-size: 0.875rem;
   font-weight: bold;
 `;
@@ -51,15 +51,14 @@ const NavButton = styled(Button)`
   align-items: center;
   justify-content: center;
   border-radius: 50%;
-  background: ${props => props.theme.colors.secondary3};
+  background: ${(props) => props.theme.colors.secondary3};
   border: none;
   box-shadow: none;
 
   &:hover {
-    background: ${props => props.theme.colors.secondary1};
+    background: ${(props) => props.theme.colors.secondary1};
   }
 `;
-
 
 export {
   Section,
