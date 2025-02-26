@@ -1,6 +1,15 @@
-import React from "react";
-import { LeftOutlined, RightOutlined } from "@ant-design/icons";
-import { Section, TitleContainer, LabelContainer, LabelIcon, StyledText, NavButtons, NavButton, StyledTitle } from "./ProductHeader.styles";
+import React from 'react';
+import { LeftOutlined, RightOutlined } from '@ant-design/icons';
+import {
+  Section,
+  TitleContainer,
+  LabelContainer,
+  LabelIcon,
+  StyledText,
+  NavButtons,
+  NavButton,
+  StyledTitle,
+} from './ProductHeader.styles';
 
 const ProductHeader: React.FC = () => {
   return (

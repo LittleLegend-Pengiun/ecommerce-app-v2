@@ -1,12 +1,12 @@
-import { Product } from "@/models/homepage-model";
+import { Product } from '@/models/homepage-model';
 
 export async function GET(request: Request) {
   const data: Product[] = [
     {
       id: 1,
-      name: "Breed Dry Dog Food",
+      name: 'Breed Dry Dog Food',
       price: 100,
-      image: "dogfood.png",
+      image: 'dogfood.png',
       rating: 3,
       reviews: 35,
       isNew: false,
@@ -14,9 +14,9 @@ export async function GET(request: Request) {
     },
     {
       id: 2,
-      name: "CANON EOS DSLR Camera",
+      name: 'CANON EOS DSLR Camera',
       price: 360,
-      image: "camera.png",
+      image: 'camera.png',
       rating: 4,
       reviews: 95,
       isNew: false,
@@ -24,9 +24,9 @@ export async function GET(request: Request) {
     },
     {
       id: 3,
-      name: "ASUS FHD Gaming Laptop",
+      name: 'ASUS FHD Gaming Laptop',
       price: 700,
-      image: "laptop.png",
+      image: 'laptop.png',
       rating: 5,
       reviews: 325,
       isNew: false,
@@ -34,9 +34,9 @@ export async function GET(request: Request) {
     },
     {
       id: 4,
-      name: "Curology Product Set",
+      name: 'Curology Product Set',
       price: 500,
-      image: "curology.png",
+      image: 'curology.png',
       rating: 4,
       reviews: 145,
       isNew: false,
@@ -44,45 +44,45 @@ export async function GET(request: Request) {
     },
     {
       id: 5,
-      name: "Kids Electric Car",
+      name: 'Kids Electric Car',
       price: 960,
-      image: "car.png",
+      image: 'car.png',
       rating: 5,
       reviews: 65,
       isNew: true,
-      colors: ["red", "black"],
+      colors: ['red', 'black'],
     },
     {
       id: 6,
-      name: "Jr. Zoom Soccer Cleats",
+      name: 'Jr. Zoom Soccer Cleats',
       price: 1160,
-      image: "shoes.png",
+      image: 'shoes.png',
       rating: 5,
       reviews: 35,
       isNew: false,
-      colors: ["yellow", "red"],
+      colors: ['yellow', 'red'],
     },
     {
       id: 7,
-      name: "GP11 Shooter USB Gamepad",
+      name: 'GP11 Shooter USB Gamepad',
       price: 660,
-      image: "controller.png",
+      image: 'controller.png',
       rating: 4.5,
       reviews: 55,
       isNew: true,
-      colors: ["red", "black"],
+      colors: ['red', 'black'],
     },
     {
       id: 8,
-      name: "Quilted Satin Jacket",
+      name: 'Quilted Satin Jacket',
       price: 660,
-      image: "jacket.png",
+      image: 'jacket.png',
       rating: 4.5,
       reviews: 55,
       isNew: false,
-      colors: ["green", "red"],
+      colors: ['green', 'red'],
     },
   ];
 
-  return Response.json({ data })
+  return Response.json({ data });
 }
