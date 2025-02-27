@@ -6,7 +6,7 @@ import { AppleOutlined } from '@ant-design/icons';
 // Styled Carousel Wrapper
 const SliderContainer = styled.div`
   width: 100%;
-  max-width: 900px;
+  max-width: 1000px;
   margin: auto;
   overflow: hidden;
   border-radius: 12px;

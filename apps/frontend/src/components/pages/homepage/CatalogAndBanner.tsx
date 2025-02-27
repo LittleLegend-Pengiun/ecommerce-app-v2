@@ -40,31 +40,6 @@ const BannerWrapper = styled(Card).attrs({ variant: 'outlined' })`
   }
 `;
 
-const BannerImage = styled.img`
-  width: 100%;
-  border-radius: 12px;
-`;
-
-const ProductTitle = styled.h3`
-  font-size: 20px;
-  font-weight: bold;
-  margin: 10px 0;
-`;
-
-const StyledButton = styled(Button)`
-  background: white;
-  color: black;
-  border: none;
-  font-weight: bold;
-  padding: 8px 16px;
-  border-radius: 8px;
-  margin-top: 10px;
-
-  &:hover {
-    background: #ddd;
-  }
-`;
-
 const CatalogAndBanner = () => {
   const categories = useMemo(
     () => [
@@ -117,16 +92,6 @@ const CatalogAndBanner = () => {
       </Col>
 
       <Col xs={24} sm={16} md={18} lg={19} xl={20}>
-        {/* <Carousel autoplay>
-          {banners.map((banner) => (
-            <BannerWrapper key={banner.id}>
-              <AppleOutlined style={{ fontSize: "24px" }} />
-              <ProductTitle>{banner.title}</ProductTitle>
-              <BannerImage src={banner.img} alt="Product" />
-              <StyledButton>Shop Now →</StyledButton>
-            </BannerWrapper>
-          ))}
-        </Carousel> */}
         <SliderBanner />
       </Col>
     </Row>
