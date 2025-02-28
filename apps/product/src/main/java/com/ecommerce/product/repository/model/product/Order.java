@@ -20,7 +20,6 @@ public class Order {
     @Id
     @GeneratedValue( strategy= GenerationType.AUTO )
     private Integer id;
-
     private Integer userId;
 
     @Temporal(TemporalType.TIMESTAMP)

@@ -19,9 +19,9 @@ public class ProductApplication implements CommandLineRunner {
 
 	@Override
 	public void run(String... args) throws IOException {
-//		dataInitializer.cleanProductMsDb();
-//		dataInitializer.initCategoryFromJson("category.json");
-//		dataInitializer.initProductFromJson("product.json");
-//		dataInitializer.initOrderFromJson("order.json");
+		dataInitializer.cleanProductMsDb();
+		dataInitializer.initCategoryFromJson("category.json");
+		dataInitializer.initProductFromJson("product.json");
+		dataInitializer.initOrderFromJson("order.json");
 	}
 }
