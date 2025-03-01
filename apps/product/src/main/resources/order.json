@@ -1,0 +1,36 @@
+[
+  {
+    "userId": 1,
+    "orderDate": "14-02-2025",
+    "orderStatus": "Created",
+    "address": "268 Ly Thuong Kiet St, District 10, HCM City",
+    "payment": "COD",
+    "productList": [
+      {
+        "productId": 1,
+        "quantity": 1
+      },
+      {
+        "productId": 2,
+        "quantity": 1
+      }
+    ]
+  },
+  {
+    "userId": 1,
+    "orderDate": "15-02-2025",
+    "orderStatus": "Created",
+    "address": "268 Ly Thuong Kiet St, District 10, HCM City",
+    "payment": "Online Banking",
+    "productList": [
+      {
+        "productId": 3,
+        "quantity": 1
+      },
+      {
+        "productId": 4,
+        "quantity": 2
+      }
+    ]
+  }
+]

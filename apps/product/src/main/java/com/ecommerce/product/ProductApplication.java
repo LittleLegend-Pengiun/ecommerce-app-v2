@@ -22,5 +22,6 @@ public class ProductApplication implements CommandLineRunner {
 		dataInitializer.cleanProductMsDb();
 		dataInitializer.initCategoryFromJson("category.json");
 		dataInitializer.initProductFromJson("product.json");
+		dataInitializer.initOrderFromJson("order.json");
 	}
 }

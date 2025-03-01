@@ -24,6 +24,8 @@ public class ProductService {
         return new ProductListResponse(productDtos);
     }
 
+
+
     public ProductListResponse saveAll(List<ProductDto> productDtos) {
         List<Product> saveProducts = productRepo.saveAll(productDtos.stream().map(ProductMapper::toEntity).toList());
         List<ProductDto> savedProductDtos = saveProducts.stream().map(ProductMapper::toDto).toList();
