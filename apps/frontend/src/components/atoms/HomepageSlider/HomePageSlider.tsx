@@ -5,10 +5,8 @@ import { AppleOutlined } from '@ant-design/icons';
 
 // Styled Carousel Wrapper
 const SliderContainer = styled.div`
-  width: 100%;
-  max-width: 1000px;
+  max-width: 1300px;
   margin: auto;
-  overflow: hidden;
   border-radius: 12px;
 `;
 
@@ -94,7 +92,11 @@ const banners = [
 const SliderBanner = () => {
   return (
     <SliderContainer>
-      <Carousel autoplay dots={{ className: 'custom-dots' }}>
+      <Carousel
+        autoplay
+        dots={{ className: 'custom-dots' }}
+        adaptiveHeight={true}
+      >
         {banners.map((banner) => (
           <Slide key={banner.id}>
             {/* Left Side */}

@@ -2,7 +2,7 @@ import { Button } from 'antd';
 import styled from 'styled-components';
 
 const SectionWrapper = styled.div`
-  padding: 1.25rem;
+  padding: 1.25rem 0rem;
   text-align: center;
 `;
 
