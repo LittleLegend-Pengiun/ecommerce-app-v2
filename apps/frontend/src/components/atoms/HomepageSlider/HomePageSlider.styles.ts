@@ -2,27 +2,9 @@ import { Carousel, Col } from 'antd';
 import styled from 'styled-components';
 import { AppleOutlined } from '@ant-design/icons';
 
-export const CatalogWrapper = styled.div`
-  width: 100%;
-  max-width: 75rem; /* 1200px → 75rem */
-  margin: auto;
-  padding: 1.25rem 0.9375rem; /* 20px → 1.25rem, 15px → 0.9375rem */
-
-  @media (max-width: 80rem) {
-    /* 1280px → 80rem */
-    max-width: 95%;
-  }
-
-  @media (max-width: 48rem) {
-    /* 768px → 48rem */
-    max-width: 100%;
-    padding: 0.625rem; /* 10px → 0.625rem */
-  }
-`;
-
 export const BannerContainer = styled.div`
   width: 100%;
-  max-width: 100%;
+  max-width: 90vw;
   margin: auto;
   overflow: hidden;
   border-radius: 0.75rem; /* 12px → 0.75rem */

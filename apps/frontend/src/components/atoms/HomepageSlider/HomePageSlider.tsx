@@ -2,7 +2,6 @@ import React from 'react';
 import { Row, Col } from 'antd';
 import Image from 'next/image';
 import {
-  CatalogWrapper,
   BannerContainer,
   StyledCarousel,
   SlideWrapper,
@@ -34,38 +33,32 @@ const banners = [
 
 const CatalogAndBanner = () => {
   return (
-    <CatalogWrapper>
-      <Row gutter={24} justify="center">
-        <Col xs={24} sm={24} md={20} lg={18}>
-          <BannerContainer>
-            <StyledCarousel autoplay>
-              {banners.map((banner) => (
-                <SlideWrapper key={banner.id}>
-                  <Row align="middle">
-                    {/* Left: Text Content */}
-                    <TextContent xs={24} sm={12}>
-                      <AppleIcon />
-                      <h3>{banner.title}</h3>
-                      <p>{banner.subtitle}</p>
-                    </TextContent>
+    <BannerContainer>
+      <StyledCarousel autoplay>
+        {banners.map((banner) => (
+          <SlideWrapper key={banner.id}>
+            <Row align="middle">
+              {/* Left: Text Content */}
+              <TextContent xs={24} sm={12}>
+                <AppleIcon />
+                <h3>{banner.title}</h3>
+                <p>{banner.subtitle}</p>
+              </TextContent>
 
-                    {/* Right: Image */}
-                    <ImageContainer xs={24} sm={12}>
-                      <Image
-                        src={banner.img}
-                        alt={banner.title}
-                        width={1000}
-                        height={2000}
-                      />
-                    </ImageContainer>
-                  </Row>
-                </SlideWrapper>
-              ))}
-            </StyledCarousel>
-          </BannerContainer>
-        </Col>
-      </Row>
-    </CatalogWrapper>
+              {/* Right: Image */}
+              <ImageContainer xs={24} sm={12}>
+                <Image
+                  src={banner.img}
+                  alt={banner.title}
+                  width={1000}
+                  height={2000}
+                />
+              </ImageContainer>
+            </Row>
+          </SlideWrapper>
+        ))}
+      </StyledCarousel>
+    </BannerContainer>
   );
 };
 
