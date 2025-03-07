@@ -32,8 +32,13 @@ const categories = [
 const StyledMenu = styled(Menu)`
   border: none;
   width: 100%;
-  font-size: 16px;
+  font-size: ${(props) => props.theme.fontSize.base};
   font-weight: 500;
+  .ant-menu-item {
+    &:hover {
+      color: ${(props) => props.theme.colors.hoverButton2};
+    }
+  }
 `;
 
 const CatalogAndBanner = () => {
