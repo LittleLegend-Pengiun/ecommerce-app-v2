@@ -2,12 +2,12 @@ import React from 'react';
 import { Row, Col } from 'antd';
 import Image from 'next/image';
 import {
-  BannerContainer,
   StyledCarousel,
   SlideWrapper,
   TextContent,
   AppleIcon,
   ImageContainer,
+  ShopButton,
 } from './HomePageSlider.styles';
 
 const banners = [
@@ -33,32 +33,31 @@ const banners = [
 
 const CatalogAndBanner = () => {
   return (
-    <BannerContainer>
-      <StyledCarousel autoplay>
-        {banners.map((banner) => (
-          <SlideWrapper key={banner.id}>
-            <Row align="middle">
-              {/* Left: Text Content */}
-              <TextContent xs={24} sm={12}>
-                <AppleIcon />
-                <h3>{banner.title}</h3>
-                <p>{banner.subtitle}</p>
-              </TextContent>
+    <StyledCarousel autoplay>
+      {banners.map((banner) => (
+        <SlideWrapper key={banner.id}>
+          <Row align="middle">
+            {/* Left: Text Content */}
+            <TextContent xs={24} sm={12}>
+              <AppleIcon />
+              <h3>{banner.title}</h3>
+              <p>{banner.subtitle}</p>
+              <ShopButton href="#">Shop Now →</ShopButton>
+            </TextContent>
 
-              {/* Right: Image */}
-              <ImageContainer xs={24} sm={12}>
-                <Image
-                  src={banner.img}
-                  alt={banner.title}
-                  width={1000}
-                  height={2000}
-                />
-              </ImageContainer>
-            </Row>
-          </SlideWrapper>
-        ))}
-      </StyledCarousel>
-    </BannerContainer>
+            {/* Right: Image */}
+            <ImageContainer xs={24} sm={12}>
+              <Image
+                src={banner.img}
+                alt={banner.title}
+                width={1000}
+                height={2000}
+              />
+            </ImageContainer>
+          </Row>
+        </SlideWrapper>
+      ))}
+    </StyledCarousel>
   );
 };
 

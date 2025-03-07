@@ -2,16 +2,12 @@ import { Carousel, Col } from 'antd';
 import styled from 'styled-components';
 import { AppleOutlined } from '@ant-design/icons';
 
-export const BannerContainer = styled.div`
-  width: 100%;
-  max-width: 90vw;
-  margin: auto;
-  overflow: hidden;
-  border-radius: 0.75rem; /* 12px → 0.75rem */
-`;
-
 export const StyledCarousel = styled(Carousel)`
   width: 100%;
+  max-width: 90vw;
+  margin: 2rem 0.5rem;
+  overflow: hidden;
+  /* border-radius: 0.75rem; */
 `;
 
 export const SlideWrapper = styled.div`
@@ -64,4 +60,20 @@ export const ImageContainer = styled(Col)`
 export const AppleIcon = styled(AppleOutlined)`
   font-size: 1.875rem; /* 30px → 1.875rem */
   margin-bottom: 0.625rem; /* 10px → 0.625rem */
+`;
+
+export const ShopButton = styled.a`
+  display: inline-block;
+  width: fit-content;
+  background: white;
+  color: black;
+  font-weight: bold;
+  padding: 10px 20px;
+  border-radius: 8px;
+  margin-top: 10px;
+  text-decoration: none;
+  transition: 0.3s;
+  &:hover {
+    background: #ddd;
+  }
 `;
