@@ -1,64 +1,85 @@
+import { Carousel, Col } from 'antd';
 import styled from 'styled-components';
+import { AppleOutlined } from '@ant-design/icons';
 
-export const SliderContainer = styled.div`
-  max-width: 93.75rem; /* 1500px */
+export const CatalogWrapper = styled.div`
+  width: 100%;
+  max-width: 75rem; /* 1200px → 75rem */
   margin: auto;
-  border-radius: 0.75rem; /* 12px */
+  padding: 1.25rem 0.9375rem; /* 20px → 1.25rem, 15px → 0.9375rem */
+
+  @media (max-width: 80rem) {
+    /* 1280px → 80rem */
+    max-width: 95%;
+  }
+
+  @media (max-width: 48rem) {
+    /* 768px → 48rem */
+    max-width: 100%;
+    padding: 0.625rem; /* 10px → 0.625rem */
+  }
 `;
 
-// Styled Slide Content
-export const Slide = styled.div`
+export const BannerContainer = styled.div`
+  width: 100%;
+  max-width: 100%;
+  margin: auto;
+  overflow: hidden;
+  border-radius: 0.75rem; /* 12px → 0.75rem */
+`;
+
+export const StyledCarousel = styled(Carousel)`
+  width: 100%;
+`;
+
+export const SlideWrapper = styled.div`
   background: black;
   color: white;
-  padding: 2.5rem; /* 40px */
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  border-radius: 0.75rem; /* 12px */
-  width: max-content;
+  border-radius: 0.75rem; /* 12px → 0.75rem */
+  padding: 2.5rem; /* 40px → 2.5rem */
+  overflow: hidden;
 `;
 
-// Left Side (Text + Icon)
-export const TextContent = styled.div`
-  max-width: 50%;
+export const TextContent = styled(Col)`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: left;
 
   h3 {
-    font-size: 1.5rem; /* 24px */
+    font-size: 1.5rem; /* 24px → 1.5rem */
     font-weight: bold;
     margin: 0;
   }
 
   p {
-    font-size: 1rem; /* 16px */
-    margin: 0.625rem 0; /* 10px 0 */
+    font-size: 1rem; /* 16px → 1rem */
+    margin: 0.625rem 0; /* 10px → 0.625rem */
+  }
+
+  @media (max-width: 48rem) {
+    text-align: center;
+    align-items: center;
   }
 `;
 
-// Right Side (Image)
-export const ImageContainer = styled.div`
-  max-width: 50%;
+export const ImageContainer = styled(Col)`
   display: flex;
   justify-content: flex-end;
+  align-items: center;
 
   img {
-    max-width: 15.625rem; /* 250px */
+    max-width: 15.625rem; /* 250px → 15.625rem */
     height: auto;
+  }
+
+  @media (max-width: 48rem) {
+    justify-content: center;
+    margin-top: 1.25rem; /* 20px → 1.25rem */
   }
 `;
 
-// Styled Button
-export const ShopButton = styled.a`
-  display: inline-block;
-  background: white;
-  color: black;
-  font-weight: bold;
-  padding: 0.625rem 1.25rem; /* 10px 20px */
-  border-radius: 0.5rem; /* 8px */
-  margin-top: 0.625rem; /* 10px */
-  text-decoration: none;
-  transition: 0.3s;
-
-  &:hover {
-    background: #ddd;
-  }
+export const AppleIcon = styled(AppleOutlined)`
+  font-size: 1.875rem; /* 30px → 1.875rem */
+  margin-bottom: 0.625rem; /* 10px → 0.625rem */
 `;
