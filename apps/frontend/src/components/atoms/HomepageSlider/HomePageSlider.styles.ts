@@ -68,12 +68,12 @@ export const ShopButton = styled.a`
   background: white;
   color: black;
   font-weight: bold;
-  padding: 10px 20px;
-  border-radius: 8px;
-  margin-top: 10px;
+  padding: 0.625rem 1.25rem;
+  border-radius: 0.5rem;
+  margin-top: 0.625rem;
   text-decoration: none;
   transition: 0.3s;
   &:hover {
-    background: #ddd;
+    background: ${(props) => props.theme.colors.hoverButton2};
   }
 `;
