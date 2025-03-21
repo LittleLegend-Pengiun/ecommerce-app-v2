@@ -21,7 +21,8 @@ public class SecurityConfiguration {
     SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception {
         httpSecurity.csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/category", "/product","/category/**","/product/**", "/order", "/order/**").permitAll()
+                        .requestMatchers("/category", "/product","/category/**","/product/**", "/order", "/order/**", "/", "/services/test-kafka")
+                        .permitAll()
                         .anyRequest().authenticated())
                 .sessionManagement(sess -> sess.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .addFilterAt(externalJwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class);

@@ -31,11 +31,11 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-security'
 	implementation 'org.springframework.boot:spring-boot-starter-webflux'
 	implementation 'org.postgresql:postgresql'
+	implementation 'org.springframework.kafka:spring-kafka:3.3.2'
 	compileOnly 'org.projectlombok:lombok'
 	annotationProcessor 'org.projectlombok:lombok'
 	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
 	developmentOnly 'org.springframework.boot:spring-boot-devtools'
-	implementation 'org.springframework.kafka:spring-kafka:3.3.2'
 }
 
 bootRun {
@@ -48,4 +48,8 @@ bootTestRun {
 
 tasks.register('startDb', Exec) {
 	commandLine("docker-compose", "up", "-d")
+}
+
+tasks.register('startDevEnvironment', Exec) {
+	commandLine("docker-compose", "-f", "dev-env.yml", "up", "-d")
 }
