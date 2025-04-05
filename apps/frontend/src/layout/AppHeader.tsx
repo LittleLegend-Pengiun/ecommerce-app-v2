@@ -10,6 +10,7 @@ import {
   StyledShoppingCartButton,
   StyledP,
   StyledButton,
+  StyledUserOutlinedButton
 } from './AppHeader.style';
 import { ItemType } from 'antd/es/menu/interface';
 import { useRouter, redirect } from 'next/navigation';
@@ -92,6 +93,7 @@ const AppHeader = () => {
         />
 
         <StyledShoppingCartButton onClick={() => redirect('/cart')} />
+        <StyledUserOutlinedButton onClick={() => redirect('/login')} />
       </StyledNavBar>
     </StyledHeader>
   );

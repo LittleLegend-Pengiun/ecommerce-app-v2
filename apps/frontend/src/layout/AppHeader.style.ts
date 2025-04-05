@@ -1,7 +1,7 @@
 import { lineHeight } from './../theme/constant/fontSize';
 import styled from 'styled-components';
 import { Layout, Typography, Button, Switch } from 'antd';
-import { ShoppingCartOutlined } from '@ant-design/icons';
+import { ShoppingCartOutlined, UserOutlined } from '@ant-design/icons';
 const { Header } = Layout;
 const { Link } = Typography;
 
@@ -61,6 +61,12 @@ export const StyledSwitch = styled(Switch)`
 `;
 
 export const StyledShoppingCartButton = styled(ShoppingCartOutlined)`
+  margin-left: 0.5rem;
+  font-size: ${(props) => props.theme.fontSize.x2l};
+  color: ${(props) => props.theme.colors.text1};
+`;
+
+export const StyledUserOutlinedButton = styled(UserOutlined)`
   margin-left: 0.5rem;
   font-size: ${(props) => props.theme.fontSize.x2l};
   color: ${(props) => props.theme.colors.text1};
