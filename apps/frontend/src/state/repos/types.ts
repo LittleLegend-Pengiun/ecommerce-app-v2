@@ -23,3 +23,9 @@ type CartItem = Product & {
 };
 
 type Cart = CartItem[];
+
+type User = {
+  isLogin: boolean;
+  fullname: string;
+  email: string;
+}
