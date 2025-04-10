@@ -5,6 +5,7 @@
     "scripts": {
         "start-db": "docker-compose up -d",
         "build": "./gradlew build -x test",
-        "dev": "./gradlew bootRun"
+        "dev": "./gradlew bootRun",
+        "docker:build": "docker build -t product-container ."
     }
 }

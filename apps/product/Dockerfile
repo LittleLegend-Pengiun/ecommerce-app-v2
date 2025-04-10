@@ -21,7 +21,7 @@ WORKDIR /app
 COPY --from=build /app/build/libs/*.jar app.jar
 
 # Expose app port
-EXPOSE 8000
+EXPOSE 8001
 
 # Lightweight entrypoint (no shell if not needed)
 ENTRYPOINT ["sh", "-c", "java $JAVA_OPTS -jar app.jar"]
